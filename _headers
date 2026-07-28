@@ -1,0 +1,9 @@
+# Always revalidate HTML pages so visitors get the latest listing counts
+# and content on a normal refresh, without needing a hard-refresh or
+# incognito window. CSS/JS/images can still cache normally for speed.
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
