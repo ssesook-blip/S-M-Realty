@@ -109,11 +109,65 @@ def whatsapp_link(listing: dict) -> str:
     return f"https://wa.me/{MAIN_WHATSAPP_NUMBER}?text={quote(text)}"
 
 
+SITE_URL = "https://sheenaandmichaelrealtydr.com"
+
+
+def meta_description(listing: dict) -> str:
+    """Short, unique meta description per property for search results."""
+    beds = listing.get("room", "")
+    baths_raw = format_bathrooms(listing)
+    baths = baths_raw[:-2] if baths_raw.endswith(".0") else baths_raw
+    location = get_sector(listing)
+    city = listing.get("city") or ""
+    price = format_price_full(listing)
+    loc = f"{location}, {city}".strip(", ")
+    parts = []
+    if beds:
+        parts.append(f"{beds}-bedroom")
+    if baths:
+        parts.append(f"{baths}-bathroom")
+    header = " ".join(parts) + " property" if parts else "Property"
+    return f"{header} for sale in {loc} — {price}. Photos, details, and pricing on S & M Realty."
+
+
+def strip_description(desc: str, max_chars: int = 140) -> str:
+    """Turn the API's HTML description into a short plain-text card blurb."""
+    if not desc:
+        return ""
+    text = re.sub(r"<[^>]+>", " ", desc)
+    text = html.unescape(text)
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= max_chars:
+        return text
+    return text[:max_chars].rsplit(" ", 1)[0] + "…"
+
+
+# Bella Vista, Sosúa covers several distinct communities. Split by keyword
+# match (checked against title + description) instead of relying on the
+# API's single broad "sector" value.
+SECTOR_OVERRIDES = [
+    ("hispaniola", "Hispaniola"),
+    ("panorama village", "Panorama Village"),
+    ("panorama", "Panorama Village"),
+]
+
+
+def get_sector(listing: dict) -> str:
+    """Sector/neighborhood name, with Bella Vista split into its sub-areas."""
+    sector = listing.get("sector") or ""
+    if sector.strip().lower() == "bella vista":
+        haystack = f'{listing.get("name", "")} {listing.get("description", "")}'.lower()
+        for keyword, replacement in SECTOR_OVERRIDES:
+            if keyword in haystack:
+                return replacement
+    return sector
+
+
 def search_blob(listing: dict) -> str:
     """Matches the data-search format already used in listings.html cards."""
     title = clean_title(listing.get("name", ""))
     price = format_price_card(listing)
-    sector = listing.get("sector") or ""
+    sector = get_sector(listing)
     city = listing.get("city") or ""
     parts = [
         title.lower(),
