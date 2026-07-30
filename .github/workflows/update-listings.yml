@@ -1,9 +1,15 @@
 name: Update Listings
 
 on:
+on:
   schedule:
     - cron: '0 12 * * *'  # daily at 12:00 UTC (8:00 AM Dominican Republic time)
   workflow_dispatch:      # lets you trigger it manually from the Actions tab too
+    inputs:
+      full_rebuild:
+        description: 'Regenerate every listing (check this after a design/data change)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
