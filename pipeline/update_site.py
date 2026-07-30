@@ -36,6 +36,33 @@ PROPERTIES_DIR = os.path.join(SITE_DIR, "properties")
 LISTINGS_HTML = os.path.join(SITE_DIR, "listings.html")
 INDEX_HTML = os.path.join(SITE_DIR, "index.html")
 KNOWN_LISTINGS_FILE = os.path.join(SITE_DIR, "known_listings.json")
+SITEMAP_FILE = os.path.join(SITE_DIR, "sitemap.xml")
+
+STATIC_PAGES = ["", "listings.html", "buying-guide.html"]
+
+
+def generate_sitemap(slugs: set):
+    from lib import SITE_URL
+    import datetime
+
+    today = datetime.date.today().isoformat()
+    urls = []
+    for page in STATIC_PAGES:
+        loc = f"{SITE_URL}/{page}" if page else f"{SITE_URL}/"
+        urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>daily</changefreq>\n  </url>")
+    for slug in sorted(slugs):
+        loc = f"{SITE_URL}/properties/{slug}.html"
+        urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n  </url>")
+
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(urls) +
+        "\n</urlset>\n"
+    )
+    with open(SITEMAP_FILE, "w", encoding="utf-8") as f:
+        f.write(xml)
+    print(f"  sitemap.xml written with {len(urls)} URLs.")
 
 
 def fetch_all_listings():
@@ -168,15 +195,60 @@ def delete_property_files(removed_slugs: set):
             os.remove(path)
 
 
+def replace_all_cards_in_listings_html(all_cards_html: str):
+    """Used only in --full mode: swaps the entire card grid at once instead
+    of inserting/removing individual cards."""
+    with open(LISTINGS_HTML, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    grid_marker = 'id="listings-grid">'
+    end_marker = '<p class="no-results" id="no-results">'
+    start = content.index(grid_marker) + len(grid_marker)
+    end = content.index(end_marker)
+    content = content[:start] + all_cards_html + content[end:]
+
+    with open(LISTINGS_HTML, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
 def main():
     if not TOKEN:
         print("ERROR: AETOKEN environment variable not set.")
         sys.exit(1)
 
+    full_rebuild = os.environ.get("FULL_REBUILD", "").lower() in ("1", "true", "yes")
+
     print("Fetching current listing summaries...")
     summaries = fetch_all_listings()
     current_slugs = {s["slug"]: s for s in summaries}
     print(f"  {len(current_slugs)} listings currently match the search terms.")
+
+    if full_rebuild:
+        print("FULL REBUILD requested: regenerating every listing page and card...")
+        os.makedirs(PROPERTIES_DIR, exist_ok=True)
+        all_cards = []
+        ok_slugs = []
+        for slug in sorted(current_slugs):
+            print(f"  Refreshing {slug} ...")
+            try:
+                detail = fetch_detail(slug)
+            except requests.exceptions.HTTPError as e:
+                print(f"    FAILED: {e}")
+                continue
+            page_html = generate_property_page(detail)
+            with open(os.path.join(PROPERTIES_DIR, f"{slug}.html"), "w", encoding="utf-8") as f:
+                f.write(page_html)
+            all_cards.append(generate_listing_card(detail))
+            ok_slugs.append(slug)
+
+        replace_all_cards_in_listings_html("".join(all_cards))
+        new_total = len(ok_slugs)
+        update_listing_counts(new_total)
+        update_index_html(new_total)
+        save_known_slugs(set(ok_slugs))
+        generate_sitemap(set(ok_slugs))
+        print(f"Full rebuild complete. Site now shows {new_total} listings.")
+        return
 
     known = load_known_slugs()
     new_slugs = set(current_slugs) - known
@@ -222,6 +294,7 @@ def main():
 
     updated_known = (known | set(added_slugs)) - removed_slugs
     save_known_slugs(updated_known)
+    generate_sitemap(updated_known)
 
     print(
         f"Added {len(added_slugs)} listing(s), removed {len(removed_slugs)} listing(s). "
