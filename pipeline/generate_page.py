@@ -1,7 +1,9 @@
 import html
+import json
 from lib import (
     clean_title, format_price_full, format_area, format_bathrooms,
-    gallery_urls, render_amenities, render_agents, whatsapp_link,
+    gallery_urls, render_amenities, render_agents, whatsapp_link, get_sector,
+    meta_description, SITE_URL,
 )
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
@@ -10,6 +12,35 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} &mdash; S &amp; M Realty</title>
+<meta name="description" content="{meta_desc}">
+<link rel="canonical" href="{canonical_url}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{title} — S & M Realty">
+<meta property="og:description" content="{meta_desc}">
+<meta property="og:image" content="{hero_image}">
+<meta property="og:url" content="{canonical_url}">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "RealEstateListing",
+  "name": {title_json},
+  "description": {meta_desc_json},
+  "url": {canonical_url_json},
+  "image": {hero_image_json},
+  "address": {{
+    "@type": "PostalAddress",
+    "addressLocality": {city_json},
+    "addressRegion": {location_json},
+    "addressCountry": "DO"
+  }},
+  "offers": {{
+    "@type": "Offer",
+    "price": {price_number},
+    "priceCurrency": {currency_json}
+  }}
+}}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/common.css">
@@ -102,10 +133,15 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
 
 def generate_property_page(listing: dict) -> str:
     title = clean_title(listing.get("name", ""))
-    location = f'{listing.get("sector", "")}, {listing.get("city", "")}'.strip(", ")
+    location = f'{get_sector(listing)}, {listing.get("city", "")}'.strip(", ")
     images = gallery_urls(listing)
     hero = images[0] if images else ""
     thumb_imgs = images[1:]
+    slug = listing.get("slug", "")
+    canonical_url = f"{SITE_URL}/properties/{slug}.html"
+    meta_desc = meta_description(listing)
+    price_number = listing.get("sale_price") or 0
+    currency = listing.get("currency_sale") or "USD"
 
     thumbs = []
     for i, url in enumerate(thumb_imgs, start=1):
@@ -118,7 +154,17 @@ def generate_property_page(listing: dict) -> str:
 
     body = PAGE_TEMPLATE.format(
         title=html.escape(title),
+        title_json=json.dumps(title),
         location=html.escape(location),
+        location_json=json.dumps(location),
+        meta_desc=html.escape(meta_desc),
+        meta_desc_json=json.dumps(meta_desc),
+        canonical_url=canonical_url,
+        canonical_url_json=json.dumps(canonical_url),
+        city_json=json.dumps(listing.get("city") or ""),
+        hero_image_json=json.dumps(hero),
+        price_number=price_number,
+        currency_json=json.dumps(currency),
         price=html.escape(format_price_full(listing)),
         hero_image=hero,
         thumbnails="\n".join(thumbs),
