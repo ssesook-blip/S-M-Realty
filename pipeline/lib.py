@@ -76,24 +76,35 @@ def render_amenities(listing: dict) -> str:
     return f'<h2 style="margin-top:50px; font-size:24px;">Amenities</h2><div class="amenities">{tags}</div>'
 
 
+FIXED_TEAM = [
+    {
+        "name": "Sheena Sesook",
+        "role": "Principal Broker",
+        "photo": "../team-sheena.jpg",
+        "phone": "+1 809-350-3736",
+    },
+    {
+        "name": "Michael Galea",
+        "role": "Principal Broker",
+        "photo": "../team-michael.jpg",
+        "phone": "+1 829-637-5611",
+    },
+]
+
+
 def render_agents(listing: dict) -> str:
-    agents = listing.get("agents") or []
+    """Always shows the S&M Realty team, regardless of which agent
+    AlterEstate's API lists for this specific listing."""
     boxes = []
-    for a in agents:
-        name = f'{a.get("first_name", "")} {a.get("last_name", "")}'.strip()
-        role = a.get("position") or ""
-        phone = a.get("phone") or ""
-        avatar = a.get("avatar") or ""
+    for a in FIXED_TEAM:
         boxes.append(f'''<div class="agent-box" style="margin-top:0;">
-          <img src="{html.escape(avatar)}" alt="{html.escape(name)}">
+          <img src="{html.escape(a["photo"])}" alt="{html.escape(a["name"])}">
           <div>
-            <div class="agent-name">{html.escape(name)}</div>
-            <div class="agent-role">{html.escape(role)}</div>
-            <div style="font-size:13px; margin-top:6px;">{html.escape(phone)}</div>
+            <div class="agent-name">{html.escape(a["name"])}</div>
+            <div class="agent-role">{html.escape(a["role"])}</div>
+            <div style="font-size:13px; margin-top:6px;">{html.escape(a["phone"])}</div>
           </div>
         </div>''')
-    if not boxes:
-        return ""
     return f'<div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:40px;">\n        {"".join(boxes)}</div>'
 
 
