@@ -36,7 +36,7 @@ function applyFilters(){
     card.style.display = match ? '' : 'none';
     if(match) shown++;
   });
-  countEl.textContent = `Showing ${shown} of 165`;
+  countEl.textContent = `Showing ${shown} of 169`;
   noResults.style.display = shown === 0 ? 'block' : 'none';
 }
 
