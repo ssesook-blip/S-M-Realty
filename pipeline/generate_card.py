@@ -1,6 +1,7 @@
 import html
 from lib import (
     clean_title, format_price_card, price_bucket, format_bathrooms, search_blob,
+    strip_description, get_sector,
 )
 
 
@@ -8,7 +9,8 @@ def generate_listing_card(listing: dict) -> str:
     title = clean_title(listing.get("name", ""))
     slug = listing["slug"]
     city = listing.get("city", "")
-    sector = listing.get("sector", "")
+    sector = get_sector(listing)
+    desc = strip_description(listing.get("description", ""))
     price = format_price_card(listing)
     bucket = price_bucket(listing)
     beds = listing.get("room", 0)
@@ -21,11 +23,13 @@ def generate_listing_card(listing: dict) -> str:
           <img src="{image}" alt="{html.escape(title)}" loading="lazy">
         </div>
         <div class="listing-body">
+          <div class="listing-title" style="font-size:15px; color:var(--ink); margin-bottom:4px;">{html.escape(title)}</div>
           <div>
             <div class="listing-price">{html.escape(price)}</div>
             <div class="listing-addr">{html.escape(sector)}, {html.escape(city)}</div>
           </div>
           <div class="listing-meta"><span>{beds} Bed</span><span>{baths} Bath</span></div>
         </div>
+        {f'<div class="listing-desc">{html.escape(desc)}</div>' if desc else ''}
       </a>
 '''
