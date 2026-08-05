@@ -36,6 +36,19 @@ PROPERTIES_DIR = os.path.join(SITE_DIR, "properties")
 LISTINGS_HTML = os.path.join(SITE_DIR, "listings.html")
 INDEX_HTML = os.path.join(SITE_DIR, "index.html")
 KNOWN_LISTINGS_FILE = os.path.join(SITE_DIR, "known_listings.json")
+DETAILS_CACHE_FILE = os.path.join(SITE_DIR, "property_details_cache.json")
+
+
+def load_details_cache() -> dict:
+    if os.path.exists(DETAILS_CACHE_FILE):
+        with open(DETAILS_CACHE_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_details_cache(cache: dict):
+    with open(DETAILS_CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False)
 SITEMAP_FILE = os.path.join(SITE_DIR, "sitemap.xml")
 
 STATIC_PAGES = ["", "listings.html", "buying-guide.html"]
@@ -63,6 +76,76 @@ def generate_sitemap(slugs: set):
     with open(SITEMAP_FILE, "w", encoding="utf-8") as f:
         f.write(xml)
     print(f"  sitemap.xml written with {len(urls)} URLs.")
+
+
+FEED_FILE = os.path.join(SITE_DIR, "properties-feed.xml")
+
+
+def generate_properties_feed(details: list):
+    """Standalone real estate listing feed built directly from this website's
+    own data (only the properties actually shown on sheenaandmichaelrealtydr.com),
+    independent of AlterEstate's own account-level portal syndication.
+    Uses common, widely-recognized real estate feed fields so most portal
+    intake systems (Properstar/ListGlobally included) can read or adapt to it."""
+    from lib import clean_title, get_sector, gallery_urls, SITE_URL, strip_description
+    import datetime
+    import xml.sax.saxutils as sx
+
+    def esc(s):
+        return sx.escape(str(s or ""))
+
+    today = datetime.date.today().isoformat()
+    items = []
+    for d in details:
+        slug = d.get("slug", "")
+        title = clean_title(d.get("name", ""))
+        price = d.get("sale_price") or 0
+        currency = d.get("currency_sale") or "USD"
+        city = d.get("city") or ""
+        sector = get_sector(d)
+        beds = d.get("room", 0)
+        baths = d.get("bathroom", 0)
+        area = d.get("property_area", 0)
+        area_unit = d.get("property_area_measurer") or "m2"
+        category = (d.get("category") or {}).get("name_en", "") or ""
+        description = strip_description(d.get("description") or "", max_chars=2000)
+        images = gallery_urls(d)
+        photos_xml = "\n    ".join(f"<Photo><URL>{esc(u)}</URL></Photo>" for u in images)
+        listing_url = f"{SITE_URL}/properties/{slug}.html"
+
+        items.append(f'''  <Listing>
+    <ListingID>{esc(slug)}</ListingID>
+    <ListingURL>{esc(listing_url)}</ListingURL>
+    <Title>{esc(title)}</Title>
+    <Description>{esc(description)}</Description>
+    <PropertyType>{esc(category)}</PropertyType>
+    <ListingStatus>Active</ListingStatus>
+    <Price currency="{esc(currency)}">{price}</Price>
+    <Bedrooms>{beds}</Bedrooms>
+    <Bathrooms>{baths}</Bathrooms>
+    <LivingArea unit="{esc(area_unit)}">{area}</LivingArea>
+    <Address>
+      <City>{esc(city)}</City>
+      <Neighborhood>{esc(sector)}</Neighborhood>
+      <Country>Dominican Republic</Country>
+    </Address>
+    <Photos>
+    {photos_xml}
+    </Photos>
+    <ProviderName>S &amp; M Realty</ProviderName>
+    <ProviderURL>{esc(SITE_URL)}</ProviderURL>
+    <LeadRoutingEmail>info@sheenaandmichaelrealtydr.com</LeadRoutingEmail>
+  </Listing>''')
+
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        f'<PropertyFeed generated="{today}" provider="S &amp; M Realty" source="{SITE_URL}">\n'
+        + "\n".join(items) +
+        "\n</PropertyFeed>\n"
+    )
+    with open(FEED_FILE, "w", encoding="utf-8") as f:
+        f.write(xml)
+    print(f"  properties-feed.xml written with {len(items)} listings.")
 
 
 def fetch_all_listings():
@@ -227,6 +310,7 @@ def main():
         print("FULL REBUILD requested: regenerating every listing page and card...")
         os.makedirs(PROPERTIES_DIR, exist_ok=True)
         all_cards = []
+        all_details = []
         ok_slugs = []
         for slug in sorted(current_slugs):
             print(f"  Refreshing {slug} ...")
@@ -239,6 +323,7 @@ def main():
             with open(os.path.join(PROPERTIES_DIR, f"{slug}.html"), "w", encoding="utf-8") as f:
                 f.write(page_html)
             all_cards.append(generate_listing_card(detail))
+            all_details.append(detail)
             ok_slugs.append(slug)
 
         replace_all_cards_in_listings_html("".join(all_cards))
@@ -247,6 +332,8 @@ def main():
         update_index_html(new_total)
         save_known_slugs(set(ok_slugs))
         generate_sitemap(set(ok_slugs))
+        save_details_cache({slug: d for slug, d in zip(ok_slugs, all_details)})
+        generate_properties_feed(all_details)
         print(f"Full rebuild complete. Site now shows {new_total} listings.")
         return
 
@@ -263,6 +350,7 @@ def main():
     os.makedirs(PROPERTIES_DIR, exist_ok=True)
     new_cards = []
     added_slugs = []
+    added_details = {}
 
     for slug in sorted(new_slugs):
         print(f"  Fetching detail for {slug} ...")
@@ -279,6 +367,7 @@ def main():
 
         new_cards.append(generate_listing_card(detail))
         added_slugs.append(slug)
+        added_details[slug] = detail
 
     if removed_slugs:
         print(f"  Removing {len(removed_slugs)} delisted page(s) and card(s)...")
@@ -295,6 +384,13 @@ def main():
     updated_known = (known | set(added_slugs)) - removed_slugs
     save_known_slugs(updated_known)
     generate_sitemap(updated_known)
+
+    cache = load_details_cache()
+    cache.update(added_details)
+    for slug in removed_slugs:
+        cache.pop(slug, None)
+    save_details_cache(cache)
+    generate_properties_feed([cache[s] for s in updated_known if s in cache])
 
     print(
         f"Added {len(added_slugs)} listing(s), removed {len(removed_slugs)} listing(s). "
