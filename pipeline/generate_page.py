@@ -65,6 +65,9 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
       <a href="../index.html#process">How We Work</a>
       <a href="../index.html#team">The Team</a>
     </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </header>
 
@@ -130,6 +133,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
   const photos = {photos_js};
 </script>
 <script src="../js/lightbox.js"></script>
+<script src="../js/nav-toggle.js"></script>
 </body>
 </html>
 '''
