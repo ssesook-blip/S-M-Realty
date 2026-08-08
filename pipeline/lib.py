@@ -68,11 +68,175 @@ def gallery_urls(listing: dict) -> list:
     return urls
 
 
+# AlterEstate's amenity data comes back in Spanish (it's a Dominican Republic
+# platform). This maps the common terms to English for display on the site.
+# Unmatched terms fall back to a cleaned-up (title-cased) version of the
+# original rather than disappearing, so nothing silently vanishes if a new
+# amenity term shows up that isn't in this list yet.
+AMENITY_TRANSLATIONS = {
+    "AMUEBLADO": "Furnished",
+    "SEMI AMUEBLADO": "Semi-Furnished",
+    "SIN AMUEBLAR": "Unfurnished",
+    "AREA DE JUEGOS INFANTILES": "Children's Play Area",
+    "AREA INFANTIL": "Children's Play Area",
+    "BALCÓN": "Balcony",
+    "BALCON": "Balcony",
+    "BALCÓN TIPO TERRAZA": "Terrace Balcony",
+    "BALCON TIPO TERRAZA": "Terrace Balcony",
+    "TERRAZA": "Terrace",
+    "CANCHA DE BASKET BALL": "Basketball Court",
+    "CANCHA DE BALONCESTO": "Basketball Court",
+    "CANCHA DE TENIS": "Tennis Court",
+    "CANCHA DE PADEL": "Padel Court",
+    "CANCHA DE PÁDEL": "Padel Court",
+    "CANCHA MULTIUSO": "Multi-Purpose Court",
+    "CENTROS COMERCIALES CERCANOS": "Nearby Shopping Centers",
+    "SUPERMERCADO CERCANO": "Nearby Supermarket",
+    "GAS COMÚN": "Gas Utility Included",
+    "GAS COMUN": "Gas Utility Included",
+    "LOBBY": "Lobby",
+    "PARQUEOS": "Parking",
+    "PARQUEO": "Parking",
+    "PARQUEO TECHADO": "Covered Parking",
+    "PARQUEO VISITANTE": "Visitor Parking",
+    "PLANTA ELÉCTRICA": "Backup Generator",
+    "PLANTA ELECTRICA": "Backup Generator",
+    "INVERSOR": "Power Inverter",
+    "RESIDENCIAL CERRADO": "Gated Community",
+    "URBANIZACIÓN CERRADA": "Gated Community",
+    "URBANIZACION CERRADA": "Gated Community",
+    "VIGILANCIA 24 HORAS": "24-Hour Security",
+    "SEGURIDAD 24 HORAS": "24-Hour Security",
+    "SEGURIDAD": "Security",
+    "PISCINA": "Pool",
+    "PISCINA COMÚN": "Shared Pool",
+    "PISCINA COMUN": "Shared Pool",
+    "PISCINA PRIVADA": "Private Pool",
+    "JACUZZI": "Jacuzzi",
+    "GIMNASIO": "Gym",
+    "AREA SOCIAL": "Social Area",
+    "ÁREA SOCIAL": "Social Area",
+    "SALON DE FIESTAS": "Event Room",
+    "SALÓN DE FIESTAS": "Event Room",
+    "SALA DE JUEGOS": "Game Room",
+    "ÁREA BBQ": "BBQ Area",
+    "AREA BBQ": "BBQ Area",
+    "ASCENSOR": "Elevator",
+    "ELEVADOR": "Elevator",
+    "LAVANDERÍA": "Laundry Room",
+    "LAVANDERIA": "Laundry Room",
+    "AREA DE LAVADO": "Laundry Area",
+    "ÁREA DE LAVADO": "Laundry Area",
+    "AIRE ACONDICIONADO": "Air Conditioning",
+    "CALENTADOR": "Water Heater",
+    "CISTERNA": "Water Cistern",
+    "TANQUE DE AGUA": "Water Tank",
+    "BOMBA DE AGUA": "Water Pump",
+    "WALK IN CLOSET": "Walk-In Closet",
+    "CLOSET": "Closets",
+    "COCINA EQUIPADA": "Equipped Kitchen",
+    "LINEA BLANCA": "Appliances Included",
+    "LÍNEA BLANCA": "Appliances Included",
+    "AMOBLADO": "Furnished",
+    "VISTA AL MAR": "Ocean View",
+    "VISTA PANORAMICA": "Panoramic View",
+    "VISTA PANORÁMICA": "Panoramic View",
+    "ACCESO A LA PLAYA": "Beach Access",
+    "FRENTE A LA PLAYA": "Beachfront",
+    "JARDIN": "Garden",
+    "JARDÍN": "Garden",
+    "ÁREA VERDE": "Green Area",
+    "AREA VERDE": "Green Area",
+    "PET FRIENDLY": "Pet Friendly",
+    "SE ACEPTAN MASCOTAS": "Pets Allowed",
+    "AMENIDADES DE LUJO": "Luxury Amenities",
+    "MUELLE": "Dock",
+    "CANCHA DE VOLEIBOL": "Volleyball Court",
+    "AREA COMERCIAL": "Commercial Area",
+    "ÁREA COMERCIAL": "Commercial Area",
+}
+
+
+def translate_amenity(term: str) -> str:
+    key = term.strip().upper()
+    if key in AMENITY_TRANSLATIONS:
+        return AMENITY_TRANSLATIONS[key]
+    return _word_level_translate(term)
+
+
+# Fallback for any amenity phrase not covered by the exact-match dictionary
+# above. Translates word-by-word using common Spanish real-estate vocabulary,
+# so a brand-new term the site has never seen still comes out in English
+# instead of silently staying in Spanish. Not as polished as a proper phrase
+# match, but it means nothing slips through untranslated going forward.
+WORD_TRANSLATIONS = {
+    "de": "", "del": "", "con": "with", "y": "and", "en": "in", "a": "to",
+    "la": "", "el": "", "los": "", "las": "", "un": "", "una": "",
+    "area": "Area", "área": "Area", "cancha": "Court", "campo": "Field",
+    "piscina": "Pool", "alberca": "Pool", "jardin": "Garden", "jardín": "Garden",
+    "terraza": "Terrace", "balcon": "Balcony", "balcón": "Balcony",
+    "parqueo": "Parking", "parqueos": "Parking", "estacionamiento": "Parking",
+    "garaje": "Garage", "seguridad": "Security", "vigilancia": "Security",
+    "residencial": "Residential", "cerrado": "Gated", "cerrada": "Gated",
+    "amueblado": "Furnished", "amoblado": "Furnished", "sin": "Without",
+    "gimnasio": "Gym", "elevador": "Elevator", "ascensor": "Elevator",
+    "lavanderia": "Laundry", "lavandería": "Laundry", "lavado": "Laundry",
+    "planta": "Generator", "electrica": "Electric", "eléctrica": "Electric",
+    "inversor": "Inverter", "generador": "Generator", "gas": "Gas",
+    "comun": "Shared", "común": "Shared", "privada": "Private", "privado": "Private",
+    "vista": "View", "mar": "Ocean", "playa": "Beach", "frente": "Front",
+    "panoramica": "Panoramic", "panorámica": "Panoramic",
+    "infantil": "Children's", "infantiles": "Children's", "juegos": "Play",
+    "ninos": "Kids", "niños": "Kids", "tenis": "Tennis", "basket": "Basketball",
+    "baloncesto": "Basketball", "voleibol": "Volleyball", "padel": "Padel",
+    "multiuso": "Multi-Purpose", "salon": "Room", "salón": "Room",
+    "fiestas": "Event", "social": "Social", "comercial": "Commercial",
+    "comerciales": "Commercial", "centros": "Centers", "cercanos": "Nearby",
+    "cercano": "Nearby", "supermercado": "Supermarket", "closet": "Closet",
+    "cocina": "Kitchen", "equipada": "Equipped", "equipado": "Equipped",
+    "calentador": "Water Heater", "cisterna": "Water Cistern",
+    "tanque": "Tank", "agua": "Water", "bomba": "Pump", "aire": "Air",
+    "acondicionado": "Conditioning", "mascotas": "Pets", "aceptan": "Allowed",
+    "muelle": "Dock", "lujo": "Luxury", "amenidades": "Amenities",
+    "urbanizacion": "Community", "urbanización": "Community",
+    "24": "24-Hour", "horas": "Hour", "techado": "Covered", "visitante": "Visitor",
+    "visitantes": "Visitors", "para": "for", "montana": "Mountain", "montaña": "Mountain",
+    "sala": "Room", "cine": "Cinema", "zona": "Zone", "barbacoa": "BBQ", "asador": "Grill",
+    "techo": "Roof", "patio": "Patio", "huerto": "Garden", "solar": "Lot",
+    "deposito": "Storage", "depósito": "Storage", "trastero": "Storage Room",
+    "oficina": "Office", "recepcion": "Reception", "recepción": "Reception",
+    "portero": "Doorman", "conserje": "Concierge", "camara": "Camera", "cámara": "Camera",
+    "camaras": "Cameras", "cámaras": "Cameras", "vigilante": "Guard", "alarma": "Alarm",
+    "cerca": "Fence", "cable": "Cable", "internet": "Internet", "wifi": "WiFi",
+    "fibra": "Fiber", "optica": "Optic", "óptica": "Optic", "walk": "Walk-In",
+    "in": "In", "spa": "Spa", "sauna": "Sauna", "bar": "Bar", "grill": "Grill",
+    "coworking": "Coworking", "yoga": "Yoga", "pilates": "Pilates", "estudio": "Studio",
+    "biblioteca": "Library", "juegos": "Play Area", "recreativa": "Recreational",
+    "recreativo": "Recreational", "deportiva": "Sports", "deportivo": "Sports",
+}
+
+
+def _word_level_translate(term: str) -> str:
+    words = term.strip().split()
+    out = []
+    for w in words:
+        bare = w.strip(".,()").lower()
+        translated = WORD_TRANSLATIONS.get(bare)
+        if translated is None:
+            out.append(w.capitalize())
+        elif translated:
+            out.append(translated)
+        # empty string (articles/prepositions we drop) contributes nothing
+    result = " ".join(out).strip()
+    return result if result else term.strip().title()
+
+
 def render_amenities(listing: dict) -> str:
     amenities = listing.get("amenities") or []
     if not amenities:
         return ""
-    tags = "\n".join(f'<span class="amenity-tag">{html.escape(a)}</span>' for a in amenities)
+    translated = [translate_amenity(a) for a in amenities]
+    tags = "\n".join(f'<span class="amenity-tag">{html.escape(a)}</span>' for a in translated)
     return f'<h2 style="margin-top:50px; font-size:24px;">Amenities</h2><div class="amenities">{tags}</div>'
 
 
@@ -153,24 +317,36 @@ def strip_description(desc: str, max_chars: int = 140) -> str:
     return text[:max_chars].rsplit(" ", 1)[0] + "…"
 
 
-# Bella Vista, Sosúa covers several distinct communities. Split by keyword
-# match (checked against title + description) instead of relying on the
-# API's single broad "sector" value.
+# Named gated communities / developments that AlterEstate doesn't reliably
+# assign as their own "sector" — sometimes a listing inside one of these
+# gets tagged with a broad raw sector instead (e.g. "Sosúa Abajo" or
+# "Bella Vista"). Rather than only checking when the raw sector happens to
+# be one specific value, every listing's title + description gets checked
+# against this list, so a community gets recognized no matter what raw
+# sector AlterEstate put it under. More specific phrases are listed first
+# so they win over shorter, looser matches (e.g. "panorama village" before
+# the bare "panorama").
 SECTOR_OVERRIDES = [
-    ("hispaniola", "Hispaniola"),
+    ("sosua ocean village", "Sosúa Ocean Village"),
+    ("sosúa ocean village", "Sosúa Ocean Village"),
     ("panorama village", "Panorama Village"),
+    ("hispaniola", "Hispaniola"),
     ("panorama", "Panorama Village"),
+    ("casa linda", "Casa Linda"),
+    ("agua dulce", "Agua Dulce"),
 ]
 
 
 def get_sector(listing: dict) -> str:
-    """Sector/neighborhood name, with Bella Vista split into its sub-areas."""
+    """Sector/neighborhood name. Checks the listing's own title and
+    description for known named communities first (see SECTOR_OVERRIDES
+    above) and uses that if found, regardless of what raw sector value
+    AlterEstate assigned; otherwise falls back to that raw sector."""
     sector = listing.get("sector") or ""
-    if sector.strip().lower() == "bella vista":
-        haystack = f'{listing.get("name", "")} {listing.get("description", "")}'.lower()
-        for keyword, replacement in SECTOR_OVERRIDES:
-            if keyword in haystack:
-                return replacement
+    haystack = f'{listing.get("name", "")} {listing.get("description", "")}'.lower()
+    for keyword, replacement in SECTOR_OVERRIDES:
+        if keyword in haystack:
+            return replacement
     return sector
 
 
