@@ -3,7 +3,7 @@ import json
 from lib import (
     clean_title, format_price_full, format_area, format_bathrooms,
     gallery_urls, render_amenities, render_agents, whatsapp_link, get_sector,
-    meta_description, SITE_URL,
+    meta_description, SITE_URL, strip_description,
 )
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
@@ -104,6 +104,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     <div class="prop-desc">
       {description}
     </div>
+    <div class="print-only-desc">{print_description}</div>
     {amenities}
     {agents}
   </div>
@@ -188,6 +189,7 @@ def generate_property_page(listing: dict) -> str:
         area=format_area(listing),
         category=html.escape(category),
         description=listing.get("description") or "",
+        print_description=html.escape(strip_description(listing.get("description") or "", max_chars=550)),
         amenities=render_amenities(listing),
         agents=render_agents(listing),
         whatsapp=whatsapp_link(listing),
