@@ -13,7 +13,7 @@
     <LivingArea unit="Mt2">58.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>El Batey</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -106,7 +106,7 @@
     <LivingArea unit="Mt2">123.9</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Casa Linda</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -380,7 +380,7 @@
     <LivingArea unit="Mt2">None</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Hispaniola</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -496,7 +496,7 @@
     <LivingArea unit="Mt2">463.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Bella Vista</Neighborhood>
+      <Neighborhood>Casa Linda</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -534,7 +534,7 @@
     <LivingArea unit="Mt2">176.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -568,7 +568,7 @@
     <LivingArea unit="Mt2">170.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -711,7 +711,18 @@
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
-    
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvT0o5WERZRkRIQi9mWER3d0VjcWFuL0RKSV8yMDAwMDMwNjExMDA0Ml8wMjg1X0RfZ3JlZW5lci5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvSkk4UzRQNlNSTC92Q2ZxUEJiN1ZHL0RKSV8yMDAwMDMwNjExMDExMV8wMjg2X0RfZ3JlZW5lci5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvVEpZUFRTSE9aVi9qbUtWS0hnOVRXL0RKSV8yMDAwMDMwNjExMDIyNl8wMjg4X0RfZ3JlZW5lci5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvMEhWSjNOWkZHNC84OTdacVM3VWNKL0RKSV8yMDAwMDMwNjExMDMwMF8wMjg5X0RfZ3JlZW5lci5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvNkxKQVFRTEVKQS94eDlZN0hkUzRkL0RKSV8yMDAwMDMwNjExMDMxMl8wMjkwX0RfZ3JlZW5lci5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvSTdXNFcxRlQyVC95bnM4YTN1S201L0RKSV8yMDAwMDMwNjExMDMyMl8wMjkxX0RfZ3JlZW5lci5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvNDkxRkMzSjA2Si9BeXdKeG1GZkFKL0RKSV8yMDAwMDMwNjExMDM1Nl8wMjkyX0RfZ3JlZW5lci5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvVjhaMk81U0swNC9wd3ByYlZaRFZGL0RKSV8yMDAwMDMwNjExMDQxNV8wMjkzX0QuanBlZyIsICJlZGl0cyI6IHsicmVzaXplIjogeyJ3aWR0aCI6IDEyODAsICJoZWlnaHQiOiA5NjAsICJmaXQiOiAiaW5zaWRlIn0sICJ0b0Zvcm1hdCI6ICJqcGVnIiwgImpwZWciOiB7InF1YWxpdHkiOiA3MH19fQ==</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvNzFCNUZVVTZFOC9lQ2RzY2pmOTlrL0RKSV8yMDAwMDMwNjExMDU1Nl8wMjk0X0QuanBlZyIsICJlZGl0cyI6IHsicmVzaXplIjogeyJ3aWR0aCI6IDEyODAsICJoZWlnaHQiOiA5NjAsICJmaXQiOiAiaW5zaWRlIn0sICJ0b0Zvcm1hdCI6ICJqcGVnIiwgImpwZWciOiB7InF1YWxpdHkiOiA3MH19fQ==</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvSzZaR1BJUU1WSS9hc1IyNmNWcWNSL0RKSV8yMDAwMDMwNjExMDY1Ml8wMjk1X0QuanBlZyIsICJlZGl0cyI6IHsicmVzaXplIjogeyJ3aWR0aCI6IDEyODAsICJoZWlnaHQiOiA5NjAsICJmaXQiOiAiaW5zaWRlIn0sICJ0b0Zvcm1hdCI6ICJqcGVnIiwgImpwZWciOiB7InF1YWxpdHkiOiA3MH19fQ==</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvUjFLRkFEVlMyMy90ZUpWQzJMZ0w4L0RKSV8yMDAwMDMwNjExMDcxNV8wMjk2X0QuanBlZyIsICJlZGl0cyI6IHsicmVzaXplIjogeyJ3aWR0aCI6IDEyODAsICJoZWlnaHQiOiA5NjAsICJmaXQiOiAiaW5zaWRlIn0sICJ0b0Zvcm1hdCI6ICJqcGVnIiwgImpwZWciOiB7InF1YWxpdHkiOiA3MH19fQ==</URL></Photo>
+    <Photo><URL>https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvVFIyRlRYTkVHUS9lUVo2TG9qSm9QL0RKSV8yMDAwMDMwNjExMDcyMF8wMjk3X0QuanBlZyIsICJlZGl0cyI6IHsicmVzaXplIjogeyJ3aWR0aCI6IDEyODAsICJoZWlnaHQiOiA5NjAsICJmaXQiOiAiaW5zaWRlIn0sICJ0b0Zvcm1hdCI6ICJqcGVnIiwgImpwZWciOiB7InF1YWxpdHkiOiA3MH19fQ==</URL></Photo>
     </Photos>
     <ProviderName>S &amp; M Realty</ProviderName>
     <ProviderURL>https://sheenaandmichaelrealtydr.com</ProviderURL>
@@ -1574,7 +1585,7 @@
     <LivingArea unit="Mt2">45.5</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -2407,7 +2418,7 @@
     <LivingArea unit="Mt2">None</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Bella Vista</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -2504,7 +2515,7 @@
     <LivingArea unit="Mt2">220.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -3245,7 +3256,7 @@
     <LivingArea unit="Mt2">59.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -3294,7 +3305,7 @@
     <LivingArea unit="Mt2">47.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -4377,7 +4388,7 @@
     <LivingArea unit="Mt2">275.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Panorama Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -4711,7 +4722,7 @@
     <LivingArea unit="Mt2">None</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Casa Linda</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -5232,7 +5243,7 @@
     <LivingArea unit="Mt2">39.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -5312,7 +5323,7 @@
     <LivingArea unit="Mt2">103.89</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Casa Linda</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -5380,7 +5391,7 @@
     <LivingArea unit="Mt2">1180.55</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Casa Linda</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -5414,7 +5425,7 @@
     <LivingArea unit="Mt2">635.26</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Casa Linda</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -5447,7 +5458,7 @@
     <LivingArea unit="Mt2">99.5</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Casa Linda</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -5700,7 +5711,7 @@
     <LivingArea unit="Mt2">325.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Cabarete</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -6095,7 +6106,7 @@
     <LivingArea unit="Mt2">133.53</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Casa Linda</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -6451,7 +6462,7 @@
     <LivingArea unit="Mt2">135.96</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Sosúa Abajo</Neighborhood>
+      <Neighborhood>Casa Linda</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
@@ -6586,7 +6597,7 @@
     <LivingArea unit="Mt2">335.0</LivingArea>
     <Address>
       <City>Sosúa</City>
-      <Neighborhood>Playa Chiquita</Neighborhood>
+      <Neighborhood>Sosúa Ocean Village</Neighborhood>
       <Country>Dominican Republic</Country>
     </Address>
     <Photos>
