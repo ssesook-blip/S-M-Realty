@@ -78,6 +78,7 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     <h1>{title}</h1>
     <div class="prop-loc">{location}</div>
     <div class="prop-price">{price}</div>
+    <button class="print-listing-btn" onclick="window.print()">Print This Listing</button>
   </div>
 </section>
 
@@ -113,6 +114,11 @@ PAGE_TEMPLATE = '''<!DOCTYPE html>
     <p>&copy; 2026 S &amp; M Realty. Licensed Real Estate Brokerage.</p>
   </div>
 </footer>
+
+<div class="print-only-footer">
+  <p>{canonical_url_plain}</p>
+  <p>Sheena Sesook &amp; Michael Galea &mdash; S &amp; M Realty &mdash; +1 809-350-3736</p>
+</div>
 
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
@@ -168,6 +174,7 @@ def generate_property_page(listing: dict) -> str:
         meta_desc=html.escape(meta_desc),
         meta_desc_json=json.dumps(meta_desc),
         canonical_url=canonical_url,
+        canonical_url_plain=html.escape(canonical_url),
         canonical_url_json=json.dumps(canonical_url),
         city_json=json.dumps(listing.get("city") or ""),
         hero_image_json=json.dumps(hero),
