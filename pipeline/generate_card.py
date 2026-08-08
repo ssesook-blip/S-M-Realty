@@ -1,7 +1,7 @@
 import html
 from lib import (
     clean_title, format_price_card, price_bucket, format_bathrooms, search_blob,
-    strip_description, get_sector, gallery_urls,
+    strip_description, get_sector, gallery_urls, get_community,
 )
 
 
@@ -10,6 +10,7 @@ def generate_listing_card(listing: dict) -> str:
     slug = listing["slug"]
     city = listing.get("city", "")
     sector = get_sector(listing)
+    community = get_community(listing)
     desc = strip_description(listing.get("description", ""))
     price = format_price_card(listing)
     bucket = price_bucket(listing)
@@ -19,7 +20,7 @@ def generate_listing_card(listing: dict) -> str:
     images = gallery_urls(listing)
     image = images[0] if images else ""
 
-    return f'''      <a href="properties/{slug}.html" class="listing reveal" data-city="{html.escape(city)}" data-price="{bucket}" data-beds="{beds}" data-search="{html.escape(search_blob(listing))}" data-price-num="{price_num}">
+    return f'''      <a href="properties/{slug}.html" class="listing reveal" data-city="{html.escape(city)}" data-price="{bucket}" data-beds="{beds}" data-community="{html.escape(community)}" data-search="{html.escape(search_blob(listing))}" data-price-num="{price_num}">
         <div class="photo" style="position:relative;">
           <img src="{image}" alt="{html.escape(title)}" loading="lazy">
         </div>
