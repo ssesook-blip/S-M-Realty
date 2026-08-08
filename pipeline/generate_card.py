@@ -1,7 +1,7 @@
 import html
 from lib import (
     clean_title, format_price_card, price_bucket, format_bathrooms, search_blob,
-    strip_description, get_sector,
+    strip_description, get_sector, gallery_urls,
 )
 
 
@@ -16,7 +16,8 @@ def generate_listing_card(listing: dict) -> str:
     beds = listing.get("room", 0)
     baths = format_bathrooms(listing)
     price_num = listing.get("sale_price") or ""
-    image = listing.get("featured_image", "")
+    images = gallery_urls(listing)
+    image = images[0] if images else ""
 
     return f'''      <a href="properties/{slug}.html" class="listing reveal" data-city="{html.escape(city)}" data-price="{bucket}" data-beds="{beds}" data-search="{html.escape(search_blob(listing))}" data-price-num="{price_num}">
         <div class="photo" style="position:relative;">
