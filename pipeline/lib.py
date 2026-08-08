@@ -337,17 +337,46 @@ SECTOR_OVERRIDES = [
 ]
 
 
+def _match_community(listing: dict) -> str:
+    """Returns the matched named community from SECTOR_OVERRIDES, or ''
+    if none of the listing's title/description mentions one."""
+    haystack = f'{listing.get("name", "")} {listing.get("description", "")}'.lower()
+    for keyword, replacement in SECTOR_OVERRIDES:
+        if keyword in haystack:
+            return replacement
+    return ""
+
+
 def get_sector(listing: dict) -> str:
     """Sector/neighborhood name. Checks the listing's own title and
     description for known named communities first (see SECTOR_OVERRIDES
     above) and uses that if found, regardless of what raw sector value
     AlterEstate assigned; otherwise falls back to that raw sector."""
-    sector = listing.get("sector") or ""
-    haystack = f'{listing.get("name", "")} {listing.get("description", "")}'.lower()
-    for keyword, replacement in SECTOR_OVERRIDES:
-        if keyword in haystack:
-            return replacement
-    return sector
+    community = _match_community(listing)
+    if community:
+        return community
+    return listing.get("sector") or ""
+
+
+# Ordered list of known communities shown in the "Communities" filter
+# dropdown on listings.html — kept separate from SECTOR_OVERRIDES' keyword
+# list since a couple of those have duplicate accented/unaccented entries
+# pointing at the same display name.
+KNOWN_COMMUNITIES = [
+    "Sosúa Ocean Village",
+    "Hispaniola",
+    "Panorama Village",
+    "Casa Linda",
+    "Agua Dulce",
+]
+
+
+def get_community(listing: dict) -> str:
+    """Like get_sector(), but returns '' instead of falling back to the raw
+    AlterEstate sector — used for the site's community filter dropdown,
+    which should only match listings that genuinely mention one of the
+    named communities, not just whatever broad sector AlterEstate assigned."""
+    return _match_community(listing)
 
 
 def search_blob(listing: dict) -> str:
