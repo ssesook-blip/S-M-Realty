@@ -39,7 +39,7 @@ function applyFilters(){
     card.style.display = match ? '' : 'none';
     if(match) shown++;
   });
-  countEl.textContent = `Showing ${shown} of 175`;
+  countEl.textContent = `Showing ${shown} of 172`;
   noResults.style.display = shown === 0 ? 'block' : 'none';
 }
 
