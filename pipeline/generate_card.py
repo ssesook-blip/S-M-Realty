@@ -1,7 +1,7 @@
 import html
 from lib import (
     clean_title, format_price_card, price_bucket, format_bathrooms, search_blob,
-    strip_description, get_sector, gallery_urls, get_community,
+    strip_description, get_sector, gallery_urls, get_community, amenity_filter_values,
 )
 
 
@@ -15,12 +15,15 @@ def generate_listing_card(listing: dict) -> str:
     price = format_price_card(listing)
     bucket = price_bucket(listing)
     beds = listing.get("room", 0)
+    baths_num = int(listing.get("bathroom") or 0)
     baths = format_bathrooms(listing)
     price_num = listing.get("sale_price") or ""
     images = gallery_urls(listing)
     image = images[0] if images else ""
+    ptype = (listing.get("category") or {}).get("name_en", "") or ""
+    amenities_attr = amenity_filter_values(listing)
 
-    return f'''      <a href="properties/{slug}.html" class="listing reveal" data-city="{html.escape(city)}" data-price="{bucket}" data-beds="{beds}" data-community="{html.escape(community)}" data-search="{html.escape(search_blob(listing))}" data-price-num="{price_num}">
+    return f'''      <a href="properties/{slug}.html" class="listing reveal" data-city="{html.escape(city)}" data-price="{bucket}" data-beds="{beds}" data-baths="{baths_num}" data-type="{html.escape(ptype)}" data-community="{html.escape(community)}" data-amenities="{html.escape(amenities_attr)}" data-search="{html.escape(search_blob(listing))}" data-price-num="{price_num}">
         <div class="photo" style="position:relative;">
           <img src="{image}" alt="{html.escape(title)}" loading="lazy">
         </div>
