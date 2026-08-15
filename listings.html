@@ -126,10 +126,16 @@
           <option value="4">4+</option>
         </select>
       </div>
-      <button class="reset-link" onclick="resetFilters()">Reset filters</button>
-      <div class="filter-count" id="result-count">Showing 178 of 178</div>
+<button class="reset-link" onclick="resetFilters()">Reset filters</button>
+      <button type="button" id="amenities-toggle" class="reset-link" aria-expanded="false">More Filters</button>
+      <div class="filter-count" id="result-count">Showing 175 of 175</div>
     </div>
-
+    <div id="amenities-panel" class="amenities-panel"></div>
+    <div class="view-toggle">
+      <span class="view-toggle-label">View</span>
+      <button type="button" id="view-grid-btn" class="view-toggle-btn">Grid</button>
+      <button type="button" id="view-list-btn" class="view-toggle-btn">List</button>
+    </div>
     <div class="full-grid" id="listings-grid">      <a href="properties/1-bedroom-steps-to-the-beach-resort-like-amenities-3554.html" class="listing reveal" data-city="Sosúa" data-price="under250" data-beds="1" data-community="Sosúa Ocean Village" data-search="1 bedroom steps to the beach resort like amenities $145,000, sosúa ocean village, sosúa sosúa ocean village, sosúa sosúa" data-price-num="145000.0">
         <div class="photo" style="position:relative;">
           <img src="https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvVTFDMkJRMllOSy83elZMY21ydkNXL0VCLVVDNzMwMl8yMi5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19" alt="1 Bedroom Steps to the Beach Resort Like Amenities" loading="lazy">
