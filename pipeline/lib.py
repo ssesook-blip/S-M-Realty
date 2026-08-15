@@ -213,6 +213,10 @@ WORD_TRANSLATIONS = {
     "coworking": "Coworking", "yoga": "Yoga", "pilates": "Pilates", "estudio": "Studio",
     "biblioteca": "Library", "juegos": "Play Area", "recreativa": "Recreational",
     "recreativo": "Recreational", "deportiva": "Sports", "deportivo": "Sports",
+    "nivel": "Level", "niveles": "Levels", "1er": "1st", "1ro": "1st", "1ra": "1st",
+    "2do": "2nd", "2da": "2nd", "3er": "3rd", "3ro": "3rd", "3ra": "3rd",
+    "4to": "4th", "4ta": "4th", "primer": "First", "segundo": "Second",
+    "tercer": "Third", "cuarto": "Fourth", "piso": "Floor",
 }
 
 
@@ -238,6 +242,15 @@ def render_amenities(listing: dict) -> str:
     translated = [translate_amenity(a) for a in amenities]
     tags = "\n".join(f'<span class="amenity-tag">{html.escape(a)}</span>' for a in translated)
     return f'<h2 style="margin-top:50px; font-size:24px;">Amenities</h2><div class="amenities">{tags}</div>'
+
+
+def amenity_filter_values(listing: dict) -> str:
+    """Pipe-separated list of this listing's translated amenity names, for
+    the data-amenities attribute the listings-page filter reads from.
+    Kept separate from render_amenities() since that one produces HTML."""
+    amenities = listing.get("amenities") or []
+    translated = [translate_amenity(a) for a in amenities]
+    return "|".join(translated)
 
 
 FIXED_TEAM = [
