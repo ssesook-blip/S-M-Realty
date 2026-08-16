@@ -3,3 +3,28 @@ function toggleReview(btn){
   const collapsed = quote.classList.toggle('collapsed');
   btn.textContent = collapsed ? 'Read more' : 'Read less';
 }
+  function submitValuationForm(event, form) {
+  event.preventDefault();
+  const button = form.querySelector('button');
+  const originalText = button.textContent;
+  button.textContent = 'Sending…';
+  const data = new FormData(form);
+  fetch('https://formspree.io/f/xdenwkrj', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  })
+    .then(response => {
+      if (response.ok) {
+        button.textContent = 'Sent';
+        form.reset();
+      } else {
+        button.textContent = 'Error — try again';
+        setTimeout(() => { button.textContent = originalText; }, 3000);
+      }
+    })
+    .catch(() => {
+      button.textContent = 'Error — try again';
+      setTimeout(() => { button.textContent = originalText; }, 3000);
+    });
+}
