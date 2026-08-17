@@ -173,3 +173,16 @@ footer a:hover{ color: var(--bronze-bright); }
   .manifesto{ padding: 90px 0; }
   .cta-band{ padding: 80px 0; }
 }
+.cta-form textarea{
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(239,234,225,0.3);
+  color: var(--stone);
+  padding: 12px 14px;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 70px;
+}
+.cta-form textarea::placeholder{ color: rgba(239,234,225,0.45); }
+.cta-form textarea:focus{ outline: none; border-color: var(--bronze-bright); }
