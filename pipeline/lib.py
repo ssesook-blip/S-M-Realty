@@ -347,6 +347,7 @@ SECTOR_OVERRIDES = [
     ("panorama", "Panorama Village"),
     ("casa linda", "Casa Linda"),
     ("agua dulce", "Agua Dulce"),
+    ("el choco", "El Choco"),
 ]
 
 
