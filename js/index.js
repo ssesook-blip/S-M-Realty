@@ -28,3 +28,20 @@ function toggleReview(btn){
       setTimeout(() => { button.textContent = originalText; }, 3000);
     });
 }
+(function(){
+  const btn = document.getElementById('music-toggle');
+  const audio = document.getElementById('bg-music');
+  if (!btn || !audio) return;
+  let playing = false;
+  btn.addEventListener('click', function(){
+    if (playing) {
+      audio.pause();
+      btn.classList.remove('playing');
+    } else {
+      audio.play().catch(() => {});
+      btn.classList.add('playing');
+    }
+    playing = !playing;
+    btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+  });
+})();
