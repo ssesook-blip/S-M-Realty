@@ -165,3 +165,27 @@ nav.wrap{ display:flex; align-items:center; justify-content: space-between; heig
 .footer-social-link:hover{
   color: var(--bronze-bright);
 }
+.music-toggle{
+  position: fixed;
+  right: 28px;
+  bottom: 100px;
+  z-index: 200;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--stone);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(28,26,23,0.24);
+  transition: background .3s ease;
+}
+.music-toggle.playing{
+  background: var(--bronze);
+}
+@media (max-width: 640px){
+  .music-toggle{ right: 18px; bottom: 84px; width: 42px; height: 42px; }
+}
