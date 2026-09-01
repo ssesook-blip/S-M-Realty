@@ -20,6 +20,7 @@ const priceFilter = document.getElementById('filter-price');
 const communityFilter = document.getElementById('filter-community');
 const typeFilter = document.getElementById('filter-type');
 const bathsFilter = document.getElementById('filter-baths');
+const oceanfrontFilter = document.getElementById('filter-oceanfront');
 const priceMinFilter = document.getElementById('filter-price-min');
 const priceMaxFilter = document.getElementById('filter-price-max');
 const bedsFilter = document.getElementById('filter-beds');
@@ -77,6 +78,7 @@ function applyFilters(){
   const community = communityFilter.value;
   const type = typeFilter ? typeFilter.value : 'all';
   const minBaths = bathsFilter ? (parseInt(bathsFilter.value) || 0) : 0;
+  const oceanfrontOnly = oceanfrontFilter ? oceanfrontFilter.checked : false;
   const priceMin = parseFloat(priceMinFilter.value);
   const priceMax = parseFloat(priceMaxFilter.value);
   const beds = parseInt(bedsFilter.value) || 0;
@@ -90,6 +92,7 @@ function applyFilters(){
     const matchType = type === 'all' || card.dataset.type === type;
     const matchBaths = minBaths === 0 || parseInt(card.dataset.baths) >= minBaths;
     const matchBeds = beds === 0 || parseInt(card.dataset.beds) >= beds;
+    const matchOceanfront = !oceanfrontOnly || card.dataset.oceanfront === 'true';
 
     const cardAmenities = (card.dataset.amenities || '').split('|');
     const matchAmenities = wantedAmenities.every(a => cardAmenities.includes(a));
@@ -105,7 +108,7 @@ function applyFilters(){
     }
 
     const match = matchSearch && matchCity && matchPrice && matchCommunity && matchType &&
-                  matchBaths && matchBeds && matchMin && matchMax && matchAmenities;
+                  matchBaths && matchBeds && matchOceanfront && matchMin && matchMax && matchAmenities;
     card.style.display = match ? '' : 'none';
     if(match) shown++;
   });
@@ -120,6 +123,7 @@ function resetFilters(){
   communityFilter.value = 'all';
   if (typeFilter) typeFilter.value = 'all';
   if (bathsFilter) bathsFilter.value = 'all';
+  if (oceanfrontFilter) oceanfrontFilter.checked = false;
   priceMinFilter.value = '';
   priceMaxFilter.value = '';
   bedsFilter.value = 'all';
@@ -135,6 +139,7 @@ priceFilter.addEventListener('change', applyFilters);
 communityFilter.addEventListener('change', applyFilters);
 if (typeFilter) typeFilter.addEventListener('change', applyFilters);
 if (bathsFilter) bathsFilter.addEventListener('change', applyFilters);
+if (oceanfrontFilter) oceanfrontFilter.addEventListener('change', applyFilters);
 priceMinFilter.addEventListener('input', applyFilters);
 priceMaxFilter.addEventListener('input', applyFilters);
 bedsFilter.addEventListener('change', applyFilters);
@@ -176,3 +181,23 @@ if (amenitiesToggle && amenitiesPanel) {
   try { saved = localStorage.getItem('sm-listings-view') || 'grid'; } catch(e) {}
   setView(saved);
 })();
+
+// --- Per-card social share buttons ---
+document.querySelectorAll('.share-btn').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    const platform = btn.dataset.share;
+    const url = encodeURIComponent(btn.dataset.url);
+    const title = encodeURIComponent(btn.dataset.title);
+    let shareUrl = '';
+    if (platform === 'facebook') {
+      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    } else if (platform === 'whatsapp') {
+      shareUrl = `https://wa.me/?text=${title}%20${url}`;
+    }
+    if (shareUrl) {
+      window.open(shareUrl, '_blank', 'noopener,width=600,height=500');
+    }
+  });
+});
