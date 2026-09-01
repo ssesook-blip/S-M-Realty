@@ -10,8 +10,12 @@ MAIN_WHATSAPP_NUMBER = "18093503736"  # shared company line used on all pages
 
 def clean_title(name: str) -> str:
     """Some listing names have marketing suffixes like ' | US$198,000 | Income-Producing...'
-    Strip anything after the first pipe, matching the clean style of existing pages."""
-    return name.split("|")[0].strip()
+    Strip anything after the first pipe, matching the clean style of existing pages.
+    Also unescapes any HTML entities already present in AlterEstate's raw data
+    (e.g. a title already containing '&amp;') so the html.escape() call later
+    in generate_card.py/generate_page.py doesn't double-encode it into
+    '&amp;amp;' showing up literally on the page."""
+    return html.unescape(name.split("|")[0].strip())
 
 
 def format_price_full(listing: dict) -> str:
@@ -66,6 +70,13 @@ def gallery_urls(listing: dict) -> list:
     if not urls and listing.get("featured_image"):
         urls = [listing["featured_image"]]
     return urls
+
+
+def has_bed_bath_data(listing: dict) -> bool:
+    """Land/lot listings typically have no bedroom or bathroom count at all
+    (raw None from AlterEstate, not 0). Rather than showing 'None Bed' on
+    those cards, callers use this to skip the bed/bath row entirely."""
+    return listing.get("room") is not None
 
 
 # AlterEstate's amenity data comes back in Spanish (it's a Dominican Republic
@@ -382,6 +393,7 @@ KNOWN_COMMUNITIES = [
     "Panorama Village",
     "Casa Linda",
     "Agua Dulce",
+    "El Choco",
 ]
 
 
@@ -391,6 +403,24 @@ def get_community(listing: dict) -> str:
     which should only match listings that genuinely mention one of the
     named communities, not just whatever broad sector AlterEstate assigned."""
     return _match_community(listing)
+
+
+# Keywords checked against a listing's title/description to flag it as
+# oceanfront/beachfront for the "Oceanfront" filter on listings.html.
+OCEANFRONT_KEYWORDS = [
+    "oceanfront", "ocean front", "beachfront", "beach front",
+    "on the beach", "steps from the beach", "steps to the beach",
+    "frente a la playa", "front beach", "directly on the sand",
+    "on the sand",
+]
+
+
+def is_oceanfront(listing: dict) -> bool:
+    """True if the listing's title or description mentions being
+    oceanfront/beachfront. Text-based like the community detection above —
+    only catches it if the listing text actually says so."""
+    haystack = f'{listing.get("name", "")} {listing.get("description", "")}'.lower()
+    return any(keyword in haystack for keyword in OCEANFRONT_KEYWORDS)
 
 
 def search_blob(listing: dict) -> str:
