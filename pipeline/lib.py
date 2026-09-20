@@ -365,7 +365,7 @@ SECTOR_OVERRIDES = [
 def _match_community(listing: dict) -> str:
     """Returns the matched named community from SECTOR_OVERRIDES, or ''
     if none of the listing's title/description mentions one."""
-    haystack = f'{listing.get("name", "")} {listing.get("description", "")}'.lower()
+   haystack = f'{listing.get("name", "")} {listing.get("description", "")} {listing.get("sector", "")}'.lower()
     for keyword, replacement in SECTOR_OVERRIDES:
         if keyword in haystack:
             return replacement
