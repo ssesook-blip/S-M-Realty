@@ -1,8 +1,7 @@
 <!--
   MAINTENANCE NOTE — read this before editing content below.
   This page has no live data feed (unlike listings.html, which is auto-updated
-  daily by the AlterEstate pipeline). Restaurant ratings, hours, and business
-  names below were pulled from Google Maps on 2026-07-29 and will drift over time.
+  daily by the AlterEstate pipeline).
 
   TO REFRESH: open a chat with Claude and say something like
   "re-verify the restaurants/services in buying-guide.html" — that's a single
@@ -13,7 +12,15 @@
     - Sosua area guide (restaurants, groceries, banks, airport/school/hospital): 2026-07-29
     - Cabarete area guide (restaurants, groceries, banks, airport/school/hospital): 2026-07-29
     - Puerto Plata area guide (restaurants, groceries, banks, airport/school/hospital): 2026-07-29
-    - Buying process / costs: general legal facts, re-check ~yearly for tax/fee changes
+    - Buying process / costs: refreshed 2026-09 to match the 2026 Buyer's Guide PDF
+      (Law 30-26 capital gains rate, current IPI threshold) — re-check ~yearly for
+      tax/fee changes, and keep in sync with Sosua_Cabarete_DR_Buyers_Guide.pdf
+      whenever that PDF is regenerated.
+    - "Want the Complete Guide?" section: gates Sosua_Cabarete_DR_Buyers_Guide.pdf
+      behind an email field. Submissions post to the same Formspree endpoint as
+      the homepage valuation form (https://formspree.io/f/xdenwkrj), tagged with
+      source="Buying Guide PDF Download" so they're easy to tell apart in the
+      Formspree dashboard. Logic lives in js/guide-gate.js.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -169,19 +176,35 @@
         <span class="eyebrow">Costs to Expect</span>
         <h2>Fees and taxes.</h2>
       </div>
-      <p>Approximate, and always confirm current figures with your attorney.</p>
+      <p>Updated for 2026, including the new capital gains rate under Law 30-26. Approximate — always confirm current figures with your attorney.</p>
     </div>
     <div class="amenities reveal">
       <span class="amenity-tag">Transfer tax ~3% of value</span>
-      <span class="amenity-tag">Notary fees</span>
-      <span class="amenity-tag">Attorney fees 1–1.5%</span>
+      <span class="amenity-tag">Notary &amp; attorney fees ~1–1.5%</span>
       <span class="amenity-tag">Title registration fee</span>
-      <span class="amenity-tag">Annual property tax (IPI) on value over ~RD$9M</span>
+      <span class="amenity-tag">Annual property tax (IPI) on value over RD$10,695,494 (2026)</span>
+      <span class="amenity-tag">Capital gains tax: flat 10% (Law 30-26, effective June 2026)</span>
+      <span class="amenity-tag">CONFOTUR exemptions may apply to qualifying projects</span>
     </div>
   </div>
 </section>
 
 <section class="section tight">
+  <div class="wrap" style="max-width:640px; text-align:center;">
+    <span class="eyebrow">The Complete Guide</span>
+    <h2>Want every section, town by town?</h2>
+    <p style="color:var(--taupe); margin: 14px auto 28px; max-width:520px;">The full 2026 Buyer's Guide covers the legal process, closing costs, financing, rentals, residency, and a full pre-purchase checklist — enter your email and we'll send you straight to the PDF.</p>
+    <form id="guide-gate-form" style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; align-items:flex-start;">
+      <label for="guide-gate-email" style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Email address</label>
+      <input type="email" id="guide-gate-email" name="email" required placeholder="you@email.com"
+        style="flex:1; min-width:240px; max-width:320px; padding:14px 16px; border:1px solid var(--line); border-radius:2px; font-family:'Archivo',sans-serif; font-size:15px; background:#fff; color:var(--ink);">
+      <button type="submit" class="btn fill">Get the Guide</button>
+    </form>
+    <p id="guide-gate-status" role="status" style="margin-top:12px; font-size:13px; min-height:18px;"></p>
+  </div>
+</section>
+
+<section class="section tight" style="background:var(--stone-dim);">
   <div class="wrap reveal" style="text-align:center;">
     <span class="eyebrow">Ready to Look?</span>
     <h2>Let's find the right property for you.</h2>
@@ -264,6 +287,7 @@
 <script src="js/reveal.js"></script>
 <script src="js/nav-toggle.js"></script>
 <script src="js/cookie-notice.js"></script>
-  
+<script src="js/guide-gate.js"></script>
+
 </body>
 </html>
