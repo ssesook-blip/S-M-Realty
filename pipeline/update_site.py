@@ -40,6 +40,7 @@ EXCLUDED_CIDS = {
            # 70-unit project total ($25.4M) rather than this unit's actual
            # price, and it isn't Mike's listing to correct in AlterEstate.
 }
+
 SITE_DIR = os.environ.get("SITE_DIR", ".")
 PROPERTIES_DIR = os.path.join(SITE_DIR, "properties")
 LISTINGS_HTML = os.path.join(SITE_DIR, "listings.html")
