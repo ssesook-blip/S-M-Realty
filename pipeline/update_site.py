@@ -31,6 +31,15 @@ FILTER_URL = "https://secure.alterestate.com/api/v1/properties/filter/"
 DETAIL_URL = "https://secure.alterestate.com/api/v1/properties/view/{slug}/"
 SEARCH_TERMS = ["Costambar", "Sosua", "Cabarete", "Puerto Plata"]
 
+# Listings excluded from this site even though they match the search terms
+# above (the shared AlterEstate account covers the whole brokerage, not just
+# Mike's own listings). Keyed by AlterEstate's numeric "cid" for each property.
+EXCLUDED_CIDS = {
+    3517,  # "Luxury Oceanfront 4BR/4.5BA Condos in Cabarete" - listed by a
+           # colleague, not Mike; its price field is set to the entire
+           # 70-unit project total ($25.4M) rather than this unit's actual
+           # price, and it isn't Mike's listing to correct in AlterEstate.
+}
 SITE_DIR = os.environ.get("SITE_DIR", ".")
 PROPERTIES_DIR = os.path.join(SITE_DIR, "properties")
 LISTINGS_HTML = os.path.join(SITE_DIR, "listings.html")
