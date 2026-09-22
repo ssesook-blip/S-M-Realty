@@ -171,7 +171,7 @@ def fetch_all_listings():
             all_results.extend(data.get("results", []))
             page_url = data.get("next")
             params = None
-    dedup = {p["cid"]: p for p in all_results}
+    dedup = {p["cid"]: p for p in all_results if p.get("cid") not in EXCLUDED_CIDS}
     return list(dedup.values())
 
 
