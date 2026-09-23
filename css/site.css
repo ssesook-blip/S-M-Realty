@@ -186,3 +186,41 @@ footer a:hover{ color: var(--bronze-bright); }
 }
 .cta-form textarea::placeholder{ color: rgba(239,234,225,0.45); }
 .cta-form textarea:focus{ outline: none; border-color: var(--bronze-bright); }
+
+/* ---------- COMMUNITY SPOTLIGHT (Casa Linda) ---------- */
+.spotlight-layout{ display:grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items:center; }
+.spotlight-photo{ aspect-ratio: 4/3; }
+.spotlight-copy p{ color: var(--taupe); font-size: 15px; line-height: 1.75; margin-bottom: 20px; }
+
+.spotlight-subhead{ display:block; margin: 64px 0 28px; }
+
+.amenity-detail-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 40px 44px; }
+.amenity-detail h4{ font-family:'Cormorant', serif; font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+.amenity-detail p{ font-size: 13.5px; line-height: 1.6; color: var(--taupe); }
+
+.stat-strip{ display:grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-top: 56px; }
+.stat-tile{ padding: 28px 20px 28px 0; border-right: 1px solid var(--line); }
+.stat-tile:last-child{ border-right:none; padding-right:0; }
+.stat-tile:not(:first-child){ padding-left: 20px; }
+.stat-number{ display:block; font-family:'Cormorant', serif; font-size: 34px; color: var(--ink); }
+.stat-label{ display:block; margin-top: 6px; font-size: 11px; text-transform:uppercase; letter-spacing:0.08em; color: var(--taupe); }
+
+.spotlight-cards{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 64px; }
+.spotlight-cards .photo{ aspect-ratio: 4/3; }
+
+@media (max-width: 980px){
+  .spotlight-layout{ grid-template-columns: 1fr; gap: 40px; }
+  .amenity-detail-grid{ grid-template-columns: repeat(2, 1fr); }
+  .stat-strip{ grid-template-columns: repeat(2,1fr); }
+  .stat-tile:nth-child(2n){ border-right:none; }
+  .stat-tile:nth-child(n+3){ border-top: 1px solid var(--line); padding-top: 28px; }
+  .spotlight-cards{ grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 640px){
+  .amenity-detail-grid{ grid-template-columns: 1fr; gap: 32px; }
+  .spotlight-subhead{ margin-top: 48px; }
+  .stat-strip{ grid-template-columns: 1fr; }
+  .stat-tile{ border-right:none !important; padding-left:0 !important; }
+  .stat-tile:not(:first-child){ border-top: 1px solid var(--line); padding-top: 28px; }
+  .spotlight-cards{ grid-template-columns: 1fr; }
+}
