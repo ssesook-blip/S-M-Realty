@@ -182,6 +182,20 @@ if (amenitiesToggle && amenitiesPanel) {
   setView(saved);
 })();
 
+// --- Deep-link support: ?community=Name (e.g. from the homepage Casa Linda
+// section) pre-selects that community in the filter and applies it on load ---
+(function applyCommunityFromUrl(){
+  if (!communityFilter) return;
+  const params = new URLSearchParams(window.location.search);
+  const community = params.get('community');
+  if (!community) return;
+  const match = Array.from(communityFilter.options).find(opt => opt.value === community);
+  if (match) {
+    communityFilter.value = community;
+    applyFilters();
+  }
+})();
+
 // --- Per-card social share buttons ---
 document.querySelectorAll('.share-btn').forEach(function(btn){
   btn.addEventListener('click', function(e){
