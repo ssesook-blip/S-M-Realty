@@ -35,6 +35,7 @@ SEARCH_TERMS = ["Costambar", "Sosua", "Cabarete", "Puerto Plata"]
 # above (the shared AlterEstate account covers the whole brokerage, not just
 # Mike's own listings). Keyed by AlterEstate's numeric "cid" for each property.
 EXCLUDED_CIDS = {
+    3512,
     3517,  # "Luxury Oceanfront 4BR/4.5BA Condos in Cabarete" - listed by a
            # colleague, not Mike; its price field is set to the entire
            # 70-unit project total ($25.4M) rather than this unit's actual
