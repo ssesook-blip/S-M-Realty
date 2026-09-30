@@ -23,6 +23,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 from generate_page import generate_property_page
 from generate_card import generate_listing_card
+from auto_sections import update_all_auto_sections
 
 import requests
 
@@ -62,7 +63,17 @@ def save_details_cache(cache: dict):
         json.dump(cache, f, ensure_ascii=False)
 SITEMAP_FILE = os.path.join(SITE_DIR, "sitemap.xml")
 
-STATIC_PAGES = ["", "listings.html", "buying-guide.html"]
+STATIC_PAGES = [
+    "",
+    "listings.html",
+    "buying-guide.html",
+    "casa-linda.html",
+    # Buyer topic guides
+    "buy-property-dominican-republic-foreigner.html",
+    "dominican-republic-closing-costs-property-taxes.html",
+    "owner-financing-dominican-republic.html",
+    "confotur-dominican-republic.html",
+]
 
 
 def generate_sitemap(slugs: set):
@@ -345,6 +356,7 @@ def main():
         generate_sitemap(set(ok_slugs))
         save_details_cache({slug: d for slug, d in zip(ok_slugs, all_details)})
         generate_properties_feed(all_details)
+        update_all_auto_sections(SITE_DIR, all_details)
         print(f"Full rebuild complete. Site now shows {new_total} listings.")
         return
 
@@ -355,7 +367,11 @@ def main():
     print(f"  {len(removed_slugs)} listing(s) no longer returned by the API (will be removed).")
 
     if not new_slugs and not removed_slugs:
-        print("Nothing changed. Site is up to date.")
+        cache = load_details_cache()
+        current = [cache[s] for s in known if s in cache]
+        update_all_auto_sections(SITE_DIR, current)
+        generate_sitemap(known)
+        print("No listings added or removed. Site is up to date.")
         return
 
     os.makedirs(PROPERTIES_DIR, exist_ok=True)
@@ -401,7 +417,9 @@ def main():
     for slug in removed_slugs:
         cache.pop(slug, None)
     save_details_cache(cache)
-    generate_properties_feed([cache[s] for s in updated_known if s in cache])
+    current_details = [cache[s] for s in updated_known if s in cache]
+    generate_properties_feed(current_details)
+    update_all_auto_sections(SITE_DIR, current_details)
 
     print(
         f"Added {len(added_slugs)} listing(s), removed {len(removed_slugs)} listing(s). "
