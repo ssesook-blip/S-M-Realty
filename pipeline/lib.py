@@ -312,10 +312,12 @@ SITE_URL = "https://sheenaandmichaelrealtydr.com"
 
 
 def meta_description(listing: dict) -> str:
-    """Short, unique meta description per property for search results."""
-    beds = listing.get("room", "")
-    baths_raw = format_bathrooms(listing)
-    baths = baths_raw[:-2] if baths_raw.endswith(".0") else baths_raw
+    """Short, unique meta description per property for search results.
+    Deliberately contains no '&' character: Google has been showing the
+    brand name as 'S &amp; M' in search snippets, so the brand (already in
+    the page title) is left out of the description entirely."""
+    beds = listing.get("room")
+    baths_num = float(listing.get("bathroom") or 0)
     location = get_sector(listing)
     city = listing.get("city") or ""
     price = format_price_full(listing)
@@ -323,10 +325,20 @@ def meta_description(listing: dict) -> str:
     parts = []
     if beds:
         parts.append(f"{beds}-bedroom")
-    if baths:
+    if baths_num:
+        baths = int(baths_num) if baths_num.is_integer() else baths_num
         parts.append(f"{baths}-bathroom")
-    header = " ".join(parts) + " property" if parts else "Property"
-    return f"{header} for sale in {loc} — {price}. Photos, details, and pricing on S & M Realty."
+    if parts:
+        header = " ".join(parts) + " property"
+    else:
+        # Land, farms, commercial etc. have no bed/bath counts.
+        category = ((listing.get("category") or {}).get("name_en") or "").strip()
+        header = {
+            "Terreno": "Land", "Farms": "Farm", "Commercial Premises": "Commercial property",
+            "Buildings": "Building", "Villas": "Villa", "Apartments": "Apartment",
+            "House": "House", "Penthouses": "Penthouse",
+        }.get(category, "Property")
+    return f"{header} for sale in {loc} — {price}. View photos, full details and pricing from local agents on the North Coast."
 
 
 def strip_description(desc: str, max_chars: int = 140) -> str:
@@ -334,7 +346,13 @@ def strip_description(desc: str, max_chars: int = 140) -> str:
     if not desc:
         return ""
     text = re.sub(r"<[^>]+>", " ", desc)
-    text = html.unescape(text)
+    # Some AlterEstate descriptions are double-encoded ("&amp;amp;"), which
+    # showed up on the site as a literal "&amp;". Unescape until stable.
+    for _ in range(3):
+        unescaped = html.unescape(text)
+        if unescaped == text:
+            break
+        text = unescaped
     text = re.sub(r"\s+", " ", text).strip()
     if len(text) <= max_chars:
         return text
