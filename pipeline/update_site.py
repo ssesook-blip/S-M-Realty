@@ -24,6 +24,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from generate_page import generate_property_page
 from generate_card import generate_listing_card
 from auto_sections import update_all_auto_sections
+from lib import load_agent_notes
 
 import requests
 
@@ -168,6 +169,34 @@ def generate_properties_feed(details: list):
     with open(FEED_FILE, "w", encoding="utf-8") as f:
         f.write(xml)
     print(f"  properties-feed.xml written with {len(items)} listings.")
+
+
+AGENT_NOTES_APPLIED_FILE = os.path.join(SITE_DIR, "agent_notes_applied.json")
+
+
+def apply_agent_note_changes(cache: dict, live_slugs: set, regenerate: bool = True):
+    """Regenerates only the property pages whose 'Our Take' note in
+    agent_notes.json was added, edited or removed since the last run.
+    Uses the saved listing details, so no AlterEstate API calls are needed.
+    With regenerate=False (full rebuild, where every page was just
+    regenerated anyway) it only records the current notes as applied."""
+    notes = load_agent_notes(force=True)
+    applied = {}
+    if os.path.exists(AGENT_NOTES_APPLIED_FILE):
+        with open(AGENT_NOTES_APPLIED_FILE, "r", encoding="utf-8") as f:
+            applied = json.load(f)
+    if regenerate:
+        changed = {s for s in set(notes) | set(applied) if notes.get(s) != applied.get(s)}
+        changed &= live_slugs
+        for slug in sorted(changed):
+            if slug in cache:
+                with open(os.path.join(PROPERTIES_DIR, f"{slug}.html"), "w", encoding="utf-8") as f:
+                    f.write(generate_property_page(cache[slug]))
+        if changed:
+            print(f"  Updated 'Our Take' on {len(changed)} property page(s).")
+    current = {s: n for s, n in notes.items() if s in live_slugs}
+    with open(AGENT_NOTES_APPLIED_FILE, "w", encoding="utf-8") as f:
+        json.dump(current, f, ensure_ascii=False, indent=1, sort_keys=True)
 
 
 def fetch_all_listings():
@@ -357,6 +386,7 @@ def main():
         save_details_cache({slug: d for slug, d in zip(ok_slugs, all_details)})
         generate_properties_feed(all_details)
         update_all_auto_sections(SITE_DIR, all_details)
+        apply_agent_note_changes({}, set(ok_slugs), regenerate=False)
         print(f"Full rebuild complete. Site now shows {new_total} listings.")
         return
 
@@ -370,6 +400,7 @@ def main():
         cache = load_details_cache()
         current = [cache[s] for s in known if s in cache]
         update_all_auto_sections(SITE_DIR, current)
+        apply_agent_note_changes(cache, known)
         generate_sitemap(known)
         print("No listings added or removed. Site is up to date.")
         return
@@ -420,6 +451,7 @@ def main():
     current_details = [cache[s] for s in updated_known if s in cache]
     generate_properties_feed(current_details)
     update_all_auto_sections(SITE_DIR, current_details)
+    apply_agent_note_changes(cache, updated_known)
 
     print(
         f"Added {len(added_slugs)} listing(s), removed {len(removed_slugs)} listing(s). "

@@ -3,7 +3,7 @@ import json
 from lib import (
     clean_title, format_price_full, format_area, format_bathrooms,
     gallery_urls, render_amenities, render_agents, whatsapp_link, get_sector,
-    meta_description, SITE_URL, strip_description,
+    meta_description, SITE_URL, strip_description, render_agent_take,
 )
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
@@ -118,6 +118,7 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
 <div class="prop-spec"><div class="num">{area}</div><div class="label">Mt2</div></div>
 <div class="prop-spec"><div class="num">{category}</div><div class="label">Property Type</div></div>
     </div>
+    {agent_take}
     <div class="prop-desc">
       {description}
     </div>
@@ -209,6 +210,7 @@ def generate_property_page(listing: dict) -> str:
         bathrooms=format_bathrooms(listing),
         area=format_area(listing),
         category=html.escape(category),
+        agent_take=render_agent_take(listing),
         description=listing.get("description") or "",
         print_description=html.escape(strip_description(listing.get("description") or "", max_chars=550)),
         amenities=render_amenities(listing),

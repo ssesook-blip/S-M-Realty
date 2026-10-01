@@ -454,3 +454,48 @@ def search_blob(listing: dict) -> str:
         city.lower(),
     ]
     return " ".join(p for p in parts if p)
+
+
+# --------------------------------------------------------------------------
+# "Our Take" paragraphs written by Sheena & Michael (agent_notes.json)
+# --------------------------------------------------------------------------
+# A hand-edited JSON file at the repo root maps a listing slug to a short
+# original paragraph. It's shown near the top of that property's page so
+# the page carries unique content of its own, rather than only the
+# AlterEstate description that's shared word-for-word with other sites.
+
+import json as _json
+import os as _os
+
+AGENT_NOTES_FILE = _os.path.join(_os.environ.get("SITE_DIR", "."), "agent_notes.json")
+_agent_notes_cache = None
+
+
+def load_agent_notes(force: bool = False) -> dict:
+    global _agent_notes_cache
+    if _agent_notes_cache is not None and not force:
+        return _agent_notes_cache
+    notes = {}
+    if _os.path.exists(AGENT_NOTES_FILE):
+        try:
+            with open(AGENT_NOTES_FILE, "r", encoding="utf-8") as f:
+                raw = _json.load(f)
+            notes = {k: str(v).strip() for k, v in raw.items()
+                     if not k.startswith("_") and str(v).strip()}
+        except ValueError as e:
+            # A typo in the JSON file shouldn't break the whole site update.
+            print(f"  WARNING: agent_notes.json could not be read ({e}); skipping 'Our Take' sections.")
+    _agent_notes_cache = notes
+    return notes
+
+
+def render_agent_take(listing: dict) -> str:
+    note = load_agent_notes().get(listing.get("slug", ""))
+    if not note:
+        return ""
+    paras = "".join(f"<p>{html.escape(p.strip(), quote=False)}</p>" for p in note.split("\n\n") if p.strip())
+    return f'''<div class="agent-take">
+      <span class="agent-take-label">Our Take</span>
+      {paras}
+      <span class="agent-take-sig">Sheena Sesook &amp; Michael Galea, S &amp; M Realty</span>
+    </div>'''
