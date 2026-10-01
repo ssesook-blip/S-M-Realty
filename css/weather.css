@@ -1,0 +1,35 @@
+/* ---------- NORTH COAST WEATHER (homepage) ---------- */
+.wx-units{ display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; }
+.wx-units button{
+  font:600 12px 'Archivo', sans-serif; letter-spacing:.12em;
+  background:transparent; color:var(--taupe); border:0; padding:8px 16px; cursor:pointer;
+}
+.wx-units button[aria-pressed="true"]{ background:var(--midnight); color:var(--stone); }
+
+.wx-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; min-height:200px; }
+.wx-card{
+  background:#F7F3EC; border:1px solid var(--line); border-radius:4px;
+  padding:32px 28px 24px; display:flex; flex-direction:column;
+}
+.wx-town{ font-family:'Cormorant', serif; font-size:30px; line-height:1.1; }
+.wx-now{ display:flex; align-items:center; gap:18px; margin:22px 0 6px; }
+.wx-now svg{ width:46px; height:46px; color:var(--bronze); flex:none; }
+.wx-temp{ font-family:'Cormorant', serif; font-size:64px; line-height:1; font-weight:300; }
+.wx-cond{ font-size:15px; font-weight:500; }
+.wx-meta{ font-size:13px; color:var(--taupe); margin-bottom:22px; }
+.wx-days{ list-style:none; border-top:1px solid var(--line); margin-top:auto; }
+.wx-days li{
+  display:grid; grid-template-columns:44px 24px 1fr auto; align-items:center; gap:12px;
+  padding:10px 0; border-bottom:1px solid var(--line); font-size:14px;
+}
+.wx-days li:last-child{ border-bottom:0; }
+.wx-days .d{ font-weight:600; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--taupe); }
+.wx-days svg{ width:22px; height:22px; color:var(--patina); }
+.wx-days .rain{ font-size:12.5px; color:var(--patina); }
+.wx-days .hl{ white-space:nowrap; }
+.wx-days .hl span{ color:var(--taupe); margin-left:8px; }
+.wx-note{ margin-top:22px; font-size:12px; color:var(--taupe); text-align:right; }
+
+@media (max-width: 900px){
+  .wx-grid{ grid-template-columns:1fr; }
+}
