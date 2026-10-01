@@ -124,7 +124,7 @@ COMMUNITY_PAGES = {
 COMMUNITY_CARD_COUNT = 6
 
 
-def community_blocks(listings: list, key_prefix: str) -> dict:
+def community_blocks(listings: list, key_prefix: str, card_count: int = COMMUNITY_CARD_COUNT) -> dict:
     listings = _by_price(listings)
     prices = [d["sale_price"] for d in listings if d.get("sale_price")]
     beds = [int(d["room"]) for d in listings if d.get("room")]
@@ -140,13 +140,39 @@ def community_blocks(listings: list, key_prefix: str) -> dict:
     else:
         bed_range = "&mdash;"
 
-    cards = "\n\n".join(spotlight_card(d) for d in _spread_pick(listings, COMMUNITY_CARD_COUNT))
+    cards = "\n\n".join(spotlight_card(d) for d in _spread_pick(listings, card_count))
     return {
         f"{key_prefix}-count": f'        <span class="stat-number">{count}</span>',
         f"{key_prefix}-price-range": f'        <span class="stat-number">{price_range}</span>',
         f"{key_prefix}-bedrooms": f'        <span class="stat-number">{bed_range}</span>',
         f"{key_prefix}-cards": cards or '      <p>New listings in this community are coming soon. Contact us for off-market options.</p>',
     }
+
+
+# --------------------------------------------------------------------------
+# Town and community area pages (sosua-real-estate.html etc.)
+# --------------------------------------------------------------------------
+# file name : (marker key, how to pick listings, number of cards to show)
+
+def _city(name):
+    return lambda d: (d.get("city") or "") == name
+
+
+def _sector(name):
+    return lambda d: get_sector(d) == name
+
+
+AREA_PAGES = {
+    "sosua-real-estate.html":         ("sosua", _city("Sosúa"), 12),
+    "cabarete-real-estate.html":      ("cabarete", _city("Cabarete"), 12),
+    "puerto-plata-real-estate.html":  ("puerto-plata", _city("Puerto Plata"), 9),
+    "sosua-ocean-village.html":       ("sosua-ocean-village", _sector("Sosúa Ocean Village"), 9),
+    "hispaniola-sosua.html":          ("hispaniola", _sector("Hispaniola"), 9),
+    "el-choco-sosua.html":            ("el-choco", _sector("El Choco"), 9),
+    "el-batey-sosua.html":            ("el-batey", _sector("El Batey"), 9),
+    "kite-beach-cabarete.html":       ("kite-beach", _sector("Kite Beach"), 9),
+    "encuentro-beach-cabarete.html":  ("encuentro", _sector("Encuentro Beach"), 9),
+}
 
 
 # --------------------------------------------------------------------------
@@ -194,3 +220,7 @@ def update_all_auto_sections(site_dir: str, details: list):
         _update_file(os.path.join(site_dir, filename), community_blocks(in_community, prefix))
 
     _update_file(os.path.join(site_dir, OWNER_FINANCING_PAGE), owner_financing_blocks(details))
+
+    for filename, (key, pick, n_cards) in AREA_PAGES.items():
+        _update_file(os.path.join(site_dir, filename),
+                     community_blocks([d for d in details if pick(d)], key, n_cards))

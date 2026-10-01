@@ -74,6 +74,16 @@ STATIC_PAGES = [
     "dominican-republic-closing-costs-property-taxes.html",
     "owner-financing-dominican-republic.html",
     "confotur-dominican-republic.html",
+    # Town and community pages
+    "sosua-real-estate.html",
+    "cabarete-real-estate.html",
+    "puerto-plata-real-estate.html",
+    "sosua-ocean-village.html",
+    "hispaniola-sosua.html",
+    "el-choco-sosua.html",
+    "el-batey-sosua.html",
+    "kite-beach-cabarete.html",
+    "encuentro-beach-cabarete.html",
 ]
 
 
