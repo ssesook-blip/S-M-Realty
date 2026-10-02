@@ -9,6 +9,11 @@ on:
         description: 'Regenerate every listing (check this after a design/data change)'
         type: boolean
         default: false
+      refresh_listings:
+        description: 'Refresh specific listings only (paste the property page link; separate several with commas)'
+        type: string
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -30,6 +35,7 @@ jobs:
         env:
           AETOKEN: ${{ secrets.AETOKEN }}
           FULL_REBUILD: ${{ github.event.inputs.full_rebuild }}
+          REFRESH_LISTINGS: ${{ github.event.inputs.refresh_listings }}
         run: python pipeline/update_site.py
 
       - name: Commit and push if anything changed
