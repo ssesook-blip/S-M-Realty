@@ -355,12 +355,84 @@ def replace_all_cards_in_listings_html(all_cards_html: str):
         f.write(content)
 
 
+def parse_refresh_list(raw: str) -> list:
+    """Turns what was typed in the 'refresh listing' box into slugs. Accepts
+    full property page URLs, 'properties/<slug>.html', or bare slugs,
+    separated by commas, spaces or new lines."""
+    slugs = []
+    for item in re.split(r"[,\s]+", raw or ""):
+        item = item.strip().strip("/")
+        if not item:
+            continue
+        item = item.split("?")[0].split("#")[0]
+        item = item.rsplit("/", 1)[-1]
+        if item.endswith(".html"):
+            item = item[:-5]
+        if item and item not in slugs:
+            slugs.append(item)
+    return slugs
+
+
+def replace_card_in_listings_html(slug: str, card_html: str) -> bool:
+    """Swaps one listing's card in listings.html for a freshly generated one,
+    keeping its place in the grid."""
+    with open(LISTINGS_HTML, "r", encoding="utf-8") as f:
+        content = f.read()
+    pattern = re.compile(
+        r'[ \t]*<a href="properties/' + re.escape(slug) + r'\.html".*?</a>[ \t]*\n?',
+        re.DOTALL,
+    )
+    content, n = pattern.subn(lambda m: card_html, content, count=1)
+    if n:
+        with open(LISTINGS_HTML, "w", encoding="utf-8") as f:
+            f.write(content)
+    return bool(n)
+
+
+def refresh_listings(slugs: list):
+    """Re-pulls specific listings that are already on the site (e.g. after
+    photos, price or description were edited in AlterEstate) and rebuilds
+    only their property page and card. Nothing else on the site changes."""
+    known = load_known_slugs()
+    cache = load_details_cache()
+    refreshed = 0
+    for slug in slugs:
+        if slug not in known:
+            print(f"  REFRESH SKIPPED: '{slug}' is not a listing currently on the site. "
+                  f"Check the spelling or paste the property page link.")
+            continue
+        print(f"  Refreshing {slug} from AlterEstate ...")
+        try:
+            detail = fetch_detail(slug)
+        except requests.exceptions.HTTPError as e:
+            print(f"    FAILED: {e}")
+            continue
+        with open(os.path.join(PROPERTIES_DIR, f"{slug}.html"), "w", encoding="utf-8") as f:
+            f.write(generate_property_page(detail))
+        card = generate_listing_card(detail)
+        if not card.endswith("\n"):
+            card += "\n"
+        if not replace_card_in_listings_html(slug, card):
+            print(f"    (card for {slug} not found in listings.html - page was still refreshed)")
+        cache[slug] = detail
+        refreshed += 1
+    if refreshed:
+        save_details_cache(cache)
+        generate_properties_feed([cache[s] for s in known if s in cache])
+    print(f"Refreshed {refreshed} of {len(slugs)} requested listing(s).")
+
+
 def main():
     if not TOKEN:
         print("ERROR: AETOKEN environment variable not set.")
         sys.exit(1)
 
     full_rebuild = os.environ.get("FULL_REBUILD", "").lower() in ("1", "true", "yes")
+
+    refresh = parse_refresh_list(os.environ.get("REFRESH_LISTINGS", ""))
+    if refresh and not full_rebuild:
+        print(f"Refreshing {len(refresh)} specific listing(s) requested by hand...")
+        refresh_listings(refresh)
 
     print("Fetching current listing summaries...")
     summaries = fetch_all_listings()
