@@ -1,0 +1,850 @@
+{
+ "": {
+  "date": "2026-10-02",
+  "hash": "6b4ca466f7d5d5b1fd87adad80e816b5c20d4e12"
+ },
+ "buy-property-dominican-republic-foreigner.html": {
+  "date": "2026-10-02",
+  "hash": "25499ad5e170086c447d2fb73ad150daeb19fda9"
+ },
+ "buying-guide.html": {
+  "date": "2026-10-02",
+  "hash": "2e1e91df621c852e2e17bf42f41e2e430017d6a5"
+ },
+ "cabarete-real-estate.html": {
+  "date": "2026-10-02",
+  "hash": "228cccada32bf8962c9a9035e38707231ecf391a"
+ },
+ "casa-linda.html": {
+  "date": "2026-10-02",
+  "hash": "b3f7110658e942740923098d7cc1b64524d08422"
+ },
+ "confotur-dominican-republic.html": {
+  "date": "2026-10-02",
+  "hash": "9e5a658ec72815efadaa20c9d47614b892ee440a"
+ },
+ "dominican-republic-closing-costs-property-taxes.html": {
+  "date": "2026-10-02",
+  "hash": "bbda766e9a9cc9ba9a6c0bf5e5436516520fcc1b"
+ },
+ "el-batey-sosua.html": {
+  "date": "2026-10-02",
+  "hash": "438571d796c898cae7c84facbbee6d06b44e3af4"
+ },
+ "el-choco-sosua.html": {
+  "date": "2026-10-02",
+  "hash": "3c2306c7067bafb84c84826c20d5c3768f895c99"
+ },
+ "encuentro-beach-cabarete.html": {
+  "date": "2026-10-02",
+  "hash": "d88c4d990de323b972c786d4fe8e6c18e0b1f88f"
+ },
+ "hispaniola-sosua.html": {
+  "date": "2026-10-02",
+  "hash": "0afdfb5935860ae96b075c4cb5952c6f72bcd28f"
+ },
+ "kite-beach-cabarete.html": {
+  "date": "2026-10-02",
+  "hash": "0f44c354de7f923a5af3ed3cbb51ceebe8ae908a"
+ },
+ "listings.html": {
+  "date": "2026-10-02",
+  "hash": "efc522997154f05de2f8ce6b7809f0ab658a3afa"
+ },
+ "owner-financing-dominican-republic.html": {
+  "date": "2026-10-02",
+  "hash": "f70bfa23e7df8905d6701171698958b1f21c6ac6"
+ },
+ "properties/1-bedroom-apartment-for-sale-in-sosua-ocean-village-puerto-plata-3803.html": {
+  "date": "2026-10-01",
+  "hash": "d29f2c1926ac03d43102dd28c6a6e95e378d08af"
+ },
+ "properties/1-bedroom-steps-to-the-beach-resort-like-amenities-3554.html": {
+  "date": "2026-10-01",
+  "hash": "4cbe4fdc2b2f676f0bb0abf2ab8123d82424ffef"
+ },
+ "properties/1000-m2-of-land-in-east-cabarete-3755.html": {
+  "date": "2026-10-01",
+  "hash": "55a3fc46d737ef984971ce3555b32bb281dba4a8"
+ },
+ "properties/110000-sq-meters-of-land-3696.html": {
+  "date": "2026-10-01",
+  "hash": "a49389980ab251f26c67eb2c5cade84dcadb3e45"
+ },
+ "properties/1br-furnished-apartment-sosua-ocean-village-195000-3801.html": {
+  "date": "2026-10-01",
+  "hash": "3b75a003674db4083d98d0e25aaa682fc1e71c47"
+ },
+ "properties/2-bedroom-25-bathroom-modern-townhomes-with-private-pool-in-resort-community-3513.html": {
+  "date": "2026-10-01",
+  "hash": "6b81d6330ac5cb1e65357e826cfa4ae1167181bc"
+ },
+ "properties/2-bedroom-apartment-for-sale-in-hispaniola-beach-3727.html": {
+  "date": "2026-10-01",
+  "hash": "1298562325e4e086abc6a2a90203bf3b6b913d9b"
+ },
+ "properties/2-bedroom-swell-encuentro-3555.html": {
+  "date": "2026-10-01",
+  "hash": "e2a95e8816402f1a1786521bcba49e2ea76253bc"
+ },
+ "properties/2-bedroom-villa-private-pool-near-sosua-cabarete.html": {
+  "date": "2026-10-01",
+  "hash": "addbdb3d2bef18d0ee1fba825c36031517633d0f"
+ },
+ "properties/2-bedroom-villa-thoughtfully-designed-for-elevated-outdoor-living-3796.html": {
+  "date": "2026-10-01",
+  "hash": "bb0ab5b854709b633d2db3a4a9c852dc329bbbdf"
+ },
+ "properties/2-story-condo-playa-encuentro-3541.html": {
+  "date": "2026-10-01",
+  "hash": "678dee4511bac8718385815f12f040956b96126b"
+ },
+ "properties/2br-oceanfront-condo-kite-beach-rare-price-for-a-rare-building-3787.html": {
+  "date": "2026-10-01",
+  "hash": "a3f980e508b1f5430f764e6483dd1507db78c500"
+ },
+ "properties/3-bdr-apartment-near-the-sea-puerto-plata-3563.html": {
+  "date": "2026-10-01",
+  "hash": "d17ea20f61319ecec56955ca09b53e1da31df51a"
+ },
+ "properties/3-bedroom-3-bathroom-oceanfront-living-with-private-balcony-3514.html": {
+  "date": "2026-10-01",
+  "hash": "9e00b6363f6b2a9676684d2ef767eb6cfb5fc658"
+ },
+ "properties/3-bedroom-apartment-for-sale-at-hispaniola-beach-3728.html": {
+  "date": "2026-10-01",
+  "hash": "8ee53417e02054145818f7546205bf5902a58908"
+ },
+ "properties/3-bedroom-villa-for-sale-in-casa-linda-3695.html": {
+  "date": "2026-10-01",
+  "hash": "24f6dc2024debffa3aee83a546b4a21a5b171104"
+ },
+ "properties/3-bedroom-villa-in-campo-del-mar-4-sosua-ocean-village-3805.html": {
+  "date": "2026-10-01",
+  "hash": "913d28c8e2fb531b786a9ff267d4b6389753c221"
+ },
+ "properties/3-bedroom-villa-largest-second-line-lot-in-sosua-ocean-village-176-m2-3467.html": {
+  "date": "2026-10-01",
+  "hash": "2ea219cdc5a10ef81829a316b80ff7d6594ed6b8"
+ },
+ "properties/3-bedroom-villa-largest-second-line-lot-in-sosua-ocean-village-176-m2-3468.html": {
+  "date": "2026-10-01",
+  "hash": "e730ba8a81259ea79c220a9674a77e6a8103abd5"
+ },
+ "properties/3-unit-apartment-building-with-stunning-ocean-views-sosua-los-cerros-3542.html": {
+  "date": "2026-10-01",
+  "hash": "519545c26c7fc824af34a8921e6debcb1f153525"
+ },
+ "properties/4-bed-sosua-villa-with-pool-cathedral-ceilings-income-apartment-casa-linda-3800.html": {
+  "date": "2026-10-01",
+  "hash": "67a492d9f811bc69e384e92aa193ef09106f7bc9"
+ },
+ "properties/4-bedroom-villa-in-la-mulata-with-guest-house-3781.html": {
+  "date": "2026-10-01",
+  "hash": "645a8be605949f73b7a729850635b12fbd509670"
+ },
+ "properties/4-bedroom-villa-sea-horse-ranch-pool-jacuzzi.html": {
+  "date": "2026-10-01",
+  "hash": "cbb65f9e6a0bc0e354e333443c160763b3a9befb"
+ },
+ "properties/4br-luxury-villa-w-casita-sosua-ocean-village-dr-3770.html": {
+  "date": "2026-10-01",
+  "hash": "24a3812d171f7db4dd0ba8205e888c311cf07cf8"
+ },
+ "properties/5-bedroom-villa-for-sale-in-casa-linda-sosua-3784.html": {
+  "date": "2026-10-01",
+  "hash": "d0ef39f96f5c317e8945ea703807fb2fcd496321"
+ },
+ "properties/a-3724.html": {
+  "date": "2026-10-01",
+  "hash": "d49ecd1361b030163594cf48367197a80cfa5435"
+ },
+ "properties/a-quiet-retreat-steps-from-playa-chiquita-3748.html": {
+  "date": "2026-10-01",
+  "hash": "287d62ced2b8330bf574d993dad4e3badbb9077d"
+ },
+ "properties/barefoot-living-at-the-wave-oceanfront-steps-from-the-surf-3789.html": {
+  "date": "2026-10-01",
+  "hash": "77ed19ae99a8daebbfa38a8d56c7bb0c7e57d832"
+ },
+ "properties/beautiful-3-bedroom-townhome-in-pueblo-espanol-3657.html": {
+  "date": "2026-10-01",
+  "hash": "f929cc1226b7ece713898d4b514ee5bb00541984"
+ },
+ "properties/beautiful-furnished-casa-linda-sunseeker-ii-3780.html": {
+  "date": "2026-10-01",
+  "hash": "59b4e6778c46952edbcbf1851eb5edb4cc8dc37d"
+ },
+ "properties/beautiful-two-level-villa-in-hispaniola-community-3730.html": {
+  "date": "2026-10-01",
+  "hash": "e1c4c122bc5e0605fbcdc6e4988169685ec539d0"
+ },
+ "properties/beautiful-villa-magnolia-at-choco-hills-in-sosua-3652.html": {
+  "date": "2026-10-01",
+  "hash": "71801c054c380de0463b58b756eb91370818344d"
+ },
+ "properties/beautifully-furnished-4-bedrooms-45-bathrooms-hispaniola-community-3737.html": {
+  "date": "2026-10-01",
+  "hash": "9d0d8e399aa6f2a839ff17bcb54a76d724ba679b"
+ },
+ "properties/bologna-restaurant-for-sale-in-sosua-turnkey-business-prime-investment-3656.html": {
+  "date": "2026-10-01",
+  "hash": "ddd1fcd35554e76cf3e4ba83831785c4ec8f9de9"
+ },
+ "properties/boutique-oceanview-living-on-kite-beach-new-development-3533.html": {
+  "date": "2026-10-01",
+  "hash": "d0fe1939833e96b0e4c2f98795ddadbce501e78d"
+ },
+ "properties/build-your-dream-in-costa-azul-858-m2-lot-m-11-3710.html": {
+  "date": "2026-10-01",
+  "hash": "0fcd6ace5d146b7e66341fa35c26a876b60dd3f5"
+ },
+ "properties/build-your-dream-villa-in-costa-azul-spacious-lot-with-dual-titles-3670.html": {
+  "date": "2026-10-01",
+  "hash": "79be8889c7caa2ae23c93c94af1c94235b941688"
+ },
+ "properties/build-your-vision-in-bombita-affordable-lots-near-cabarete-3673.html": {
+  "date": "2026-10-01",
+  "hash": "1344261549fe2250b972326d60ff0ba191714de1"
+ },
+ "properties/cash-flowing-12-unit-guesthouse-cabarete-seller-financing-available-3680.html": {
+  "date": "2026-10-01",
+  "hash": "3a243df778517c82c8b7e704ec0d31b54c4028aa"
+ },
+ "properties/centrally-located-2-bedroom-penthouse-in-el-batey-sosua-us160000-3659.html": {
+  "date": "2026-10-01",
+  "hash": "5e4cb789fed0d634e4ff9a5f32fe8dd99bdc5b1a"
+ },
+ "properties/charming-2-bedroom-vacation-home-with-strong-rental-income-potential-3732.html": {
+  "date": "2026-10-01",
+  "hash": "12a25d4799c42d8018df8326e74b98704de4b9a9"
+ },
+ "properties/cofresi-oceanview-villa-3550.html": {
+  "date": "2026-10-01",
+  "hash": "5694f4a140b64cc18fd2fe7e061d2e08134a2097"
+ },
+ "properties/cozy-caribbean-hideaway-minutes-from-downtown-sosua-3733.html": {
+  "date": "2026-10-01",
+  "hash": "32f1e90fdae200dc03889b656616c26e89968fa8"
+ },
+ "properties/custom-built-5-bedroom-estate-up-in-the-hills-of-el-choco-sosua-3795.html": {
+  "date": "2026-10-01",
+  "hash": "5a264632eb55258e5458e2a1c5fb80c2a0757314"
+ },
+ "properties/el-paraiso-eco-luxury-3-bedroom-villa-with-infinity-pool-mountain-views-us275000-owner-financing-available-3745.html": {
+  "date": "2026-10-01",
+  "hash": "e7b4a22f1f251a0ef8044d0d4a75e128f3682137"
+ },
+ "properties/elegant-studio-with-balcony-and-sosua-ocean-village-privileges-3466.html": {
+  "date": "2026-10-01",
+  "hash": "a6029929f43d107e76d23c6d10574fed813bc443"
+ },
+ "properties/elevated-design-with-panoramic-view-1-2-and-3-bedrooms-apartments-in-cabarete-3610.html": {
+  "date": "2026-10-01",
+  "hash": "d63481a02097153590765a7102cb11354e0889bb"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-d1-3705.html": {
+  "date": "2026-10-01",
+  "hash": "8dca5c1868bfe5a1c9d96259ccef84ca8877730f"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-35-3707.html": {
+  "date": "2026-10-01",
+  "hash": "b7f606ae5a0634884add2d26a263d2e3b2e6bf15"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-alfaro-3687.html": {
+  "date": "2026-10-01",
+  "hash": "0ddc4e1a75650c4eea0b636e02c066a3b506d8f8"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-cristina-3684.html": {
+  "date": "2026-10-01",
+  "hash": "a8eeb1619e213dc8688416f57eb1cedbfeb0d5f7"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-cristina-3685.html": {
+  "date": "2026-10-01",
+  "hash": "75910381d04129e98c97cf39683e915f8b262a96"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-d6-3706.html": {
+  "date": "2026-10-01",
+  "hash": "908bd66acb6932e86bea25cf29f485ab8ae6d680"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-daniela-3694.html": {
+  "date": "2026-10-01",
+  "hash": "fbd06740a0f4efd65cf3ef79041afb49749ee105"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-fey-3690.html": {
+  "date": "2026-10-01",
+  "hash": "e66c7cc8e3af49bf5d4283583fc7b62dc5a918f9"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-miriam-3686.html": {
+  "date": "2026-10-01",
+  "hash": "9ded05b6bfdc9f8f50ff9e1af7ee778d90c8bd8f"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-odelis-3688.html": {
+  "date": "2026-10-01",
+  "hash": "f6af3c2d8eb31fe8f8a6987c8c17f7632721275f"
+ },
+ "properties/encuentro-residences-choose-your-lot-choose-your-villa-villa-swell-3689.html": {
+  "date": "2026-10-01",
+  "hash": "e5b63dbe39daaa5520bd81b919dc5456e721b169"
+ },
+ "properties/encuentro-residences-villa-37-3708.html": {
+  "date": "2026-10-01",
+  "hash": "aa989ad14029f63d3da868031c4b6c017469eab1"
+ },
+ "properties/expansive-coastal-living-at-its-finest-1-2-and-3-bedrooms-apartments-cabarete-3608.html": {
+  "date": "2026-10-01",
+  "hash": "f7b5e05a1099977b6b8ef835f5ae15a6688055d6"
+ },
+ "properties/expansive-coastal-living-at-its-finest-1-2-and-3-bedrooms-apartments-cabarete-3609.html": {
+  "date": "2026-10-01",
+  "hash": "a51ef916e4b358f4450c889a068e497bf5531d28"
+ },
+ "properties/freshly-renovated-priced-to-move-your-front-row-seat-on-kite-beach-3769.html": {
+  "date": "2026-10-01",
+  "hash": "f2630ba506c2853d41e642ff1f1f985de3a0f0b4"
+ },
+ "properties/fully-furnished-2-bedroom-condo-in-residencial-hispaniola-sosua-us265000-3749.html": {
+  "date": "2026-10-01",
+  "hash": "f6a9f5b2bcbf10fcf8c1998281f16ea37f401863"
+ },
+ "properties/fully-furnished-3-bedroom-villa-sosua-ocean-village.html": {
+  "date": "2026-10-01",
+  "hash": "3034a50afa2710dab56f13a3b0367951b7ee498b"
+ },
+ "properties/fully-furnished-3-bedroom-villa-with-oversized-pool-oceanview-in-villas-marinas-sosua-ocean-village-us599000-owner-financing-available-3746.html": {
+  "date": "2026-10-01",
+  "hash": "4357190d0ccfcd851ca4486e65b6ac11e36e3c99"
+ },
+ "properties/furnished-2-bed-second-floor-apartment-150-m-to-playa-chiquita-sosua-319000-3809.html": {
+  "date": "2026-10-01",
+  "hash": "bac34dd60dece4b4975dba16bfca27284b0187e8"
+ },
+ "properties/hispaniola-community-ocean-view-condominium-3740.html": {
+  "date": "2026-10-01",
+  "hash": "0b2ca584ecde4cd6ea5e73c4f6098a167e6fa69c"
+ },
+ "properties/la-colina-gated-development-opportunity-in-el-choco-sosua-dominican-republic-3782.html": {
+  "date": "2026-10-02",
+  "hash": "1a4af6146e2a6e14349617fb4eb4a7ab6080699c"
+ },
+ "properties/land-for-sale-in-la-mulata-inside-a-gated-community-3758.html": {
+  "date": "2026-10-01",
+  "hash": "8c78df947326cd8b3958725bcc52e1ffeceddf43"
+ },
+ "properties/land-for-sale-in-playa-laguna-sosua-3655.html": {
+  "date": "2026-10-01",
+  "hash": "4c9a3f371a305a846fb6edde280b29326e3dd2b2"
+ },
+ "properties/last-available-3-bedroom-oceanview-condo-in-costambar-us330000-3668.html": {
+  "date": "2026-10-01",
+  "hash": "1d0f8c916bb8b7abb1ba83af8c2046f3b0840aaa"
+ },
+ "properties/live-the-caribbean-dream-in-sosua-fully-furnished-villa-with-pool-3807.html": {
+  "date": "2026-10-01",
+  "hash": "2c1965d843f16a426361980fab32a57e1efff7e0"
+ },
+ "properties/live-the-caribbean-dream-in-sosua-fully-furnished-villa-with-pool-3808.html": {
+  "date": "2026-10-01",
+  "hash": "8007cd4599e210de7ab8559c482c21a9e18a5835"
+ },
+ "properties/lux-home-in-perla-marina-beach-sosua-cabarete-3562.html": {
+  "date": "2026-10-01",
+  "hash": "15d43ba4fe6490feb6c86043871c82e89426978e"
+ },
+ "properties/luxury-4-bedroom-3-bathroom-villa-with-private-pool-in-sosua-ocean-village-3465.html": {
+  "date": "2026-10-01",
+  "hash": "ce4a8b832fdd9883d83c828db700cbbd468c82f8"
+ },
+ "properties/luxury-5-bedroom-villa-with-pool-in-ocean-sands-perfect-for-families-3462.html": {
+  "date": "2026-10-01",
+  "hash": "eb5973d9274acbb45998402434b55a1d4ce83f67"
+ },
+ "properties/luxury-lifestyle-villa-in-the-hills-of-sosua-3700.html": {
+  "date": "2026-10-01",
+  "hash": "461aea1f8583d1287f9508e3c6a8d5fd6b1a7b6e"
+ },
+ "properties/luxury-oceanfront-2br3ba-condos-in-cabarete-3716.html": {
+  "date": "2026-10-01",
+  "hash": "28a06724fe51ee3a6bb2516f4779bd7b97a1b669"
+ },
+ "properties/luxury-oceanfront-3br35ba-condos-in-cabarete-3522.html": {
+  "date": "2026-10-01",
+  "hash": "9e661f873e523cfe660da73f95f69d75d0d7240c"
+ },
+ "properties/luxury-oceanfront-3br35ba-condos-in-cabarete-3715.html": {
+  "date": "2026-10-01",
+  "hash": "f479afc4339206c4d63f7b94f813a2494fae9f15"
+ },
+ "properties/luxury-oceanfront-3br45ba-condos-in-cabarete-3520.html": {
+  "date": "2026-10-01",
+  "hash": "67c79053a48cdfead619fd9f45aed9a53162be07"
+ },
+ "properties/luxury-oceanfront-3br45ba-condos-in-cabarete-3713.html": {
+  "date": "2026-10-01",
+  "hash": "5d40fcea30bc14b2c5d00081aec269389485a376"
+ },
+ "properties/luxury-oceanfront-4br45ba-condos-in-cabarete-3519.html": {
+  "date": "2026-10-01",
+  "hash": "1e1ec8c7b6d291cc9cec3d29eb8b0c6936674b97"
+ },
+ "properties/luxury-oceanfront-4br45ba-condos-in-cabarete-3521.html": {
+  "date": "2026-10-01",
+  "hash": "a0b1faa96d438c8c127e74b88b4c745b52431e58"
+ },
+ "properties/luxury-oceanfront-4br45ba-condos-in-cabarete-3711.html": {
+  "date": "2026-10-01",
+  "hash": "7128b198a2cd532128b1ef3b74f5c75be57e9351"
+ },
+ "properties/luxury-oceanfront-4br45ba-condos-in-cabarete-3712.html": {
+  "date": "2026-10-01",
+  "hash": "0962f4737ff31897d1ba7f7fb9a285c0f5a967b1"
+ },
+ "properties/luxury-oceanfront-4br45ba-condos-in-cabarete-3714.html": {
+  "date": "2026-10-01",
+  "hash": "6ecddffaebf7b5878af12ce67cb54504f8c21882"
+ },
+ "properties/luxury-villa-in-sosua-playa-chiquita-3559.html": {
+  "date": "2026-10-01",
+  "hash": "a0e2209d4ee3bea129f1437c7c721f8cfd470a1f"
+ },
+ "properties/luxury-villa-playa-chiquita-in-sosua-with-terrace-3560.html": {
+  "date": "2026-10-01",
+  "hash": "6e552ef6c5a8a55db58bda0cf121e357ad9365f0"
+ },
+ "properties/mareal-2-the-next-wave-of-kite-beach-living-3br3-ba-penthouse-3528.html": {
+  "date": "2026-10-01",
+  "hash": "4f50cabae2667291ab957612e15f7f29b7feddf6"
+ },
+ "properties/mareal-2-the-next-wave-of-kite-beach-living-3br3-ba-penthouse-3529.html": {
+  "date": "2026-10-01",
+  "hash": "12cdee7ae0af22f9da121c5780178bcd3c72c834"
+ },
+ "properties/mareal-2-the-next-wave-of-kite-beach-living-3br3-ba-penthouse-3534.html": {
+  "date": "2026-10-01",
+  "hash": "0b31225f426cbd9ad85efc05c97fa8f37f4198b9"
+ },
+ "properties/mirador-del-valle-land-lots-from-us70m2-imbert-puerto-plata-3765.html": {
+  "date": "2026-10-01",
+  "hash": "fc08bf8dce5ed60e80df37851e75298bd66e519c"
+ },
+ "properties/modern-1-bedroom-apartments-in-exclusive-sosua-ocean-village-3463.html": {
+  "date": "2026-10-01",
+  "hash": "abb3d70d9c2f33957322463f7c22f939764be9e6"
+ },
+ "properties/modern-1-bedroom-apartments-in-exclusive-sosua-ocean-village-3464.html": {
+  "date": "2026-10-01",
+  "hash": "d5125268316994ad96079d7570f4e79cd9e06c54"
+ },
+ "properties/modern-2-bedroom-villa-in-villas-del-sol-3646.html": {
+  "date": "2026-10-01",
+  "hash": "0a0a945bb925fb2ec1d63500c0e5a3a06fef5a05"
+ },
+ "properties/modern-2-bedroom-villa-in-villas-del-sol-3647.html": {
+  "date": "2026-10-01",
+  "hash": "077ef010212d9c7babdeca96661b74e7247ee0ba"
+ },
+ "properties/modern-3-bed-minimalist-home-with-pool-rooftop-terrace-torre-alta-v-puerto-plata-3772.html": {
+  "date": "2026-10-01",
+  "hash": "d2b237853b60d75ed67e06fd1fea80442f612e3d"
+ },
+ "properties/modern-3-bedroom-villa-with-pool-caribbean-luxury-living-3503.html": {
+  "date": "2026-10-01",
+  "hash": "dcec43b362926bd4c0eca518f12fea3e78fffe79"
+ },
+ "properties/modern-3-bedroom-villa-with-private-pool-in-sosua-ocean-village-sosua-3776.html": {
+  "date": "2026-10-01",
+  "hash": "2374d88b4f3dbaf6b7692a73b4788c1f2ccbd7c9"
+ },
+ "properties/modern-3-br-villa-with-pool-in-sosua-ocean-village-339k-3750.html": {
+  "date": "2026-10-01",
+  "hash": "f09adb7800e8c37def491178258a94886f7d0762"
+ },
+ "properties/modern-4-bedroom-villa-hispaniola-community-3736.html": {
+  "date": "2026-10-01",
+  "hash": "ddd7f9a3c9b472b1cc0c4607dbd5d02b400da109"
+ },
+ "properties/modern-5-bedroom-house-with-pool-garden-flexible-living-3791.html": {
+  "date": "2026-10-01",
+  "hash": "8046a6f56895aa73eb6d219c5e6f49a75af6288e"
+ },
+ "properties/modern-new-construction-villas-in-costa-azul-cabarete-3677.html": {
+  "date": "2026-10-01",
+  "hash": "1bf73aa5751e308d9510e5cddd4e11b18be521c5"
+ },
+ "properties/modern-one-bedroom-apartment-at-flora-garden-3651.html": {
+  "date": "2026-10-01",
+  "hash": "1f702b319c4b49fbd217742bb9a5ed92af881abf"
+ },
+ "properties/modern-townhomes-for-pre-sale-3693.html": {
+  "date": "2026-10-01",
+  "hash": "fda8860f72b6fc259da6ce5b0632d0292c359d3d"
+ },
+ "properties/modern-villa-for-sale-in-la-mulata-sosua-dominican-republic-3692.html": {
+  "date": "2026-10-01",
+  "hash": "fb372f5a6f9b9d2aa381eec1c74e0994913dc55a"
+ },
+ "properties/modern-villa-in-the-hills-of-sosua-3701.html": {
+  "date": "2026-10-01",
+  "hash": "4f0a012ec6996abdaa73572b5addbb52a22217a7"
+ },
+ "properties/modern-villa-with-private-pool-near-kite-beach-pre-construction-3674.html": {
+  "date": "2026-10-01",
+  "hash": "55bbe79a3afabcd7bb673024874a35c4b27287ad"
+ },
+ "properties/modern-villa-with-private-pool-near-kite-beach-pre-construction-3675.html": {
+  "date": "2026-10-01",
+  "hash": "27924161885900577b77a80cf6fad962d63bee59"
+ },
+ "properties/move-in-ready-2br-near-playa-chiquita-sosua-pool-generator-starlink-3810.html": {
+  "date": "2026-10-01",
+  "hash": "00bbefbc15907af4075aecf64d0436a4e0b38a9a"
+ },
+ "properties/move-in-ready-villa-with-private-pool-mountain-views-expansion-potential-3662.html": {
+  "date": "2026-10-01",
+  "hash": "41c5261932f3ac625a5ffe1fdba40fb2b7fcf94a"
+ },
+ "properties/must-see-3-bedroom-house-with-private-bonus-studio-3757.html": {
+  "date": "2026-10-01",
+  "hash": "a1d05a2135ddefd95cac4c78993ce0dfde4d2d6a"
+ },
+ "properties/natural-habitat-1br-smart-living-steps-from-the-beach-3777.html": {
+  "date": "2026-10-01",
+  "hash": "aa671f4e71ca7b9bfd4d307489d57680194ff157"
+ },
+ "properties/new-construction-3-bedroom-villa-el-choco-sosua.html": {
+  "date": "2026-10-01",
+  "hash": "46ba0ed65e7e328faf336ae4e67ced46fe6d0d1b"
+ },
+ "properties/new-construction-4-bedroom-villa-with-pool-in-el-choco-sosua-3725.html": {
+  "date": "2026-10-01",
+  "hash": "fb07e9a82e076b14ab95e46efa4ab935021a1ea1"
+ },
+ "properties/ocean-breeze-villa-2-bedroom-1-bedroom-guest-house-upwind-estates-kite-beac-3524.html": {
+  "date": "2026-10-01",
+  "hash": "e649256c6f31e3b60f5212df36ae88f4912b60bd"
+ },
+ "properties/ocean-breeze-villa-2-bedroom-1-bedroom-guest-house-upwind-estates-kite-beac-3717.html": {
+  "date": "2026-10-01",
+  "hash": "fa181a5b008e05161028a357b886f58657eccfab"
+ },
+ "properties/ocean-breeze-villa-2-bedroom-1-bedroom-guest-house-upwind-estates-kite-beac-3718.html": {
+  "date": "2026-10-01",
+  "hash": "b858998d2be89a9531814dfd5d4dac1213049738"
+ },
+ "properties/ocean-plaza-sosua-commercial-units-from-2700m2-in-the-heart-of-the-sosua-cabarete-corridor-3786.html": {
+  "date": "2026-10-01",
+  "hash": "b2475fe66cb171dd97e52db078f5998111442592"
+ },
+ "properties/ocean-view-villa-in-gated-lomas-mironas-sosua-3br35ba-with-pool-guest-studio-349000-3804.html": {
+  "date": "2026-10-01",
+  "hash": "42bbd0ad4575d7576ca6f66179b53bf8b4561e45"
+ },
+ "properties/oceanfront-condominium-hispaniola-beach-gated-community-3739.html": {
+  "date": "2026-10-01",
+  "hash": "ee73d06bb28a9051eb7ff0a93755fbf3d8bd935d"
+ },
+ "properties/oceanfront-estate-on-126-acres-playa-chiquita-sosua-dominican-republic-3771.html": {
+  "date": "2026-10-01",
+  "hash": "c341c68f5304e318cd11d12cc77218a00d0adca7"
+ },
+ "properties/oceanfront-luxury-residence-at-cristal-oasis-cabarete-3760.html": {
+  "date": "2026-10-01",
+  "hash": "2cfab96c37c6b28dbca3d5f8a1eb2855e53eb447"
+ },
+ "properties/oceanview-luxury-villa-fully-furnished-with-100-financing-available-3557.html": {
+  "date": "2026-10-01",
+  "hash": "4fbbf314ccbd9157f89a7bd3612a9c3b49459ad6"
+ },
+ "properties/one-bedroom-penthouse-apartment-at-flora-garden-3649.html": {
+  "date": "2026-10-01",
+  "hash": "468d6567627e62cb38a0c8a6666a6cc213d39705"
+ },
+ "properties/panorama-village-ocean-view-villa-3536.html": {
+  "date": "2026-10-01",
+  "hash": "ff9aaf2ece225b5b874b23726b953ca56b3c0594"
+ },
+ "properties/panorama-village-ocean-view-villa-3691.html": {
+  "date": "2026-10-01",
+  "hash": "45614dc93ff1e7ca992f4433d40b5a9797cc247e"
+ },
+ "properties/panorama-village-sosua-build-your-dream-home-on-a-private-ocean-view-lot-from-100000usd-3788.html": {
+  "date": "2026-10-01",
+  "hash": "fbfbb2548755189a62b0ef56ed557bc4ae9f642c"
+ },
+ "properties/penthouse-for-sale-in-puerto-plata-3699.html": {
+  "date": "2026-10-01",
+  "hash": "1882e220bfde8284786873d893200fdb7860c96d"
+ },
+ "properties/plaza-del-sol-1bedroom-side-by-side-units-3763.html": {
+  "date": "2026-10-01",
+  "hash": "a39cff978e8725c0bac2f1f2c757dab760773880"
+ },
+ "properties/plaza-del-sol-1bedroom-walk-to-sosua-beaches-3762.html": {
+  "date": "2026-10-01",
+  "hash": "d921018bc10c841e383b19e8746377721dbcb129"
+ },
+ "properties/prime-development-land-in-bombita-cabarete-22000-m2-3709.html": {
+  "date": "2026-10-01",
+  "hash": "992a32014618ef6563e39def75bba8650906f457"
+ },
+ "properties/private-3-bedroom-villa-on-a-1068-m-lot-featuring-a-pool-valley-views-expansion-potential-and-flexible-living-spaces-in-sosua.html": {
+  "date": "2026-10-01",
+  "hash": "d0afd0fad91d1428a7927824ca8209009dd0187a"
+ },
+ "properties/private-3-bedroom-villa-with-pool-guest-suite-and-outdoor-living-3666.html": {
+  "date": "2026-10-01",
+  "hash": "def72be6b5d29292db1a5c2c826e9d9587b9dd47"
+ },
+ "properties/renovated-amp-ready-2-bedroom-villa-with-pool-casa-linda-sosua-3618.html": {
+  "date": "2026-10-01",
+  "hash": "b9d87c6e81dd0c0654ad037bb4ba4292a06a66d7"
+ },
+ "properties/residencial-marbella-front-beach-aparments-3766.html": {
+  "date": "2026-10-01",
+  "hash": "e99c53fa5086bab2f77ce6ba768a9e0ae7dcc6cd"
+ },
+ "properties/residencial-olas-del-atlantico-modern-coastal-living-in-puerto-plata-3792.html": {
+  "date": "2026-10-01",
+  "hash": "5dd01e8a1aaf997c967b04fdb729c1c15b4b6210"
+ },
+ "properties/residencial-sofia-block-b-3767.html": {
+  "date": "2026-10-01",
+  "hash": "0ef247a31b689bcd9259ff01b7cce64073d7520f"
+ },
+ "properties/residencial-sofia-block-c-last-one-3768.html": {
+  "date": "2026-10-01",
+  "hash": "9b4f8bde46737a0a9a81b7efe16f0e5d3ca5cd43"
+ },
+ "properties/riverfront-tropical-estate-273-million-m2-15-min-to-cabarete-beach-3669.html": {
+  "date": "2026-10-01",
+  "hash": "1b5ed464d688c4b3376fe28ea5957117588f708c"
+ },
+ "properties/sale-of-1-2-and-3-bedroom-apartments-in-cabarete-puerto-plata-3611.html": {
+  "date": "2026-10-01",
+  "hash": "518b26a0b88f18b975d8b5a014294f0f0e981221"
+ },
+ "properties/second-line-villa-ocean-village-deluxe-close-to-ammenitiesse-to-3761.html": {
+  "date": "2026-10-01",
+  "hash": "27fbc28f3dc01e26ed84cf548e64ece07231d683"
+ },
+ "properties/serenity-2-bedroom-villa-upwind-estates-kite-beach-cabarete-3527.html": {
+  "date": "2026-10-01",
+  "hash": "3f30db8231954a8ffee2a6f9414072eb6fd4c006"
+ },
+ "properties/serenity-3-bedroom-villa-upwind-estates-kite-beach-cabarete-3526.html": {
+  "date": "2026-10-01",
+  "hash": "79e670f99b316a1f1a54866968b4b14d7ca6d554"
+ },
+ "properties/serenity-3-bedroom-villa-upwind-estates-kite-beach-cabarete-3720.html": {
+  "date": "2026-10-01",
+  "hash": "bff00ba46c22c62efbc268e4550a186e2124cc44"
+ },
+ "properties/serenity-signature-3-bedroom-villa-upwind-estates-kite-beach-cabarete-3525.html": {
+  "date": "2026-10-01",
+  "hash": "960ce922b8d214ec1b5cd8e80446fcc6a3bd2f03"
+ },
+ "properties/sosua-ocean-village-penthouse-two-level-3br-retreat-with-private-terrace-studio-income-unit-sunset-views-3785.html": {
+  "date": "2026-10-01",
+  "hash": "e0a9a08e63e2c8b949a682c3c9f3a43fc6fbc8e7"
+ },
+ "properties/space-sun-and-steady-returns-2br-living-at-natural-habitat-3778.html": {
+  "date": "2026-10-01",
+  "hash": "6ce89caab30e79f1d8fdd098f64e07ce68676955"
+ },
+ "properties/spacious-2-bedroom-apartment-for-sale-in-the-heart-of-cabarete-3806.html": {
+  "date": "2026-10-01",
+  "hash": "6ed51a994009bf196255bd86c0447abe1b10aaeb"
+ },
+ "properties/spacious-furnished-luxury-villa-in-casa-linda-3799.html": {
+  "date": "2026-10-01",
+  "hash": "079d42b511b5e6d874254730b7235b96c461d27b"
+ },
+ "properties/spacious-villa-in-playa-laguna-3537.html": {
+  "date": "2026-10-01",
+  "hash": "041dc3c0f7c720b6ee06202e043cb94058c41b34"
+ },
+ "properties/steps-from-the-sand-steps-from-a-tax-break-that-disappears-at-closing-3759.html": {
+  "date": "2026-10-01",
+  "hash": "027435c56e6e47b319e89220902816c2534b9eac"
+ },
+ "properties/studio-in-resort-community-laguna-city-fully-furnished-3553.html": {
+  "date": "2026-10-01",
+  "hash": "37740a7d23516a0898bb537cf41263253bb0f73d"
+ },
+ "properties/stunning-1-bedroom-apartment-in-exclusive-hispaniola-hills-move-in-ready-3645.html": {
+  "date": "2026-10-01",
+  "hash": "7bc65ac7325fd1cd1f5ad0d8f7d77d50381403f4"
+ },
+ "properties/stunning-2-bedroom-villa-with-pool-affordable-luxury-in-the-caribbean-3509.html": {
+  "date": "2026-10-01",
+  "hash": "2b0c4f89714d4547bf738c8a19028654538c9153"
+ },
+ "properties/sunset-park-pre-construction-hispaniola-community-multiple-units-available-3738.html": {
+  "date": "2026-10-01",
+  "hash": "e77231615a45727fe202bb40579153e60a1d4127"
+ },
+ "properties/super-chic-3br-villa-in-sov-3797.html": {
+  "date": "2026-10-01",
+  "hash": "f2075989612644969204a5d0f54aeca5b49e722b"
+ },
+ "properties/superior-6-bedroom-villa-in-gated-community-with-private-pool-sosua-3615.html": {
+  "date": "2026-10-01",
+  "hash": "5e9bbb5bdbe01385a0c7f7249db9e9eae38a52ca"
+ },
+ "properties/superior-6-bedroom-villa-in-gated-community-with-private-pool-sosua-3616.html": {
+  "date": "2026-10-01",
+  "hash": "186f086e4f2da707bff04977cb6f86d1bc42b3ab"
+ },
+ "properties/surf-inspired-pre-construction-townhomes-in-playa-encuentro-3798.html": {
+  "date": "2026-10-01",
+  "hash": "2336b2a9e3e513faeaa59ef108496d0a970852c1"
+ },
+ "properties/the-1-bedroom-collection-at-dqa-stage-3-159000-3774.html": {
+  "date": "2026-10-01",
+  "hash": "7375c8ff11e35475f4ef6b39dab63a45fd2b2094"
+ },
+ "properties/the-2-bedroom-collection-at-dqa-stage-3-from-259000-3775.html": {
+  "date": "2026-10-01",
+  "hash": "771f387e3d08a3cd03f8ffe8f915b41de1354135"
+ },
+ "properties/the-perfect-2-bedroom-home-affordable-luxury-at-casa-linda-sosua-puerto-plata-3510.html": {
+  "date": "2026-10-01",
+  "hash": "6395d552fb77effcd378c75c8e58e9f4f4a81b91"
+ },
+ "properties/the-perla-marina-collection-exclusive-modern-villas-on-the-north-coast-3752.html": {
+  "date": "2026-10-01",
+  "hash": "959c6581ec27c7bda53973b2649e04f34da4f211"
+ },
+ "properties/the-wave-phase-2-oceanfront-2br-condos-playa-encuentro-dr-3773.html": {
+  "date": "2026-10-01",
+  "hash": "67b8da7ed33b3fb421d5e6dede66d40651b63d4d"
+ },
+ "properties/this-balcony-view-sells-itself-green-one-playa-dorada-3683.html": {
+  "date": "2026-10-01",
+  "hash": "fa074d8aaa5ab46f32ea250e55a60edce8388a6a"
+ },
+ "properties/thoughtfully-designed-4-br-villa-steps-from-kite-beach-preconstruction-3676.html": {
+  "date": "2026-10-01",
+  "hash": "99264a60587732f5e5cb48b4b2060af2133cfb7d"
+ },
+ "properties/tropical-minimalism-with-purpose-1-2-and-3-bedroom-apartments-in-cabarete-3612.html": {
+  "date": "2026-10-01",
+  "hash": "9f09dbad4cca1556fa8e802a4685758e4a288539"
+ },
+ "properties/turn-key-air-bnb-ready-villa-with-great-roi-3556.html": {
+  "date": "2026-10-01",
+  "hash": "ebd23da84a3f063e9688bd75a267b122249cd7f9"
+ },
+ "properties/turnkey-1-bedroom-apartment-with-rooftop-terrace-jacuzzi-in-costambar-puerto-plata-us198000-income-producing-investment-3747.html": {
+  "date": "2026-10-01",
+  "hash": "f6df80a298d7faa6f34856bde93d9f7fca29a4fe"
+ },
+ "properties/turnkey-2-bedroom-beachfront-income-property-playa-cabarete-3544.html": {
+  "date": "2026-10-01",
+  "hash": "491e99dd73b6964e222f2a76ab0b5c07f24c470f"
+ },
+ "properties/turnkey-beachfront-hotel-on-kite-beach-cabarete-3530.html": {
+  "date": "2026-10-01",
+  "hash": "b0aa7aef642489194c8ee6aa8284f71d2e2a209d"
+ },
+ "properties/turnkey-comfort-resort-living-playa-chiquita-3697.html": {
+  "date": "2026-10-01",
+  "hash": "8878ab17c1f9f02348290da85feb4a21dfe60231"
+ },
+ "properties/two-bedroom-apartment-at-flora-garden-3650.html": {
+  "date": "2026-10-01",
+  "hash": "d55343ba2b76fc6e8daf14d7f3b24263bbb48b8c"
+ },
+ "properties/two-bedroom-penthouse-apartment-at-flora-garden-3648.html": {
+  "date": "2026-10-01",
+  "hash": "13d63fbc85e26b4d11d870418bc12b4df98d6eb1"
+ },
+ "properties/unbeatable-price-unbeatable-location-1br-condo-near-sosua-beach-3794.html": {
+  "date": "2026-10-01",
+  "hash": "090644302d06483e999f8e3c66b552993fe50a35"
+ },
+ "properties/veyra-a-private-collection-of-four-houses-3743.html": {
+  "date": "2026-10-01",
+  "hash": "d7dcd9fcc3228873456408a72cd9b62f7b1f4708"
+ },
+ "properties/villa-bella-gorgeous-3-bedroom-bungalow-with-private-pool-3504.html": {
+  "date": "2026-10-01",
+  "hash": "8d0af14a9b9dd4956b8d9ce49edb41688c901ac6"
+ },
+ "properties/villa-capri-luxury-at-an-affordable-price-in-sosua-3508.html": {
+  "date": "2026-10-01",
+  "hash": "69fd9aec57566948a6ddf4e86a993be1dc379275"
+ },
+ "properties/villa-coral-elevated-two-story-luxury-3735.html": {
+  "date": "2026-10-01",
+  "hash": "7c80b4cd07c42103d1bdd038d0f802065bcf14e9"
+ },
+ "properties/villa-coral-vista-ocean-village-deluxe-3744.html": {
+  "date": "2026-10-01",
+  "hash": "f3015b835e7ebe72d5fc943aa4afaa97c752e5f5"
+ },
+ "properties/villa-coralreef-your-tropical-oasis-awaits-3506.html": {
+  "date": "2026-10-01",
+  "hash": "ee284edeefba16f6b7ecbad630805fb3e2594cc3"
+ },
+ "properties/villa-for-sale-in-la-mulata-monte-vista-3751.html": {
+  "date": "2026-10-01",
+  "hash": "13a46633de1ce86d15394ec00631db99de647a3a"
+ },
+ "properties/villa-larimar-contemporary-luxury-in-the-caribbean-3734.html": {
+  "date": "2026-10-01",
+  "hash": "11b0511fa98ed2756ab44acf7cb486db6755ef5b"
+ },
+ "properties/villa-mahogany-at-choco-hills-in-sosua-3653.html": {
+  "date": "2026-10-01",
+  "hash": "10ae9420e112388b867a11385cd56981087b53bb"
+ },
+ "properties/villa-moravia-in-cabarete-3731.html": {
+  "date": "2026-10-01",
+  "hash": "5c7270318231047c057a6027006d4df07488578d"
+ },
+ "properties/villa-oak-at-choco-hills-in-sosua-3654.html": {
+  "date": "2026-10-01",
+  "hash": "299cb89863d3b7fa481a7787dc66dd7275e497ff"
+ },
+ "properties/villa-sojuleg-4br-luxury-designer-villa-in-plantation-by-star-hills-puerto-plata-3764.html": {
+  "date": "2026-10-01",
+  "hash": "200fafc4bb1840b0d8c0d23f27f1933b503e2e3b"
+ },
+ "properties/villa-sunbreeze-modern-luxury-living-in-paradise-3507.html": {
+  "date": "2026-10-01",
+  "hash": "240dcfb9168dfa0f131030d4497706f11feae108"
+ },
+ "properties/villa-sunseeker-in-puerto-plata-your-dream-tropical-escape-3511.html": {
+  "date": "2026-10-01",
+  "hash": "7b18d7b6cbd57d33f96898a49c658699c04fefc0"
+ },
+ "properties/villa-whitesand-your-dream-caribbean-retreat-in-sosua-3505.html": {
+  "date": "2026-10-01",
+  "hash": "be8746372370efedf50d26ad79fe9294bfb660c2"
+ },
+ "properties/where-the-ocean-meets-your-doorstep-encuentro-beach-oceanfront-3790.html": {
+  "date": "2026-10-01",
+  "hash": "b3679ce89d32d6a117b1806c317aa586f23e3ba3"
+ },
+ "properties/your-own-sky-level-oasis-natural-habitat-rooftop-penthouses-3779.html": {
+  "date": "2026-10-01",
+  "hash": "6ee7e8458af9607babb5e0bd6ffe84b4ccad1bdb"
+ },
+ "properties/your-private-oasis-awaits-huge-lot-huge-potential-owner-financing-up-to-50-3682.html": {
+  "date": "2026-10-01",
+  "hash": "307b3b29fdb94d4760fb6d52c6659d85a7c360f8"
+ },
+ "puerto-plata-real-estate.html": {
+  "date": "2026-10-02",
+  "hash": "1e502c144e432f1b38d06d8f5c4b757438579671"
+ },
+ "sosua-ocean-village.html": {
+  "date": "2026-10-02",
+  "hash": "7557720cc62fc82ef92c1126012135fa4c7226dd"
+ },
+ "sosua-real-estate.html": {
+  "date": "2026-10-02",
+  "hash": "8909fcbd0e211638e8e1bd115f99e54021777129"
+ }
+}
