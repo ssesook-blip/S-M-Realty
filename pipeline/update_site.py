@@ -375,6 +375,33 @@ def delete_property_files(removed_slugs: set):
             os.remove(path)
 
 
+def sweep_orphan_property_pages(keep_slugs: set):
+    """Deletes any properties/*.html page whose listing is no longer live.
+    Catches pages left behind by full rebuilds or manual uploads, so sold or
+    removed listings don't linger on the site or in Google.
+    Safety: does nothing if the live list looks empty or if the sweep would
+    remove more than a quarter of the pages (likely an API hiccup)."""
+    if not keep_slugs or not os.path.isdir(PROPERTIES_DIR):
+        return set()
+    pages = {f[:-5] for f in os.listdir(PROPERTIES_DIR) if f.endswith(".html")}
+    orphans = pages - set(keep_slugs)
+    if not orphans:
+        return set()
+    if len(orphans) > max(5, len(pages) // 4):
+        print(f"  WARNING: {len(orphans)} pages look delisted - too many to be safe, skipping cleanup.")
+        return set()
+    print(f"  Cleaning up {len(orphans)} page(s) for listings that are no longer live:")
+    for slug in sorted(orphans):
+        print(f"    - {slug}")
+    delete_property_files(orphans)
+    cache = load_details_cache()
+    if any(s in cache for s in orphans):
+        for s in orphans:
+            cache.pop(s, None)
+        save_details_cache(cache)
+    return orphans
+
+
 def replace_all_cards_in_listings_html(all_cards_html: str):
     """Used only in --full mode: swaps the entire card grid at once instead
     of inserting/removing individual cards."""
@@ -504,6 +531,7 @@ def main():
         generate_properties_feed(all_details)
         update_all_auto_sections(SITE_DIR, all_details)
         apply_agent_note_changes({}, set(ok_slugs), regenerate=False)
+        sweep_orphan_property_pages(set(ok_slugs) | set(current_slugs))
         generate_sitemap(set(ok_slugs))
         print(f"Full rebuild complete. Site now shows {new_total} listings.")
         return
@@ -519,6 +547,7 @@ def main():
         current = [cache[s] for s in known if s in cache]
         update_all_auto_sections(SITE_DIR, current)
         apply_agent_note_changes(cache, known)
+        sweep_orphan_property_pages(known)
         generate_sitemap(known)
         print("No listings added or removed. Site is up to date.")
         return
@@ -569,6 +598,7 @@ def main():
     generate_properties_feed(current_details)
     update_all_auto_sections(SITE_DIR, current_details)
     apply_agent_note_changes(cache, updated_known)
+    sweep_orphan_property_pages(updated_known)
     generate_sitemap(updated_known)
 
     print(
