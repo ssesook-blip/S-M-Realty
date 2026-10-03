@@ -79,6 +79,7 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
     </a>
     <div class="nav-links">
       <a href="../listings.html">All Listings</a>
+      <a href="../index.html#areas">Areas</a>
       <a href="../index.html#process">How We Work</a>
       <a href="../index.html#team">The Team</a>
     </div>

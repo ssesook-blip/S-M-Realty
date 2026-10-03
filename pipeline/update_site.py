@@ -87,18 +87,51 @@ STATIC_PAGES = [
 ]
 
 
+SITEMAP_DATES_FILE = os.path.join(SITE_DIR, "sitemap_dates.json")
+
+
+def _page_fingerprint(path: str) -> str:
+    """Hash of a page's file contents, used to tell whether it really changed."""
+    import hashlib
+    if not os.path.exists(path):
+        return ""
+    with open(path, "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()
+
+
 def generate_sitemap(slugs: set):
+    """Writes sitemap.xml with an honest <lastmod> for every page: the date
+    the page's content last actually changed, not simply 'today'. Google
+    ignores lastmod on sites that mark every page as updated every day, so
+    accurate dates help it spot new and changed pages faster.
+    Change dates are remembered in sitemap_dates.json."""
     from lib import SITE_URL
     import datetime
 
     today = datetime.date.today().isoformat()
+    dates = {}
+    if os.path.exists(SITEMAP_DATES_FILE):
+        try:
+            with open(SITEMAP_DATES_FILE, "r", encoding="utf-8") as f:
+                dates = json.load(f)
+        except ValueError:
+            dates = {}
+
+    pages = [(page, os.path.join(SITE_DIR, page or "index.html")) for page in STATIC_PAGES]
+    pages += [(f"properties/{slug}.html", os.path.join(PROPERTIES_DIR, f"{slug}.html")) for slug in sorted(slugs)]
+
+    new_dates = {}
     urls = []
-    for page in STATIC_PAGES:
-        loc = f"{SITE_URL}/{page}" if page else f"{SITE_URL}/"
-        urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>daily</changefreq>\n  </url>")
-    for slug in sorted(slugs):
-        loc = f"{SITE_URL}/properties/{slug}.html"
-        urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n  </url>")
+    for rel, path in pages:
+        fp = _page_fingerprint(path)
+        prev = dates.get(rel) or {}
+        if prev.get("hash") == fp and prev.get("date"):
+            lastmod = prev["date"]
+        else:
+            lastmod = today
+        new_dates[rel] = {"hash": fp, "date": lastmod}
+        loc = f"{SITE_URL}/{rel}" if rel else f"{SITE_URL}/"
+        urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>")
 
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -108,7 +141,10 @@ def generate_sitemap(slugs: set):
     )
     with open(SITEMAP_FILE, "w", encoding="utf-8") as f:
         f.write(xml)
-    print(f"  sitemap.xml written with {len(urls)} URLs.")
+    with open(SITEMAP_DATES_FILE, "w", encoding="utf-8") as f:
+        json.dump(new_dates, f, indent=1, sort_keys=True)
+    changed = sum(1 for v in new_dates.values() if v["date"] == today)
+    print(f"  sitemap.xml written with {len(urls)} URLs ({changed} changed today).")
 
 
 FEED_FILE = os.path.join(SITE_DIR, "properties-feed.xml")
@@ -464,11 +500,11 @@ def main():
         update_listing_counts(new_total)
         update_index_html(new_total)
         save_known_slugs(set(ok_slugs))
-        generate_sitemap(set(ok_slugs))
         save_details_cache({slug: d for slug, d in zip(ok_slugs, all_details)})
         generate_properties_feed(all_details)
         update_all_auto_sections(SITE_DIR, all_details)
         apply_agent_note_changes({}, set(ok_slugs), regenerate=False)
+        generate_sitemap(set(ok_slugs))
         print(f"Full rebuild complete. Site now shows {new_total} listings.")
         return
 
@@ -523,7 +559,6 @@ def main():
 
     updated_known = (known | set(added_slugs)) - removed_slugs
     save_known_slugs(updated_known)
-    generate_sitemap(updated_known)
 
     cache = load_details_cache()
     cache.update(added_details)
@@ -534,6 +569,7 @@ def main():
     generate_properties_feed(current_details)
     update_all_auto_sections(SITE_DIR, current_details)
     apply_agent_note_changes(cache, updated_known)
+    generate_sitemap(updated_known)
 
     print(
         f"Added {len(added_slugs)} listing(s), removed {len(removed_slugs)} listing(s). "

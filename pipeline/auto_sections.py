@@ -110,7 +110,9 @@ def spotlight_card(d: dict, tag: str = "") -> str:
 
 
 def _by_price(listings: list) -> list:
-    return sorted(listings, key=lambda d: (d.get("sale_price") or 10**12))
+    # slug as a tie-breaker keeps the order identical from run to run, so a
+    # page only "changes" (and gets a new sitemap date) when listings do.
+    return sorted(listings, key=lambda d: (d.get("sale_price") or 10**12, d.get("slug", "")))
 
 
 # --------------------------------------------------------------------------
@@ -209,6 +211,89 @@ def owner_financing_blocks(listings: list) -> dict:
 
 
 # --------------------------------------------------------------------------
+# Homepage "Explore by Area" section (index.html) and Casa Linda teaser
+# --------------------------------------------------------------------------
+
+HOME_TOWNS = [
+    ("sosua-real-estate.html", "Sosúa", "Calm swimming beach, the widest choice of homes and everyday convenience."),
+    ("cabarete-real-estate.html", "Cabarete", "Beach and watersports town, with strong demand for condos and rentals."),
+    ("puerto-plata-real-estate.html", "Puerto Plata", "The region's main city: more space for the money, plus nearby Costambar."),
+]
+HOME_COMMUNITIES = [
+    "sosua-ocean-village.html", "casa-linda.html", "hispaniola-sosua.html", "el-choco-sosua.html",
+    "el-batey-sosua.html", "kite-beach-cabarete.html", "encuentro-beach-cabarete.html",
+]
+COMMUNITY_NAMES = {
+    "sosua-ocean-village.html": "Sosúa Ocean Village", "casa-linda.html": "Casa Linda",
+    "hispaniola-sosua.html": "Hispaniola", "el-choco-sosua.html": "El Choco",
+    "el-batey-sosua.html": "El Batey", "kite-beach-cabarete.html": "Kite Beach",
+    "encuentro-beach-cabarete.html": "Encuentro Beach",
+}
+
+
+def _area_listings(filename: str, details: list) -> list:
+    if filename == "casa-linda.html":
+        return [d for d in details if get_sector(d) == "Casa Linda"]
+    _key, pick, _n = AREA_PAGES[filename]
+    return [d for d in details if pick(d)]
+
+
+def _from_price(listings: list) -> str:
+    """'· homes from $X', using only listings with bedrooms so a cheap
+    land lot doesn't make an area look cheaper than its homes are."""
+    prices = [d["sale_price"] for d in listings if d.get("sale_price") and d.get("room")]
+    return f"\u00b7 homes from {_short_price(min(prices))}" if prices else ""
+
+
+def _hero_image(listings: list) -> str:
+    """Photo for a town card: the priciest listing with a photo tends to have
+    the most striking one."""
+    for d in sorted(listings, key=lambda d: (-(d.get("sale_price") or 0), d.get("slug", ""))):
+        imgs = gallery_urls(d)
+        if imgs:
+            return imgs[0]
+    return ""
+
+
+def home_area_blocks(details: list) -> dict:
+    towns = []
+    for href, name, blurb in HOME_TOWNS:
+        ls = _area_listings(href, details)
+        img = _hero_image(ls)
+        meta = f"{len(ls)} listings {_from_price(ls)}".strip()
+        towns.append(f'''      <a href="{href}" class="area-card reveal">
+        <div class="area-card-photo photo">{f'<img src="{img}" alt="Property for sale in {html.escape(name)}" loading="lazy">' if img else ''}</div>
+        <div class="area-card-body">
+          <h3>{html.escape(name)}</h3>
+          <p>{html.escape(blurb)}</p>
+          <span class="area-card-meta">{html.escape(meta)}</span>
+        </div>
+      </a>''')
+    tiles = []
+    for href in HOME_COMMUNITIES:
+        ls = _area_listings(href, details)
+        meta = f"{len(ls)} listings {_from_price(ls)}".strip()
+        tiles.append(f'''      <a href="{href}" class="area-tile reveal">
+        <span class="area-tile-name">{html.escape(COMMUNITY_NAMES[href])}</span>
+        <span class="area-tile-meta">{html.escape(meta)}</span>
+      </a>''')
+    return {
+        "home-area-towns": "\n".join(towns),
+        "home-area-communities": "\n".join(tiles),
+    }
+
+
+def casa_linda_teaser_block(details: list) -> dict:
+    ls = _area_listings("casa-linda.html", details)
+    prices = [d["sale_price"] for d in ls if d.get("sale_price")]
+    if prices:
+        text = f"{len(ls)} homes currently listed from {format_price_card({'sale_price': min(prices)})} to {format_price_card({'sale_price': max(prices)})}."
+    else:
+        text = "Ask us about homes currently available."
+    return {"home-casa-linda-summary": text}
+
+
+# --------------------------------------------------------------------------
 # Entry point
 # --------------------------------------------------------------------------
 
@@ -224,3 +309,7 @@ def update_all_auto_sections(site_dir: str, details: list):
     for filename, (key, pick, n_cards) in AREA_PAGES.items():
         _update_file(os.path.join(site_dir, filename),
                      community_blocks([d for d in details if pick(d)], key, n_cards))
+
+    home_blocks = home_area_blocks(details)
+    home_blocks.update(casa_linda_teaser_block(details))
+    _update_file(os.path.join(site_dir, "index.html"), home_blocks)
