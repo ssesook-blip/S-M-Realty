@@ -15,7 +15,31 @@ def clean_title(name: str) -> str:
     (e.g. a title already containing '&amp;') so the html.escape() call later
     in generate_card.py/generate_page.py doesn't double-encode it into
     '&amp;amp;' showing up literally on the page."""
-    return html.unescape(name.split("|")[0].strip())
+    name = html.unescape(name.split("|")[0].strip())
+    return fix_shouting(name)
+
+
+_SMALL_WORDS = {"a", "an", "and", "at", "by", "for", "from", "in", "of", "on", "or", "the", "to", "with"}
+
+
+def fix_shouting(name: str) -> str:
+    """Turns ALL-CAPS listing names into normal title case, which reads better
+    in Google results ('LUXURY OCEANFRONT 4BR/4.5BA CONDOS IN CABARETE' ->
+    'Luxury Oceanfront 4BR/4.5BA Condos in Cabarete'). Words containing digits
+    (4BR/4.5BA, M2) stay as they are. Names that aren't mostly capitals are
+    left untouched."""
+    letters = [c for c in name if c.isalpha()]
+    if len(letters) < 8 or sum(c.isupper() for c in letters) / len(letters) < 0.7:
+        return name
+    out = []
+    for i, word in enumerate(name.split(" ")):
+        if any(ch.isdigit() for ch in word) or not word:
+            out.append(word)
+        elif i > 0 and word.lower() in _SMALL_WORDS:
+            out.append(word.lower())
+        else:
+            out.append("-".join(w[:1].upper() + w[1:].lower() for w in word.split("-")))
+    return " ".join(out)
 
 
 def format_price_full(listing: dict) -> str:
@@ -338,7 +362,15 @@ def meta_description(listing: dict) -> str:
             "Buildings": "Building", "Villas": "Villa", "Apartments": "Apartment",
             "House": "House", "Penthouses": "Penthouse",
         }.get(category, "Property")
-    return f"{header} for sale in {loc} — {price}. View photos, full details and pricing from local agents on the North Coast."
+    lead = f"{header} for sale in {loc} — {price}."
+    # Keep it under ~158 characters so Google doesn't cut it off mid-sentence.
+    for tail in (" View photos, full details and pricing from local agents on the North Coast.",
+                 " View photos and full details from local agents on the North Coast.",
+                 " View photos and full details from local agents.",
+                 " View photos and full details.", ""):
+        if len(lead) + len(tail) <= 158:
+            return lead + tail
+    return lead
 
 
 def strip_description(desc: str, max_chars: int = 140) -> str:

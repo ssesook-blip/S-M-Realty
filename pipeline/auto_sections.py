@@ -297,6 +297,109 @@ def casa_linda_teaser_block(details: list) -> dict:
 # Entry point
 # --------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Property page titles: unique, tidy and not too long for Google
+# ---------------------------------------------------------------------------
+TITLE_BRAND = " \u2014 S & M Realty"
+TITLE_MAX = 65
+
+
+def _cut_words(text: str, limit: int) -> str:
+    """Shortens a name to fit, preferring to drop middle sections first
+    ('Encuentro Residences \u2014 Choose Your Lot, Choose Your Villa - Villa D6'
+    -> 'Encuentro Residences \u2014 Villa D6'), then whole words from the end."""
+    if len(text) <= limit:
+        return text
+    parts = re.split(r"(\s[-\u2013\u2014:|]\s)", text)
+    while len(text) > limit and len(parts) >= 5:
+        del parts[1:3]
+        text = "".join(parts)
+    if len(text) <= limit:
+        return text
+    cut = text[:limit + 1].rsplit(" ", 1)[0]
+    words = cut.rstrip(" -\u2013\u2014,:;&/(").split(" ")
+    while len(words) > 1 and words[-1].lower() in ("a", "an", "and", "at", "for", "in", "of", "on", "or", "the", "to", "with", "-", "\u2013", "\u2014"):
+        words.pop()
+    return " ".join(words).rstrip(" -\u2013\u2014,:;&/(")
+
+
+def _listing_ref(d: dict) -> str:
+    m = re.search(r"-(\d+)$", d.get("slug", ""))
+    return m.group(1) if m else str(d.get("cid") or d.get("uid") or "")
+
+
+def _fit(name: str, suffix: str = "") -> str:
+    if len(name) + len(suffix) + len(TITLE_BRAND) <= TITLE_MAX:
+        return name + suffix + TITLE_BRAND
+    short = _cut_words(name, TITLE_MAX - len(suffix)) + suffix
+    return short + TITLE_BRAND if len(short) + len(TITLE_BRAND) <= TITLE_MAX else short
+
+
+def property_page_titles(details: list) -> dict:
+    """slug -> the <title> text for that listing page: tidy, at most 65
+    characters, and unique. Listings that would otherwise share a title
+    (units in the same development) get the price, then the reference
+    number, added."""
+    names = {d["slug"]: clean_title(d.get("name", "")) for d in details if d.get("slug")}
+    groups = {}
+    for d in details:
+        if d.get("slug") in names:
+            groups.setdefault(_fit(names[d["slug"]]).lower(), []).append(d)
+
+    titles = {}
+    for group in groups.values():
+        if len(group) == 1:
+            d = group[0]
+            titles[d["slug"]] = _fit(names[d["slug"]])
+            continue
+        prices = {d["slug"]: (_short_price(d["sale_price"]) if d.get("sale_price") else "") for d in group}
+        price_unique = all(prices.values()) and len(set(prices.values())) == len(group)
+        for d in group:
+            if price_unique:
+                suffix = f" \u2013 {prices[d['slug']]}"
+            elif prices[d["slug"]]:
+                suffix = f" \u2013 {prices[d['slug']]} \u2013 Ref {_listing_ref(d)}"
+            else:
+                suffix = f" \u2013 Ref {_listing_ref(d)}"
+            titles[d["slug"]] = _fit(names[d["slug"]], suffix)
+    return titles
+
+
+def tidy_property_pages(site_dir: str, details: list) -> int:
+    """Every run: sets each listing page's <title>/og:title from
+    property_page_titles(), and turns any second <h1> (some developers put
+    one inside their description) into an <h2>. Only rewrites a file when
+    something actually changes."""
+    titles = property_page_titles(details)
+    changed = 0
+    for slug, title in titles.items():
+        path = os.path.join(site_dir, "properties", f"{slug}.html")
+        if not os.path.exists(path):
+            continue
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        original = content
+        content = re.sub(r"<title>.*?</title>",
+                         lambda m: f"<title>{html.escape(title, quote=False)}</title>",
+                         content, count=1, flags=re.S)
+        content = re.sub(r'<meta property="og:title" content="[^"]*">',
+                         lambda m: f'<meta property="og:title" content="{html.escape(title)}">',
+                         content, count=1)
+        first = content.find("<h1")
+        if first != -1:
+            head, rest = content[:first + 3], content[first + 3:]
+            end = rest.find("</h1>") + 5
+            rest = rest[:end] + re.sub(r"<(/?)h1\b", r"<\1h2", rest[end:])
+            content = head + rest
+        if content != original:
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(content)
+            changed += 1
+    if changed:
+        print(f"  Tidied titles/headings on {changed} listing page(s).")
+    return changed
+
+
 def update_all_auto_sections(site_dir: str, details: list):
     """details: list of full listing detail dicts currently on the site."""
     for filename, community in COMMUNITY_PAGES.items():
@@ -313,3 +416,5 @@ def update_all_auto_sections(site_dir: str, details: list):
     home_blocks = home_area_blocks(details)
     home_blocks.update(casa_linda_teaser_block(details))
     _update_file(os.path.join(site_dir, "index.html"), home_blocks)
+
+    tidy_property_pages(site_dir, details)
