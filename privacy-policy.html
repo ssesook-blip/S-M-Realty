@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VKL3BNJVDQ"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VKL3BNJVDQ');
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  var h = a.getAttribute('href') || '', m = '';
+  if (/wa\.me|whatsapp\.com/i.test(h)) m = 'whatsapp';
+  else if (/^tel:/i.test(h)) m = 'phone';
+  else if (/^mailto:/i.test(h)) m = 'email';
+  if (m) gtag('event', 'generate_lead', { method: m, link_url: h, transport_type: 'beacon' });
+});
+document.addEventListener('submit', function (e) {
+  gtag('event', 'generate_lead', { method: 'form', form_id: (e.target && e.target.id) || '' });
+});
+</script>
+<!-- End Google Analytics -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — S & M Realty</title>
@@ -64,7 +85,7 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
   <div class="wrap">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
-    <p>Last updated: August 21, 2026</p>
+    <p>Last updated: October 4, 2026</p>
   </div>
 </section>
 
@@ -75,12 +96,14 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
       <p>S &amp; M Realty ("we," "us," or "our") operates sheenaandmichaelrealtydr.com. This page explains, plainly, what information this website actually collects when you visit or use it, and how it's used. We've kept this specific to what this site really does — not a generic template.</p>
 
       <h2 style="margin-top:44px; font-size:24px;">Information you provide to us</h2>
-      <p>If you fill out the "Request a private valuation" form on our homepage, we collect whatever you enter: your email address, and any message you write. That submission is sent through a third-party form service, Formspree, directly to our inbox. We use it only to respond to your inquiry. We don't add you to a mailing list, sell this information, or share it with anyone outside our brokerage.</p>
+      <p>If you fill out the "Request a private valuation" form on our homepage, or enter your email to download our buyer's guide, we collect whatever you enter: your email address, and any message you write. That submission is sent through a third-party form service, Formspree, directly to our inbox. We use it only to respond to your inquiry. We don't add you to a mailing list, sell this information, or share it with anyone outside our brokerage.</p>
 
-      <h2 style="margin-top:44px; font-size:24px;">Information we don't collect</h2>
-      <p>This site does not currently use analytics or advertising tracking of any kind — no Google Analytics, no Facebook Pixel, no ad networks. We don't track your browsing behavior across other websites, and we don't build advertising profiles.</p>
+      <h2 style="margin-top:44px; font-size:24px;">Analytics and advertising</h2>
+      <p>We use <strong>Google Analytics</strong> to understand how visitors use this site: which pages and listings are viewed, roughly where visitors are from, what device they use, and when someone taps a WhatsApp, phone or email link. Google Analytics uses cookies to do this. We use these reports only to improve the site and our listings, and we don't use them to identify you personally. You can opt out with Google's <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">browser add-on</a>.</p>
+      <p>We also use the <strong>Meta (Facebook) Pixel</strong> to measure how our Facebook and Instagram ads perform and to show our ads to people who have visited this site. You can control this in your <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener">Facebook ad preferences</a>.</p>
+      <p>We don't sell your information, and we don't use any other ad networks.</p>
 
-      <h2 style="margin-top:44px; font-size:24px;">Local storage (not a tracking cookie)</h2>
+      <h2 style="margin-top:44px; font-size:24px;">Local storage</h2>
       <p>The listings page remembers one small preference in your browser — whether you last viewed properties in "Grid" or "List" view — using your browser's local storage. This stays on your device, is never sent to us or anyone else, and isn't used to identify or track you. It's purely a display convenience, the same category of thing as a browser remembering your last window size.</p>
 
 
@@ -88,7 +111,7 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
       <p>If you've submitted a valuation request and would like us to delete that information, or you have any question about what we hold, contact us directly at <a href="mailto:sheena@crestgroupdominicana.com" style="color:var(--bronze); text-decoration:underline;">sheena@crestgroupdominicana.com</a> and we'll take care of it.</p>
 
       <h2 style="margin-top:44px; font-size:24px;">Changes to this policy</h2>
-      <p>If we ever add analytics, advertising, or other tracking to this site in the future, we'll update this page to reflect that honestly before doing so.</p>
+      <p>If we add any other analytics, advertising, or tracking to this site, we'll update this page to reflect that.</p>
 
       <h2 style="margin-top:44px; font-size:24px;">Contact</h2>
       <p>S &amp; M Realty, part of The Crest Group Dominicana<br>
