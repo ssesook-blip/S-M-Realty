@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VKL3BNJVDQ"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VKL3BNJVDQ');
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  var h = a.getAttribute('href') || '', m = '';
+  if (/wa\.me|whatsapp\.com/i.test(h)) m = 'whatsapp';
+  else if (/^tel:/i.test(h)) m = 'phone';
+  else if (/^mailto:/i.test(h)) m = 'email';
+  if (m) gtag('event', 'generate_lead', { method: m, link_url: h, transport_type: 'beacon' });
+});
+document.addEventListener('submit', function (e) {
+  gtag('event', 'generate_lead', { method: 'form', form_id: (e.target && e.target.id) || '' });
+});
+</script>
+<!-- End Google Analytics -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Build Your Dream in Costa Azul — S &amp; M Realty</title>
