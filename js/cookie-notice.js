@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var STORAGE_KEY = 'sm-cookie-notice-acknowledged';
+  var STORAGE_KEY = 'sm-cookie-notice-v2';
 
   var alreadySeen = false;
   try { alreadySeen = localStorage.getItem(STORAGE_KEY) === '1'; } catch (e) {}
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var banner = document.createElement('div');
   banner.className = 'cookie-notice';
   banner.innerHTML =
-    '<p>This site uses your browser\'s local storage to remember a display preference (like Grid vs. List view). No advertising or tracking cookies are used. ' +
+    '<p>This site uses cookies for Google Analytics and the Meta Pixel to understand how visitors use the site and measure our ads. ' +
     '<a href="' + (window.location.pathname.includes('/properties/') ? '../' : '') + 'privacy-policy.html">Learn more</a></p>' +
     '<button type="button" class="cookie-notice-btn">Got it</button>';
 
