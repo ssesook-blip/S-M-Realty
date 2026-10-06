@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-10-04",
-  "hash": "bc38bb075ff8646835df946f07ff2b75efcc518d"
+  "date": "2026-10-06",
+  "hash": "8ed98d4e946a67c68c34163959e69c09f024739d"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-10-04",
@@ -48,8 +48,8 @@
   "hash": "c68be555ded35880ff94463a6baf3f04d264dc18"
  },
  "listings.html": {
-  "date": "2026-10-04",
-  "hash": "782781b00e6e56fdd909d2c5d6986698255a2c63"
+  "date": "2026-10-06",
+  "hash": "b637172e8bf495d96c10eb9047962c4df7093890"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-10-04",
@@ -314,6 +314,10 @@
  "properties/fully-furnished-3-bedroom-villa-with-oversized-pool-oceanview-in-villas-marinas-sosua-ocean-village-us599000-owner-financing-available-3746.html": {
   "date": "2026-10-04",
   "hash": "7c7ad0b273a83bcdb2ef4297898c95d28afc2bed"
+ },
+ "properties/furnished-1-bedroom-1-bath-condo-in-laguna-city-sosua-ocean-village-3811.html": {
+  "date": "2026-10-06",
+  "hash": "aaf6d9ed5f77b4fde88b6c3187b3a72c9c4da1a2"
  },
  "properties/furnished-2-bed-second-floor-apartment-150-m-to-playa-chiquita-sosua-319000-3809.html": {
   "date": "2026-10-04",
@@ -840,11 +844,11 @@
   "hash": "8d6493e1c03ac0947091ee6bb3a7e7aec6ec5b4c"
  },
  "sosua-ocean-village.html": {
-  "date": "2026-10-04",
-  "hash": "406821cee6d3ea08d5c6e628f51032bbdc95daf4"
+  "date": "2026-10-06",
+  "hash": "ad21f5ded947610819da5d9ff61a3967d3a19f4f"
  },
  "sosua-real-estate.html": {
-  "date": "2026-10-04",
-  "hash": "6b9bb91878cfdf41787e9c028f26f905cedb2306"
+  "date": "2026-10-06",
+  "hash": "3f107068d5cb46c89fa5faeb7847100d06a1dd23"
  }
 }
