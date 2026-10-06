@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var banner = document.createElement('div');
   banner.className = 'cookie-notice';
   banner.innerHTML =
-    '<p>This site uses cookies for Google Analytics and the Meta Pixel to understand how visitors use the site and measure our ads. ' +
+    '<p>This site uses cookies for Google Analytics, the Meta Pixel and our live chat (Tawk.to), to understand how visitors use the site, measure our ads and let you chat with us. ' +
     '<a href="' + (window.location.pathname.includes('/properties/') ? '../' : '') + 'privacy-policy.html">Learn more</a></p>' +
     '<button type="button" class="cookie-notice-btn">Got it</button>';
 
