@@ -92,3 +92,7 @@ footer{ background:var(--ink); color:rgba(239,234,225,0.6); padding:50px 0; marg
 }
 
 .print-only-footer, .print-only-desc{ display:none; }
+
+/* Listing accuracy disclaimer */
+.listing-disclaimer{ max-width:720px; margin-top:36px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; line-height:1.6; color:var(--taupe); }
+@media print{ .listing-disclaimer{ margin-top:10px; padding-top:6px; font-size:8.5pt; } }

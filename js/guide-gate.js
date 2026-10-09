@@ -25,6 +25,8 @@
       var data = new FormData();
       data.append('email', email);
       data.append('source', 'Buying Guide PDF Download');
+      var optin = document.getElementById('guide-gate-optin');
+      data.append('email_updates', optin && optin.checked ? 'yes' : 'no');
       data.append('_subject', 'New Buying Guide download - ' + email);
 
       fetch(FORM_ENDPOINT, {

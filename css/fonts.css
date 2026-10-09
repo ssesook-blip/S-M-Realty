@@ -1,0 +1,6 @@
+/* Self-hosted fonts (SIL Open Font License, see /fonts/OFL-*.txt).
+   Served from this site instead of Google Fonts so no visitor data is sent
+   to Google just to display text (GDPR). */
+@font-face{ font-family:'Cormorant'; font-style:normal; font-weight:300 500; font-display:swap; src:url('../fonts/cormorant-latin.woff') format('woff'); }
+@font-face{ font-family:'Cormorant'; font-style:italic; font-weight:400 500; font-display:swap; src:url('../fonts/cormorant-italic-latin.woff') format('woff'); }
+@font-face{ font-family:'Archivo'; font-style:normal; font-weight:400 600; font-display:swap; src:url('../fonts/archivo-latin.woff') format('woff'); }

@@ -9,6 +9,7 @@ from lib import (
 PAGE_TEMPLATE = '''<!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="../js/consent.js"></script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VKL3BNJVDQ"></script>
 <script>
@@ -66,8 +67,7 @@ document.addEventListener('submit', function (e) {{
   }}
 }}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/fonts.css">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/property.css">
 <!-- Meta Pixel Code -->
@@ -80,12 +80,10 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+if(window.SMConsent&&!SMConsent.allowed())fbq('consent','revoke');
 fbq('init', '1776036563597329');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
-/></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
@@ -147,6 +145,7 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
     <div class="print-only-desc">{print_description}</div>
     {amenities}
     {agents}
+    <p class="listing-disclaimer">Listing information is deemed reliable but is not guaranteed. Prices, availability, measurements and other details can change without notice and should be independently verified before purchase.</p>
   </div>
 </section>
 

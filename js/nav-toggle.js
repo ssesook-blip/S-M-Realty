@@ -53,8 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var ready = false;
   var wantOpen = false;
 
+  var loaded = false;
+
   function openChat() {
-    if (!ready) { wantOpen = true; return; }
+    if (!ready) { wantOpen = true; loadChat(); return; }
     api.showWidget();
     api.maximize();
     if (btn) btn.classList.remove('has-unread');
@@ -94,7 +96,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.appendChild(btn);
   }
 
+  // Cookie consent: Tawk.to only loads on its own once the visitor has
+  // accepted cookies (js/consent.js). If they haven't, it loads the moment
+  // they click the chat button, since they've asked to chat.
   function loadChat() {
+    if (loaded) return;
+    loaded = true;
     var s = document.createElement('script');
     s.async = true;
     s.src = TAWK_SRC;
@@ -105,6 +112,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addButton);
   else addButton();
-  if (document.readyState === 'complete') loadChat();
-  else window.addEventListener('load', loadChat);
+  function consentOK() { return !window.SMConsent || window.SMConsent.allowed(); }
+  function autoLoad() { if (consentOK()) loadChat(); }
+  document.addEventListener('sm-consent-change', function (e) {
+    if (e.detail && e.detail.value === 'granted') loadChat();
+  });
+  if (document.readyState === 'complete') autoLoad();
+  else window.addEventListener('load', autoLoad);
 })();

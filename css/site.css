@@ -132,6 +132,10 @@
   cursor:pointer; transition: color .2s ease, border-color .2s ease;
 }
 .cta-form button:hover{ color: var(--stone); border-color: var(--stone); }
+.cta-form .form-optin{ flex-basis:100%; display:flex; align-items:flex-start; gap:10px; text-align:left; font-size:12.5px; line-height:1.5; color: rgba(239,234,225,0.7); cursor:pointer; margin-top:4px; }
+.cta-form .form-optin input{ flex:none; min-width:0; width:16px; height:16px; margin:2px 0 0; padding:0; accent-color: var(--bronze-bright); }
+.cta-form .form-privacy{ flex-basis:100%; margin:0; font-size:11.5px; color: rgba(239,234,225,0.5); text-align:left; }
+.cta-form .form-privacy a{ color: var(--bronze-bright); text-decoration: underline; }
 
 /* ---------- FOOTER ---------- */
 footer{ background: var(--ink); color: rgba(239,234,225,0.6); padding: 64px 0 32px; font-size: 14px; border-top: 1px solid var(--line-on-dark); }
