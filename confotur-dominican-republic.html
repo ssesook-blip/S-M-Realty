@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="js/consent.js"></script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VKL3BNJVDQ"></script>
 <script>
@@ -41,9 +42,7 @@ document.addEventListener('submit', function (e) {
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/site.css">
 <style>
@@ -219,12 +218,10 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+if(window.SMConsent&&!SMConsent.allowed())fbq('consent','revoke');
 fbq('init', '1776036563597329');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
-/></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
@@ -440,7 +437,6 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
 <script>window.REVEAL_THRESHOLD = 0.1;</script>
 <script src="js/reveal.js"></script>
 <script src="js/nav-toggle.js"></script>
-<script src="js/cookie-notice.js"></script>
 
 </body>
 </html>

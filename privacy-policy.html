@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="js/consent.js"></script>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VKL3BNJVDQ"></script>
 <script>
@@ -32,9 +33,7 @@ document.addEventListener('submit', function (e) {
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/site.css">
 <!-- Meta Pixel Code -->
@@ -47,12 +46,10 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+if(window.SMConsent&&!SMConsent.allowed())fbq('consent','revoke');
 fbq('init', '1776036563597329');
 fbq('track', 'PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
-/></noscript>
 <!-- End Meta Pixel Code -->
 </head>
 <body>
@@ -85,7 +82,7 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
   <div class="wrap">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
-    <p>Last updated: October 4, 2026</p>
+    <p>Last updated: October 8, 2026</p>
   </div>
 </section>
 
@@ -93,28 +90,74 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
   <div class="wrap">
     <div class="prop-desc reveal" style="max-width:760px;">
 
-      <p>S &amp; M Realty ("we," "us," or "our") operates sheenaandmichaelrealtydr.com. This page explains, plainly, what information this website actually collects when you visit or use it, and how it's used. We've kept this specific to what this site really does — not a generic template.</p>
+      <p>S &amp; M Realty ("we," "us," or "our") operates sheenaandmichaelrealtydr.com. This page explains what information this website collects when you visit or use it, why, who it's shared with, and the choices and rights you have. It's written to cover visitors from the European Union, the UK, Switzerland, Canada and the United States (including California), as well as the Dominican Republic.</p>
 
-      <h2 style="margin-top:44px; font-size:24px;">Information you provide to us</h2>
-      <p>If you fill out the "Request a private valuation" form on our homepage, or enter your email to download our buyer's guide, we collect whatever you enter: your email address, and any message you write. That submission is sent through a third-party form service, Formspree, directly to our inbox. We use it only to respond to your inquiry. We don't add you to a mailing list, sell this information, or share it with anyone outside our brokerage.</p>
+      <h2 style="margin-top:44px; font-size:24px;">Who is responsible for your information</h2>
+      <p>S &amp; M Realty, a real estate brokerage based in Sosúa, Puerto Plata, Dominican Republic, is responsible (the "data controller") for the personal information collected through this website. You can reach us about anything on this page using the details in the <a href="#contact" style="color:var(--bronze); text-decoration:underline;">Contact</a> section below.</p>
 
-          <h2 style="margin-top:44px; font-size:24px;">Live chat</h2>
-      <p>The chat window on this site is provided by <strong>Tawk.to</strong>. If you start a chat, we see the messages you send and anything you choose to share, such as your name, email or phone number, and Tawk.to stores the conversation so we can reply. Tawk.to uses cookies to keep your chat connected as you move between pages. We use chat messages only to answer your questions, and we don't sell or share them.</p>  <h2 style="margin-top:44px; font-size:24px;">Analytics and advertising</h2>
-      <p>We use <strong>Google Analytics</strong> to understand how visitors use this site: which pages and listings are viewed, roughly where visitors are from, what device they use, and when someone taps a WhatsApp, phone or email link. Google Analytics uses cookies to do this. We use these reports only to improve the site and our listings, and we don't use them to identify you personally. You can opt out with Google's <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">browser add-on</a>.</p>
-      <p>We also use the <strong>Meta (Facebook) Pixel</strong> to measure how our Facebook and Instagram ads perform and to show our ads to people who have visited this site. You can control this in your <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener">Facebook ad preferences</a>.</p>
-      <p>We don't sell your information, and we don't use any other ad networks.</p>
+      <h2 style="margin-top:44px; font-size:24px;">Information you give us</h2>
+      <p><strong>Forms.</strong> If you fill out the "Request a private valuation" form on our homepage, or enter your email to download our buyer's guide, we collect what you enter: your email address, any message you write, and whether you ticked the box to receive listing updates. Submissions are sent through a form service, <strong>Formspree</strong>, to our inbox. We use them to reply to you and, for the buyer's guide, we may follow up once by email about your plans.</p>
+      <p><strong>Email updates.</strong> We only send you new listings or market updates by email if you tick the box asking for them. Every such email includes a way to unsubscribe, and you can also just reply and ask us to stop.</p>
+      <p><strong>Live chat.</strong> The chat window is provided by <strong>Tawk.to</strong>. If you start a chat, we see the messages you send and anything you choose to share, such as your name, email or phone number, and Tawk.to stores the conversation so we can reply.</p>
+      <p><strong>WhatsApp, phone and email.</strong> If you contact us through the WhatsApp button, by phone or by email, we receive whatever you send us through that service. WhatsApp is operated by Meta under its own terms and privacy policy.</p>
 
-      <h2 style="margin-top:44px; font-size:24px;">Local storage</h2>
-      <p>The listings page remembers one small preference in your browser — whether you last viewed properties in "Grid" or "List" view — using your browser's local storage. This stays on your device, is never sent to us or anyone else, and isn't used to identify or track you. It's purely a display convenience, the same category of thing as a browser remembering your last window size.</p>
+      <h2 style="margin-top:44px; font-size:24px;">Information collected automatically</h2>
+      <p><strong>Google Analytics</strong> shows us how visitors use the site: which pages and listings are viewed, roughly where visitors are from (country/city level), what device and browser they use, and when someone taps a WhatsApp, phone or email link or sends a form. We use it only to improve the site and our listings, not to identify you personally.</p>
+      <p>The <strong>Meta (Facebook) Pixel</strong> measures how our Facebook and Instagram ads perform and lets us show our ads to people who have visited this site.</p>
+      <p>Both of these only set cookies or collect identifiable data if you've allowed them (see <a href="#cookies" style="color:var(--bronze); text-decoration:underline;">Cookies and your choices</a>). If you decline, Google may still receive basic, cookieless signals (for example, that a page was viewed) that don't identify you, and Meta receives nothing that it can use for ad targeting.</p>
+      <p><strong>Other services that load parts of the page.</strong> When your browser loads this site, a few services necessarily see your IP address and basic browser information in order to deliver content, without setting cookies: our web host (<strong>Netlify</strong>), which keeps short-term server logs for security; the listing-image servers of our listing platform (hosted on <strong>Amazon CloudFront</strong>); and <strong>Open-Meteo</strong>, which supplies the homepage weather forecast. Where a page shows a <strong>Google Map</strong>, the map is only loaded after you've allowed cookies or chosen to view it, because Google Maps sets its own cookies. Our fonts are hosted on this site, so no data is sent to Google just to display text.</p>
 
+      <h2 id="cookies" style="margin-top:44px; font-size:24px;">Cookies and your choices</h2>
+      <p>When you first visit, a banner asks whether you accept cookies. <strong>Visitors in Europe:</strong> nothing but strictly necessary storage is used until you click "Accept." <strong>Visitors elsewhere:</strong> analytics, advertising and chat cookies are on by default, and you can turn them off by clicking "Decline." If your browser sends a <strong>Global Privacy Control</strong> signal, we treat it as "Decline." You can change your choice at any time with <button type="button" class="sm-consent-link" onclick="window.SMConsent &amp;&amp; SMConsent.open()" style="color:var(--bronze);">Cookie settings</button> (also at the bottom of every page). If you decline, the live chat still works: it loads only when you click the chat button.</p>
+      <div style="overflow-x:auto; margin:20px 0;">
+      <table style="width:100%; border-collapse:collapse; font-size:14px; line-height:1.5;">
+        <thead><tr style="text-align:left; border-bottom:1px solid var(--line);"><th style="padding:8px 10px 8px 0;">Name</th><th style="padding:8px 10px;">Provider</th><th style="padding:8px 10px;">Purpose</th><th style="padding:8px 0 8px 10px;">Kept for</th></tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line);"><td style="padding:8px 10px 8px 0;">sm-consent-v1 (browser storage)</td><td style="padding:8px 10px;">This site</td><td style="padding:8px 10px;">Remembers your cookie choice. Strictly necessary.</td><td style="padding:8px 0 8px 10px;">12 months</td></tr>
+          <tr style="border-bottom:1px solid var(--line);"><td style="padding:8px 10px 8px 0;">Grid/List view (browser storage)</td><td style="padding:8px 10px;">This site</td><td style="padding:8px 10px;">Remembers how you like to view listings. Never sent to us.</td><td style="padding:8px 0 8px 10px;">Until you clear it</td></tr>
+          <tr style="border-bottom:1px solid var(--line);"><td style="padding:8px 10px 8px 0;">_ga, _ga_*</td><td style="padding:8px 10px;">Google Analytics</td><td style="padding:8px 10px;">Site statistics. Only with your consent.</td><td style="padding:8px 0 8px 10px;">Up to 2 years</td></tr>
+          <tr style="border-bottom:1px solid var(--line);"><td style="padding:8px 10px 8px 0;">_fbp, _fbc</td><td style="padding:8px 10px;">Meta</td><td style="padding:8px 10px;">Ad measurement and showing our ads to past visitors. Only with your consent.</td><td style="padding:8px 0 8px 10px;">Up to 90 days</td></tr>
+          <tr style="border-bottom:1px solid var(--line);"><td style="padding:8px 10px 8px 0;">twk_*, TawkConnectionTime</td><td style="padding:8px 10px;">Tawk.to</td><td style="padding:8px 10px;">Keeps your chat connected between pages. Set when you accept cookies or open the chat.</td><td style="padding:8px 0 8px 10px;">Up to 6 months</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p>You can also block or delete cookies in your browser settings, use Google's <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener" style="color:var(--bronze); text-decoration:underline;">Analytics opt-out add-on</a>, or adjust your <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener" style="color:var(--bronze); text-decoration:underline;">Facebook ad preferences</a>. Exact cookie names and lifetimes are set by each provider and may change.</p>
 
-      <h2 style="margin-top:44px; font-size:24px;">Your choices</h2>
-      <p>If you've submitted a valuation request and would like us to delete that information, or you have any question about what we hold, contact us directly at <a href="mailto:sheena@crestgroupdominicana.com" style="color:var(--bronze); text-decoration:underline;">sheena@crestgroupdominicana.com</a> and we'll take care of it.</p>
+      <h2 style="margin-top:44px; font-size:24px;">Why we use your information (legal basis)</h2>
+      <p>For visitors covered by the EU or UK GDPR, we rely on:</p>
+      <ul style="margin:0 0 14px 20px; line-height:1.75;">
+        <li><strong>Steps you've asked us to take</strong>, to answer your enquiry, valuation request, chat or download request.</li>
+        <li><strong>Your consent</strong>, for analytics and advertising cookies, and for email updates. You can withdraw consent at any time; this doesn't affect anything done before you withdrew it.</li>
+        <li><strong>Our legitimate interests</strong>, in running a secure, working website and in following up once on a buyer's guide download. You can object at any time.</li>
+        <li><strong>Legal obligations</strong>, where we must keep records, for example for a property transaction.</li>
+      </ul>
+
+      <h2 style="margin-top:44px; font-size:24px;">Who we share it with</h2>
+      <p>We don't sell your personal information, and we don't share it for cross-context behavioral advertising except through the Meta Pixel when you've allowed it (which you can turn off at any time, as above). We share information only with the service providers named on this page, who process it on our behalf or under their own terms, and with other parties involved in a property transaction you ask us to help with (for example a seller, lawyer or notary), or where the law requires it. We don't use any other ad networks.</p>
+
+      <h2 style="margin-top:44px; font-size:24px;">International transfers</h2>
+      <p>We're based in the Dominican Republic, and our service providers (Google, Meta, Formspree, Tawk.to, Netlify and Amazon) may process data in the United States and other countries. Where information about visitors in the EU, UK or Switzerland is transferred, those providers rely on recognised safeguards such as the EU-U.S. Data Privacy Framework or Standard Contractual Clauses.</p>
+
+      <h2 style="margin-top:44px; font-size:24px;">How long we keep it</h2>
+      <p>Enquiries, form submissions and chat conversations are kept for as long as we're in contact with you about buying, selling or renting, and then for up to 3 years in case you come back to us, unless you ask us to delete them sooner or we need to keep transaction records for longer by law. Email-update subscribers are removed when they unsubscribe. Analytics data is kept no longer than 14 months.</p>
+
+      <h2 style="margin-top:44px; font-size:24px;">Your rights</h2>
+      <p><strong>Everyone</strong> can ask us what information we hold about them, ask us to correct or delete it, and unsubscribe from emails at any time.</p>
+      <p><strong>EU, UK and Swiss visitors</strong> also have the right to restrict or object to our use of their information, to data portability, to withdraw consent at any time, and to complain to their local data protection authority.</p>
+      <p><strong>California residents</strong> have the right to know what personal information we collect, use and disclose; to delete or correct it; and to opt out of its "sale" or "sharing." We don't sell personal information. To opt out of sharing through the Meta Pixel, click "Decline" in <button type="button" class="sm-consent-link" onclick="window.SMConsent &amp;&amp; SMConsent.open()" style="color:var(--bronze);">Cookie settings</button> or use a Global Privacy Control signal. We won't treat you differently for using these rights.</p>
+      <p><strong>Canadian visitors</strong> can access and correct their information and withdraw consent, and can contact the Office of the Privacy Commissioner of Canada if they have concerns.</p>
+      <p>To make any request, email us at the address below. We'll respond within 30 days and may need to confirm your identity first.</p>
+
+      <h2 style="margin-top:44px; font-size:24px;">Security and children</h2>
+      <p>The site is served over an encrypted (HTTPS) connection and we limit access to enquiries to our own team. This site isn't directed at children under 16, and we don't knowingly collect their information.</p>
+
+      <h2 style="margin-top:44px; font-size:24px;">Listing information</h2>
+      <p>Listing information on this site is deemed reliable but is not guaranteed. Prices, availability, measurements and other details can change without notice and should be independently verified before purchase.</p>
 
       <h2 style="margin-top:44px; font-size:24px;">Changes to this policy</h2>
-      <p>If we add any other analytics, advertising, or tracking to this site, we'll update this page to reflect that.</p>
+      <p>If we change how this site collects or uses information, we'll update this page and the date at the top.</p>
 
-      <h2 style="margin-top:44px; font-size:24px;">Contact</h2>
+      <h2 id="contact" style="margin-top:44px; font-size:24px;">Contact</h2>
       <p>S &amp; M Realty, part of The Crest Group Dominicana<br>
       Sheena Sesook — <a href="mailto:sheena@crestgroupdominicana.com" style="color:var(--bronze); text-decoration:underline;">sheena@crestgroupdominicana.com</a> — +1 (809) 350-3736<br>
       Michael Galea — <a href="mailto:michael@crestgroupdominicana.com" style="color:var(--bronze); text-decoration:underline;">michael@crestgroupdominicana.com</a> — +1 (829) 637-5611</p>
@@ -195,7 +238,6 @@ src="https://www.facebook.com/tr?id=1776036563597329&ev=PageView&noscript=1"
 <script>window.REVEAL_THRESHOLD = 0.1;</script>
 <script src="js/reveal.js"></script>
 <script src="js/nav-toggle.js"></script>
-<script src="js/cookie-notice.js"></script>
 
 </body>
 </html>
