@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-10-09",
-  "hash": "0eb6626c04251e131120ba263d171469a809b660"
+  "date": "2026-10-12",
+  "hash": "c7ac641d048c59ea400e093351fb4d4fee254ff8"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-10-09",
@@ -16,8 +16,8 @@
   "hash": "eca9ddbf4182b39c2009c206bed2a6f9c366c699"
  },
  "casa-linda.html": {
-  "date": "2026-10-09",
-  "hash": "d18c9d43eeb592c94f1b3ec0fe8f980a7390f576"
+  "date": "2026-10-12",
+  "hash": "e7945c36f115d15abb0e842d96b72f5a1f62b6c5"
  },
  "confotur-dominican-republic.html": {
   "date": "2026-10-09",
@@ -48,8 +48,8 @@
   "hash": "02805566740afee8e45262e3f957b694405825b9"
  },
  "listings.html": {
-  "date": "2026-10-09",
-  "hash": "f612ff8a086fe5d8640f5db823d1753f0e8458c5"
+  "date": "2026-10-12",
+  "hash": "55d9ecc138da44c7e418b32f173e6e20dab677f2"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-10-09",
@@ -206,6 +206,10 @@
  "properties/build-your-vision-in-bombita-affordable-lots-near-cabarete-3673.html": {
   "date": "2026-10-09",
   "hash": "b903bbc8c7fe797a1d187f93a8479d7eabeb6650"
+ },
+ "properties/casa-linda-furnished-villa-capri-2-bed-2-bath-3812.html": {
+  "date": "2026-10-12",
+  "hash": "6a21c34bc0076268dd531aa34f6b5e03b4df1b63"
  },
  "properties/cash-flowing-12-unit-guesthouse-cabarete-seller-financing-available-3680.html": {
   "date": "2026-10-09",
@@ -848,7 +852,7 @@
   "hash": "264baeed06035433337215710d5d02c2e60c7085"
  },
  "sosua-real-estate.html": {
-  "date": "2026-10-09",
-  "hash": "424ecafa038f39558ddb83c37811355c32566d16"
+  "date": "2026-10-12",
+  "hash": "bd55bca86085e8905b45397f03940d45857b0513"
  }
 }
