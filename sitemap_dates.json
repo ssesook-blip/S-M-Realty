@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-10-12",
-  "hash": "c7ac641d048c59ea400e093351fb4d4fee254ff8"
+  "date": "2026-10-13",
+  "hash": "be127d26406411145fb99b1a8d797718aee421ef"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-10-09",
@@ -40,16 +40,16 @@
   "hash": "7bcae6d4d9f297ee366076927316eec51643c197"
  },
  "hispaniola-sosua.html": {
-  "date": "2026-10-09",
-  "hash": "29eda9f56de21622dfdd673a2943c18bc3daf361"
+  "date": "2026-10-13",
+  "hash": "401bc6b31e385c0b446199ab0bf2fd36d755236f"
  },
  "kite-beach-cabarete.html": {
   "date": "2026-10-09",
   "hash": "02805566740afee8e45262e3f957b694405825b9"
  },
  "listings.html": {
-  "date": "2026-10-12",
-  "hash": "55d9ecc138da44c7e418b32f173e6e20dab677f2"
+  "date": "2026-10-13",
+  "hash": "32fe6cf93abf9fcb0ee57156f4317289c3600c5f"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-10-09",
@@ -166,6 +166,10 @@
  "properties/barefoot-living-at-the-wave-oceanfront-steps-from-the-surf-3789.html": {
   "date": "2026-10-09",
   "hash": "008fde4d47ed4ed473e2f9273a48d11048764286"
+ },
+ "properties/beachfront-penthouse-condo-at-hispaniola-beach-3813.html": {
+  "date": "2026-10-13",
+  "hash": "631acfcbf969b64d3ad3654cf5227b0ba05261bf"
  },
  "properties/beautiful-3-bedroom-townhome-in-pueblo-espanol-3657.html": {
   "date": "2026-10-09",
@@ -852,7 +856,7 @@
   "hash": "264baeed06035433337215710d5d02c2e60c7085"
  },
  "sosua-real-estate.html": {
-  "date": "2026-10-12",
-  "hash": "bd55bca86085e8905b45397f03940d45857b0513"
+  "date": "2026-10-13",
+  "hash": "f0ad2b9cd537455f2d5ca09c95874afcfe74222c"
  }
 }
