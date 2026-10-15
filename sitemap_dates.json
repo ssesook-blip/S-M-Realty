@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-10-13",
-  "hash": "be127d26406411145fb99b1a8d797718aee421ef"
+  "date": "2026-10-15",
+  "hash": "d190f2355af956d5777ec0259d221fc668fd066a"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-10-09",
@@ -48,8 +48,8 @@
   "hash": "02805566740afee8e45262e3f957b694405825b9"
  },
  "listings.html": {
-  "date": "2026-10-13",
-  "hash": "32fe6cf93abf9fcb0ee57156f4317289c3600c5f"
+  "date": "2026-10-15",
+  "hash": "4807ee7f955ba739da12a881318d1e51c17672e7"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-10-09",
@@ -342,10 +342,6 @@
  "properties/land-for-sale-in-la-mulata-inside-a-gated-community-3758.html": {
   "date": "2026-10-09",
   "hash": "f1d2866531b93f2ea91eb55ef390afe2815990a6"
- },
- "properties/land-for-sale-in-playa-laguna-sosua-3655.html": {
-  "date": "2026-10-09",
-  "hash": "132b079a2b711e14c8b119d049560aa2b1052a6c"
  },
  "properties/last-available-3-bedroom-oceanview-condo-in-costambar-us330000-3668.html": {
   "date": "2026-10-09",
@@ -852,11 +848,11 @@
   "hash": "a76b24e710df08618aaaaa2e2e5686645e4ff715"
  },
  "sosua-ocean-village.html": {
-  "date": "2026-10-09",
-  "hash": "264baeed06035433337215710d5d02c2e60c7085"
+  "date": "2026-10-15",
+  "hash": "9a5ec5e016b58c0f324e2f2d8b3a407793e28a72"
  },
  "sosua-real-estate.html": {
-  "date": "2026-10-13",
-  "hash": "f0ad2b9cd537455f2d5ca09c95874afcfe74222c"
+  "date": "2026-10-15",
+  "hash": "a67023392335500de1f36eb7537933b9015cb257"
  }
 }
