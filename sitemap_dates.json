@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-10-15",
-  "hash": "d190f2355af956d5777ec0259d221fc668fd066a"
+  "date": "2026-10-16",
+  "hash": "69c106c65057d3a7366aff643f98a618a9ac8c32"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-10-09",
@@ -12,8 +12,8 @@
   "hash": "d7d3c3e21e468b7876f86ab08ddc133c0a859961"
  },
  "cabarete-real-estate.html": {
-  "date": "2026-10-09",
-  "hash": "eca9ddbf4182b39c2009c206bed2a6f9c366c699"
+  "date": "2026-10-16",
+  "hash": "58493a58b3ddbd361e85037b657e435b89eafdea"
  },
  "casa-linda.html": {
   "date": "2026-10-12",
@@ -36,8 +36,8 @@
   "hash": "88c92579a1920b724c3be5da2ab0c0a77d17108e"
  },
  "encuentro-beach-cabarete.html": {
-  "date": "2026-10-09",
-  "hash": "7bcae6d4d9f297ee366076927316eec51643c197"
+  "date": "2026-10-16",
+  "hash": "faf4ba56162738e1ef94cbe1f3329a236fb2bb54"
  },
  "hispaniola-sosua.html": {
   "date": "2026-10-13",
@@ -48,8 +48,8 @@
   "hash": "02805566740afee8e45262e3f957b694405825b9"
  },
  "listings.html": {
-  "date": "2026-10-15",
-  "hash": "4807ee7f955ba739da12a881318d1e51c17672e7"
+  "date": "2026-10-16",
+  "hash": "b0e7faa1f0964bd6ad4c97c4a243b6321a2eb899"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-10-09",
@@ -236,8 +236,8 @@
   "hash": "cdb4669c6832ff4e1f6c34a4201e2be7ede8beeb"
  },
  "properties/custom-built-5-bedroom-estate-up-in-the-hills-of-el-choco-sosua-3795.html": {
-  "date": "2026-10-09",
-  "hash": "a56ca8e78324d7e97bb8432d076a5066d1deadbd"
+  "date": "2026-10-16",
+  "hash": "2161539ac534e334b1b63d529d1a648bf1da5fd9"
  },
  "properties/el-paraiso-eco-luxury-3-bedroom-villa-with-infinity-pool-mountain-views-us275000-owner-financing-available-3745.html": {
   "date": "2026-10-09",
@@ -558,6 +558,10 @@
  "properties/oceanfront-luxury-residence-at-cristal-oasis-cabarete-3760.html": {
   "date": "2026-10-09",
   "hash": "b7dc23a1a2dfccc4f59a3547784dde4262974916"
+ },
+ "properties/oceanview-4-bedroom-penthouse-playa-encuentro-cabarete-us579000-3814.html": {
+  "date": "2026-10-16",
+  "hash": "ee2d72e749a32a730bd5c6c7cb856fc8fcf763df"
  },
  "properties/oceanview-luxury-villa-fully-furnished-with-100-financing-available-3557.html": {
   "date": "2026-10-09",
