@@ -1,9 +1,25 @@
 # Always revalidate HTML pages so visitors get the latest listing counts
 # and content on a normal refresh, without needing a hard-refresh or
 # incognito window. CSS/JS/images can still cache normally for speed.
-
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
-
 /
   Cache-Control: public, max-age=0, must-revalidate
+
+# Security headers for every page
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy: frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://formspree.io; object-src 'none'; upgrade-insecure-requests
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+
+# Keep internal pages and data files out of Google
+/crm.html
+  X-Robots-Tag: noindex, nofollow
+/pipeline/*
+  X-Robots-Tag: noindex, nofollow
+/*.json
+  X-Robots-Tag: noindex
