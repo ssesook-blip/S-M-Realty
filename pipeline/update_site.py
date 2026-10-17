@@ -80,6 +80,7 @@ STATIC_PAGES = [
     "puerto-plata-real-estate.html",
     "sosua-ocean-village.html",
     "hispaniola-sosua.html",
+    "hispaniola-beach-sosua.html",
     "el-choco-sosua.html",
     "el-batey-sosua.html",
     "kite-beach-cabarete.html",

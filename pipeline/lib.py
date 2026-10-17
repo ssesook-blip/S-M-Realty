@@ -404,6 +404,7 @@ SECTOR_OVERRIDES = [
     ("sosua ocean village", "Sosúa Ocean Village"),
     ("sosúa ocean village", "Sosúa Ocean Village"),
     ("panorama village", "Panorama Village"),
+    ("hispaniola beach", "Hispaniola Beach"),
     ("hispaniola", "Hispaniola"),
     ("panorama", "Panorama Village"),
     ("casa linda", "Casa Linda"),
@@ -440,6 +441,7 @@ def get_sector(listing: dict) -> str:
 KNOWN_COMMUNITIES = [
     "Sosúa Ocean Village",
     "Hispaniola",
+    "Hispaniola Beach",
     "Panorama Village",
     "Casa Linda",
     "Agua Dulce",

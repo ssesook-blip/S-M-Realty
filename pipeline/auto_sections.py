@@ -170,6 +170,7 @@ AREA_PAGES = {
     "puerto-plata-real-estate.html":  ("puerto-plata", _city("Puerto Plata"), 9),
     "sosua-ocean-village.html":       ("sosua-ocean-village", _sector("Sosúa Ocean Village"), 9),
     "hispaniola-sosua.html":          ("hispaniola", _sector("Hispaniola"), 9),
+    "hispaniola-beach-sosua.html":    ("hispaniola-beach", _sector("Hispaniola Beach"), 9),
     "el-choco-sosua.html":            ("el-choco", _sector("El Choco"), 9),
     "el-batey-sosua.html":            ("el-batey", _sector("El Batey"), 9),
     "kite-beach-cabarete.html":       ("kite-beach", _sector("Kite Beach"), 9),
@@ -220,12 +221,13 @@ HOME_TOWNS = [
     ("puerto-plata-real-estate.html", "Puerto Plata", "The region's main city: more space for the money, plus nearby Costambar."),
 ]
 HOME_COMMUNITIES = [
-    "sosua-ocean-village.html", "casa-linda.html", "hispaniola-sosua.html", "el-choco-sosua.html",
+    "sosua-ocean-village.html", "casa-linda.html", "hispaniola-sosua.html", "hispaniola-beach-sosua.html", "el-choco-sosua.html",
     "el-batey-sosua.html", "kite-beach-cabarete.html", "encuentro-beach-cabarete.html",
 ]
 COMMUNITY_NAMES = {
     "sosua-ocean-village.html": "Sosúa Ocean Village", "casa-linda.html": "Casa Linda",
-    "hispaniola-sosua.html": "Hispaniola", "el-choco-sosua.html": "El Choco",
+    "hispaniola-sosua.html": "Hispaniola", "hispaniola-beach-sosua.html": "Hispaniola Beach",
+    "el-choco-sosua.html": "El Choco",
     "el-batey-sosua.html": "El Batey", "kite-beach-cabarete.html": "Kite Beach",
     "encuentro-beach-cabarete.html": "Encuentro Beach",
 }

@@ -1,7 +1,7 @@
 {
  "": {
   "date": "2026-10-16",
-  "hash": "69c106c65057d3a7366aff643f98a618a9ac8c32"
+  "hash": "b3c1879fa5dec032ec20826e75e5e0366fa83556"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-10-09",
@@ -13,7 +13,7 @@
  },
  "cabarete-real-estate.html": {
   "date": "2026-10-16",
-  "hash": "58493a58b3ddbd361e85037b657e435b89eafdea"
+  "hash": "7dba31aecde22c3b5983d7b9dcb4ce4471072625"
  },
  "casa-linda.html": {
   "date": "2026-10-12",
@@ -28,32 +28,36 @@
   "hash": "c7cb88efc10d5f02f084cac82b7bb7f1ece53169"
  },
  "el-batey-sosua.html": {
-  "date": "2026-10-09",
-  "hash": "0e997d20756884083ebf3fc270f36e9bd09bf623"
+  "date": "2026-10-16",
+  "hash": "b622b2443711ec5fa00044a616a7a8b51736779b"
  },
  "el-choco-sosua.html": {
-  "date": "2026-10-09",
-  "hash": "88c92579a1920b724c3be5da2ab0c0a77d17108e"
+  "date": "2026-10-16",
+  "hash": "0be7c216b75363a9346166a47f30753885935fe7"
  },
  "encuentro-beach-cabarete.html": {
   "date": "2026-10-16",
-  "hash": "faf4ba56162738e1ef94cbe1f3329a236fb2bb54"
+  "hash": "c4257144aeb4ff35046d1181714504c0c10b2f00"
+ },
+ "hispaniola-beach-sosua.html": {
+  "date": "2026-10-16",
+  "hash": "3caaec55b31ba854557ad0fe3a0123f55ae0616e"
  },
  "hispaniola-sosua.html": {
-  "date": "2026-10-13",
-  "hash": "401bc6b31e385c0b446199ab0bf2fd36d755236f"
+  "date": "2026-10-16",
+  "hash": "8794cf229a13721c4bdbbdba68baf3f424aef30e"
  },
  "kite-beach-cabarete.html": {
-  "date": "2026-10-09",
-  "hash": "02805566740afee8e45262e3f957b694405825b9"
+  "date": "2026-10-16",
+  "hash": "18ca6afe76ef6f3a9fb6445952a9bb9a32716c6d"
  },
  "listings.html": {
   "date": "2026-10-16",
-  "hash": "b0e7faa1f0964bd6ad4c97c4a243b6321a2eb899"
+  "hash": "0032a7994f38058fb3c12cc3764806ae1c2c9462"
  },
  "owner-financing-dominican-republic.html": {
-  "date": "2026-10-09",
-  "hash": "cdedf9e99708af376b927d9bb097308b8cad88ef"
+  "date": "2026-10-16",
+  "hash": "c7da5d7294fbfa997bc729991a8bb5b2d7c8a2c0"
  },
  "properties/1-bedroom-apartment-for-sale-in-sosua-ocean-village-puerto-plata-3803.html": {
   "date": "2026-10-09",
@@ -80,8 +84,8 @@
   "hash": "31d87aa66a63c9087422b037adf96983e2818036"
  },
  "properties/2-bedroom-apartment-for-sale-in-hispaniola-beach-3727.html": {
-  "date": "2026-10-09",
-  "hash": "e93e9f81418c7390e11011cbabb3ee73252667f7"
+  "date": "2026-10-16",
+  "hash": "0a498f7385097e1c2a71aed7258cbaa06aa0c550"
  },
  "properties/2-bedroom-swell-encuentro-3555.html": {
   "date": "2026-10-09",
@@ -108,12 +112,12 @@
   "hash": "742a8d2534e70d54d09bb8786f451db3aad8a328"
  },
  "properties/3-bedroom-3-bathroom-oceanfront-living-with-private-balcony-3514.html": {
-  "date": "2026-10-09",
-  "hash": "7937f515b6d519e996931f9d625543571f4247c7"
+  "date": "2026-10-16",
+  "hash": "139770281ed96021d8c1f905e689546b89a6cfe1"
  },
  "properties/3-bedroom-apartment-for-sale-at-hispaniola-beach-3728.html": {
-  "date": "2026-10-09",
-  "hash": "6721a68d64d53133aa8c4a3e890030ff3769fba3"
+  "date": "2026-10-16",
+  "hash": "ffe4c8d4e0dfd22eb99424850fa4922f4e92c9d3"
  },
  "properties/3-bedroom-villa-for-sale-in-casa-linda-3695.html": {
   "date": "2026-10-09",
@@ -168,8 +172,8 @@
   "hash": "008fde4d47ed4ed473e2f9273a48d11048764286"
  },
  "properties/beachfront-penthouse-condo-at-hispaniola-beach-3813.html": {
-  "date": "2026-10-13",
-  "hash": "631acfcbf969b64d3ad3654cf5227b0ba05261bf"
+  "date": "2026-10-16",
+  "hash": "2eb8491535f33c18cf164749e0319f800bae3086"
  },
  "properties/beautiful-3-bedroom-townhome-in-pueblo-espanol-3657.html": {
   "date": "2026-10-09",
@@ -548,8 +552,8 @@
   "hash": "996db7315d81a80088e3e756ee6ca983d9493e91"
  },
  "properties/oceanfront-condominium-hispaniola-beach-gated-community-3739.html": {
-  "date": "2026-10-09",
-  "hash": "da2b83d02d4221f8b5aab933437a6b7d0f354841"
+  "date": "2026-10-16",
+  "hash": "75a56ad3aa3418e2a692cab59a9bfeaac9717af9"
  },
  "properties/oceanfront-estate-on-126-acres-playa-chiquita-sosua-dominican-republic-3771.html": {
   "date": "2026-10-09",
@@ -848,15 +852,15 @@
   "hash": "8ae18e555ccc80555fae4053123407e2b9caf4e2"
  },
  "puerto-plata-real-estate.html": {
-  "date": "2026-10-09",
-  "hash": "a76b24e710df08618aaaaa2e2e5686645e4ff715"
+  "date": "2026-10-16",
+  "hash": "52fadb163ebbed56b6e66444e11917cf8be330eb"
  },
  "sosua-ocean-village.html": {
-  "date": "2026-10-15",
-  "hash": "9a5ec5e016b58c0f324e2f2d8b3a407793e28a72"
+  "date": "2026-10-16",
+  "hash": "0feb0e8bf98358926a37809413e3572d1fff0001"
  },
  "sosua-real-estate.html": {
-  "date": "2026-10-15",
-  "hash": "a67023392335500de1f36eb7537933b9015cb257"
+  "date": "2026-10-16",
+  "hash": "d8f4d6813eb2f73ef56920040e3b47d4ef2c73f6"
  }
 }
