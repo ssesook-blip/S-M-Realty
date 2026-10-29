@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-10-20",
-  "hash": "89c84156de43be54f5d4fea48981d89b268353e5"
+  "date": "2026-10-29",
+  "hash": "d3634d1d610e8b774be71e0e4c56df42e5da2367"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-10-09",
@@ -32,8 +32,8 @@
   "hash": "b622b2443711ec5fa00044a616a7a8b51736779b"
  },
  "el-choco-sosua.html": {
-  "date": "2026-10-16",
-  "hash": "0be7c216b75363a9346166a47f30753885935fe7"
+  "date": "2026-10-29",
+  "hash": "216aa1369dd721a6ea533389cf2d50df3a25df8c"
  },
  "encuentro-beach-cabarete.html": {
   "date": "2026-10-20",
@@ -52,8 +52,8 @@
   "hash": "18ca6afe76ef6f3a9fb6445952a9bb9a32716c6d"
  },
  "listings.html": {
-  "date": "2026-10-20",
-  "hash": "abf4baa16ace4ea19c6d40328724100128e618eb"
+  "date": "2026-10-29",
+  "hash": "83d766e6592ef9305e558b452b889fa15c6a75d0"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-10-20",
@@ -747,6 +747,10 @@
   "date": "2026-10-09",
   "hash": "280dd67ca7ebbaba9157293b6d976076ec5770a5"
  },
+ "properties/tropical-paradise-garden-villas-in-sosua-3816.html": {
+  "date": "2026-10-29",
+  "hash": "2b71d804cb5349132c308bcbc90c34aac0d602ea"
+ },
  "properties/turn-key-air-bnb-ready-villa-with-great-roi-3556.html": {
   "date": "2026-10-09",
   "hash": "ef5e79d8cb49a92e2a2254965aa6e7c8af28d829"
@@ -860,7 +864,7 @@
   "hash": "c8bdb395e3de088c4cbe2533b4763eebce6995be"
  },
  "sosua-real-estate.html": {
-  "date": "2026-10-20",
-  "hash": "3012e4ee298b8776bc59696e3f268bace212f4b9"
+  "date": "2026-10-29",
+  "hash": "0c7daff8a80af61a1c2ea4e6dbc3ae7f777b5d3a"
  }
 }
