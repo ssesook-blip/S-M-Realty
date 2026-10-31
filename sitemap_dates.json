@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-10-29",
-  "hash": "d3634d1d610e8b774be71e0e4c56df42e5da2367"
+  "date": "2026-10-31",
+  "hash": "982f1e0250de8bb7918bbf1e859b28de64085f6a"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-10-09",
@@ -32,8 +32,8 @@
   "hash": "b622b2443711ec5fa00044a616a7a8b51736779b"
  },
  "el-choco-sosua.html": {
-  "date": "2026-10-29",
-  "hash": "216aa1369dd721a6ea533389cf2d50df3a25df8c"
+  "date": "2026-10-31",
+  "hash": "f86de3bc78b719779e11e3379c0a62d554d44ffc"
  },
  "encuentro-beach-cabarete.html": {
   "date": "2026-10-20",
@@ -52,8 +52,8 @@
   "hash": "18ca6afe76ef6f3a9fb6445952a9bb9a32716c6d"
  },
  "listings.html": {
-  "date": "2026-10-29",
-  "hash": "83d766e6592ef9305e558b452b889fa15c6a75d0"
+  "date": "2026-10-31",
+  "hash": "06d5f0dd93e9c4d5eb517785931f083e8ffc65b2"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-10-20",
@@ -146,6 +146,10 @@
  "properties/4-bedroom-villa-sea-horse-ranch-pool-jacuzzi.html": {
   "date": "2026-10-09",
   "hash": "5da0cd851fa53cf0fa40cf6db1a4edf27be87b37"
+ },
+ "properties/4-bedroom-villa-with-private-pool-sosua-3817.html": {
+  "date": "2026-10-31",
+  "hash": "6c3d7bf6d309c01c1988f87d8c6fa40bfdd63745"
  },
  "properties/4br-luxury-villa-w-casita-sosua-ocean-village-dr-3770.html": {
   "date": "2026-10-20",
@@ -864,7 +868,7 @@
   "hash": "c8bdb395e3de088c4cbe2533b4763eebce6995be"
  },
  "sosua-real-estate.html": {
-  "date": "2026-10-29",
-  "hash": "0c7daff8a80af61a1c2ea4e6dbc3ae7f777b5d3a"
+  "date": "2026-10-31",
+  "hash": "fa4bff4b84bd1edaf2f5a1f12635375eaf4df532"
  }
 }
