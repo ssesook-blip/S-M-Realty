@@ -107,7 +107,11 @@ fbq('track', 'PageView');
     <h1>2-Bedroom Villa with Private Pool Near Sosúa &amp; Cabarete</h1>
     <div class="prop-loc">Agua Dulce, Sosúa</div>
     <div class="prop-price">USD 315,000</div>
-    <button class="print-listing-btn" onclick="window.print()">Print This Listing</button>
+    <div class="prop-cta">
+      <a href="#enquire" class="prop-cta-btn prop-cta-primary">Request a Viewing</a>
+      <a href="https://wa.me/18093503736?text=Hi%21%20I%27m%20interested%20in%202-Bedroom%20Villa%20with%20Private%20Pool%20Near%20Sos%C3%BAa%20%26%20Cabarete%20%28%24315%2C000%2C%20property%20code%203665%29.%20Could%20you%20send%20me%20more%20information%20and%20let%20me%20know%20when%20I%20could%20arrange%20a%20viewing%3F%20https%3A//sheenaandmichaelrealtydr.com/properties/2-bedroom-villa-private-pool-near-sosua-cabarete.html" class="prop-cta-btn prop-cta-secondary" target="_blank" rel="noopener">WhatsApp About This Home</a>
+      <button class="print-listing-btn" onclick="window.print()">Print This Listing</button>
+    </div>
   </div>
 </section>
 
@@ -166,6 +170,36 @@ fbq('track', 'PageView');
 <span class="amenity-tag">Patio</span>
 <span class="amenity-tag">Pool</span>
 <span class="amenity-tag">Terrace Exclusiva</span></div>
+
+    <div class="prop-enquire" id="enquire">
+      <div class="prop-enquire-intro">
+        <span class="eyebrow">Arrange a Viewing</span>
+        <h2>Interested in this home?</h2>
+        <p>Send us a few details and Sheena or Michael will reply to you personally. Prefer to chat? <a href="https://wa.me/18093503736?text=Hi%21%20I%27m%20interested%20in%202-Bedroom%20Villa%20with%20Private%20Pool%20Near%20Sos%C3%BAa%20%26%20Cabarete%20%28%24315%2C000%2C%20property%20code%203665%29.%20Could%20you%20send%20me%20more%20information%20and%20let%20me%20know%20when%20I%20could%20arrange%20a%20viewing%3F%20https%3A//sheenaandmichaelrealtydr.com/properties/2-bedroom-villa-private-pool-near-sosua-cabarete.html" target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
+      </div>
+      <form id="property-enquiry" class="enquiry-form" novalidate>
+        <input type="hidden" name="_subject" value="Viewing request: 2-Bedroom Villa with Private Pool Near Sosúa &amp; Cabarete">
+        <input type="hidden" name="lead_source" value="Listing Enquiry">
+        <input type="hidden" name="property" value="2-Bedroom Villa with Private Pool Near Sosúa &amp; Cabarete">
+        <input type="hidden" name="property_code" value="3665">
+        <input type="hidden" name="property_price" value="$315,000">
+        <input type="hidden" name="property_url" value="https://sheenaandmichaelrealtydr.com/properties/2-bedroom-villa-private-pool-near-sosua-cabarete.html">
+        <div class="enquiry-row">
+          <label><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <div class="enquiry-row">
+          <label><span>WhatsApp or phone <span class="opt">(optional)</span></span><input type="tel" name="phone" autocomplete="tel"></label>
+          <label><span>Preferred viewing dates <span class="opt">(optional)</span></span><input type="text" name="preferred_dates" placeholder="e.g. 12&ndash;15 March, or flexible"></label>
+        </div>
+        <label><span>Message</span><textarea name="message" rows="4">I'd like more information about this property and to arrange a viewing.</textarea></label>
+        <label class="form-optin"><input type="checkbox" name="email_updates" value="yes"> Also send me occasional new listings and market updates by email. I can unsubscribe at any time.</label>
+        <button type="submit" class="prop-cta-btn prop-cta-primary">Send Enquiry</button>
+        <p class="enquiry-status" role="status" aria-live="polite"></p>
+        <p class="form-privacy">We use your details only to reply to your enquiry. See our <a href="../privacy-policy.html">Privacy Policy</a>.</p>
+      </form>
+    </div>
+
     <div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:40px;">
         <div class="agent-box" style="margin-top:0;">
           <img src="../team-sheena.jpg" alt="Sheena Sesook">
@@ -183,6 +217,15 @@ fbq('track', 'PageView');
           </div>
         </div></div>
     <p class="listing-disclaimer">Listing information is deemed reliable but is not guaranteed. Prices, availability, measurements and other details can change without notice and should be independently verified before purchase.</p>
+  </div>
+</section>
+
+<section class="section similar-section" id="similar-listings" data-slug="2-bedroom-villa-private-pool-near-sosua-cabarete" data-city="Sosúa" data-sector="Agua Dulce" data-community="Agua Dulce" data-type="Villas" data-price="315000.0" hidden>
+  <div class="wrap">
+    <span class="eyebrow">Keep Browsing</span>
+    <h2>Similar homes nearby</h2>
+    <div class="similar-grid"></div>
+    <a href="../listings.html" class="back-link similar-all">View All Listings</a>
   </div>
 </section>
 
@@ -209,7 +252,7 @@ fbq('track', 'PageView');
   <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 
-<a class="whatsapp-float" href="https://wa.me/18093503736?text=Hi%21%20I%27m%20interested%20in%20real%20estate%20on%20the%20North%20Coast%20of%20the%20Dominican%20Republic.%20I%27m%20looking%20for%20more%20information%20about%20this%20property%20%28Property%20code%3A%203665%29.%20Please%20get%20in%20touch%20when%20you%20have%20a%20moment." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/18093503736?text=Hi%21%20I%27m%20interested%20in%202-Bedroom%20Villa%20with%20Private%20Pool%20Near%20Sos%C3%BAa%20%26%20Cabarete%20%28%24315%2C000%2C%20property%20code%203665%29.%20Could%20you%20send%20me%20more%20information%20and%20let%20me%20know%20when%20I%20could%20arrange%20a%20viewing%3F%20https%3A//sheenaandmichaelrealtydr.com/properties/2-bedroom-villa-private-pool-near-sosua-cabarete.html" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
   <span class="wa-tip">Chat with us</span>
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.31 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 3.67C14.25 3.67 16.32 4.53 17.88 6.09C19.44 7.65 20.29 9.72 20.29 11.92C20.29 16.46 16.58 20.16 12.03 20.16C10.56 20.16 9.12 19.77 7.85 19.03L7.55 18.86L4.43 19.68L5.27 16.64L5.07 16.33C4.26 15.02 3.83 13.48 3.83 11.91C3.84 7.37 7.5 3.67 12.04 3.67ZM8.53 6.65C8.37 6.65 8.1 6.71 7.87 6.96C7.65 7.21 7 7.81 7 9.02C7 10.24 7.89 11.41 8.01 11.58C8.14 11.74 9.76 14.34 12.32 15.36C14.44 16.21 14.87 16.04 15.34 16C15.8 15.95 16.81 15.39 17.02 14.81C17.24 14.22 17.24 13.72 17.17 13.61C17.11 13.51 16.94 13.45 16.69 13.32C16.44 13.2 15.21 12.59 14.98 12.51C14.75 12.42 14.58 12.38 14.42 12.63C14.25 12.88 13.77 13.45 13.62 13.61C13.48 13.78 13.33 13.8 13.08 13.67C12.83 13.55 12.03 13.28 11.08 12.43C10.34 11.77 9.84 10.96 9.7 10.71C9.55 10.46 9.68 10.32 9.81 10.19C9.92 10.08 10.06 9.9 10.19 9.75C10.31 9.6 10.36 9.5 10.44 9.33C10.53 9.17 10.48 9.02 10.42 8.9C10.36 8.77 9.86 7.54 9.65 7.04C9.44 6.56 9.24 6.62 9.09 6.62C8.94 6.6 8.78 6.65 8.53 6.65Z" fill="#EFEAE1"/>
@@ -220,6 +263,8 @@ fbq('track', 'PageView');
   const photos = ["https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvVE40MEpIVEpSTC9YdXE2NndnVTlvLzU5YjZiZjQyLWFlN2QtNDI2Ni1iZTg3LWM2NmUxZDlmY2U5ZC5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvNDYxUlhDU0hPNy96UkVvMjh3dWZwLzY1Yjk5YTA5LTBlNDItNGZjYS1iNTQ2LTNlM2JiMzBjNWJiOS5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvNUJTREo5NDJXUi9QYjNaQW5MNFF6LzRkNmY0YTQ0LTM1NTEtNGE2My1iMTk0LWZlYzY1ZDkwZDVjYS5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvTVRETUZIMVhYNS9jUWM0dTJyQTVnL2E2MTQwM2JkLTZkZjMtNDVhZi04YThiLWM2OTAzY2RiNGMxMC5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvRVRRWEhZSFoxNy9HdURSaXVMU0dSLzJkOTIzMzcyLTIzOTMtNDI2Yi1iY2M4LThjYjRiNWM1ODRiNy5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvNlhYRU5CWThLMS9aMlpWck1XRXF0LzU0ZjI2YjE3LWM1NzktNDMyZi1hNDNjLWUxOGYwODU5N2JiNi5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvNjUySjhON0tCQy8yVVJrVm1jdHlnLzczYjA2MjAxLWQ1ZDYtNDUzYS1hMzU4LWI4MDQxMTlmMzUwMy5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvOFVXNDhRMjczNC9rOXJzREVLWG5ZLzZmNTlkODgwLThkMTUtNGRiOS05ZTk3LTVmMmQ0NWE4YzM1OC5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvV0NEM1ZUUUtKMC94bkFxeTdRVEJRLzUyNjBkYTA1LWRkYTUtNGNkYy1hNThlLWI2YWI1NGYzNmI2Zi5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvWFJIOElBQzBDMi91UXFuU1E5NlZZLzExNmExNWU4LTY3MGQtNDczYS1hYzgwLWQ1YTc0N2Y1ZWM3My5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvVTZNOVhFRk5KVi92RXZTUzNWNThnL2VmYTBmOGYzLTJlMDYtNDYwZS1hZGU0LTZiN2U3NDY2OTU4Ny5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvM1VJMVZVOFRHTS9ocEJ4VXVUNnMzL2Y3ZWJmN2JiLTRlY2QtNGNkOS05NDc1LWJmYTY1NmQ5MDdlZS5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvMERFMVJIVzNMMC9XVzNOVWFjeVhXL2FiNDBiMmJmLWU4OTYtNDk0OC1iZjFhLWQ4MjdlMjliMGFkZC5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvU0hRS084S1Y0VS9YRnk4b1hNR2pFLzA2NTE5MGM5LTMyMjAtNDgwNS04YjgzLTNiZGQ2Y2Y3NTQ5OC5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvMEw0UEpNUEdFMy9zUDZSdkVWUUVCLzE0ZDZkODU1LTliYzMtNGZhNS05MTNkLTFmOGUyMmZiOGIyNC5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvWVpFOVg2QkJWQS9VU0VhUFVxUFdULzVlZjFkYWQ3LWRiYTctNDQxYS04MmVjLTMyNWI3NTAxMzY3Yy5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvRVAzQlVSMkpRMy9vTnRaRVNBRjZjL2U2NDg5Y2MzLWY2Y2MtNGMzOC1iNDY5LWRiZmNkNTQ3YzY1Mi5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvUzdLMEpEUDRMWC93MnFmbjY1QUdULzVkY2NlNjkyLWU4NjktNDM2MS1iMDZkLTI2YTJkNjUzOTc2My5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvQTdOT1hJSDJBSC9FNEFSa3hZY05oL2IyNzAyYWZlLWI2NWItNDNiOS1iNWE4LTFlMzU4MGMzZmIwZC5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvVzJPNUtKNFU2Ty9ra05pZmVNOWNnLzU2NGZjM2JjLWY1NjktNGU3Yi1hMDc1LWVjYTY1ZTFkODU4NC5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19", "https://d2kflbb1pmooh4.cloudfront.net/eyJidWNrZXQiOiAiYWx0ZXJlc3RhdGUiLCAia2V5IjogInN0YXRpYy9wcm9wZXJ0aWVzLzU5SkxQMVdLTFIvUVhCTDc4RU9QUC82Mk03OGNUNEZ5LzA5OWQ5MjIxLTM3OWUtNGQ4Yi05OWI2LTE4NWMwMjc1NzVhMi5qcGVnIiwgImVkaXRzIjogeyJyZXNpemUiOiB7IndpZHRoIjogMTI4MCwgImhlaWdodCI6IDk2MCwgImZpdCI6ICJpbnNpZGUifSwgInRvRm9ybWF0IjogImpwZWciLCAianBlZyI6IHsicXVhbGl0eSI6IDcwfX19"];
 </script>
 <script src="../js/lightbox.js"></script>
+<script src="../js/property-enquiry.js"></script>
+<script src="../js/similar-listings.js"></script>
 <script src="../js/nav-toggle.js"></script>
 </body>
 </html>
