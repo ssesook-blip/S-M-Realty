@@ -96,3 +96,75 @@ footer{ background:var(--ink); color:rgba(239,234,225,0.6); padding:50px 0; marg
 /* Listing accuracy disclaimer */
 .listing-disclaimer{ max-width:720px; margin-top:36px; padding-top:18px; border-top:1px solid var(--line); font-size:12.5px; line-height:1.6; color:var(--taupe); }
 @media print{ .listing-disclaimer{ margin-top:10px; padding-top:6px; font-size:8.5pt; } }
+
+/* ---------- ENQUIRY CALLS TO ACTION ---------- */
+.prop-cta{ display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:22px; }
+.prop-cta .print-listing-btn{ margin-top:0; }
+.prop-cta-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:'Archivo',sans-serif; font-size:12.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+  padding:12px 22px; border:1px solid var(--midnight); cursor:pointer; text-decoration:none;
+  transition:background .2s ease, color .2s ease, border-color .2s ease;
+}
+.prop-cta-primary{ background:var(--midnight); color:var(--stone); }
+.prop-cta-primary:hover{ background:var(--ink); border-color:var(--ink); }
+.prop-cta-secondary{ background:none; color:var(--midnight); }
+.prop-cta-secondary:hover{ background:var(--midnight); color:var(--stone); }
+.prop-cta .print-listing-btn{ border-color:var(--line); color:var(--taupe); }
+
+/* ---------- VIEWING REQUEST FORM ---------- */
+.prop-enquire{
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.4fr); gap:48px;
+  margin-top:56px; padding:40px; background:var(--stone-dim); border-top:3px solid var(--bronze);
+  scroll-margin-top:90px;
+}
+.prop-enquire h2{ font-size:clamp(28px,3vw,36px); margin:8px 0 12px; }
+.prop-enquire-intro p{ font-size:15px; line-height:1.7; color:var(--ink-soft); }
+.prop-enquire-intro a{ color:var(--midnight); border-bottom:1px solid var(--bronze); }
+.enquiry-form{ display:flex; flex-direction:column; gap:14px; }
+.enquiry-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.enquiry-form label{ display:flex; flex-direction:column; gap:6px; font-size:11.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--taupe); }
+.enquiry-form .opt{ font-weight:400; text-transform:none; letter-spacing:0; }
+.enquiry-form input[type=text], .enquiry-form input[type=email], .enquiry-form input[type=tel], .enquiry-form textarea{
+  font-family:'Archivo',sans-serif; font-size:15px; color:var(--ink); text-transform:none; letter-spacing:0; font-weight:400;
+  background:var(--stone); border:1px solid var(--line); padding:11px 12px; width:100%;
+}
+.enquiry-form textarea{ resize:vertical; min-height:96px; }
+.enquiry-form input:focus, .enquiry-form textarea:focus{ outline:none; border-color:var(--bronze); }
+.enquiry-form .form-optin{ flex-direction:row; align-items:flex-start; gap:8px; font-size:13px; font-weight:400; letter-spacing:0; text-transform:none; line-height:1.5; }
+.enquiry-form .form-optin input{ margin-top:3px; }
+.enquiry-form button{ align-self:flex-start; }
+.enquiry-form button:disabled{ opacity:.7; cursor:default; }
+.enquiry-status{ font-size:14px; color:var(--patina); }
+.enquiry-status:empty{ display:none; }
+.enquiry-status.is-error{ color:#9b3b2e; }
+.enquiry-form .form-privacy{ font-size:12px; color:var(--taupe); }
+.enquiry-form .form-privacy a{ border-bottom:1px solid var(--line); }
+
+/* ---------- SIMILAR HOMES ---------- */
+.similar-section{ padding-top:20px; }
+.similar-section h2{ font-size:clamp(28px,3vw,36px); margin:8px 0 26px; }
+.similar-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:30px; }
+.similar-card{ display:block; background:var(--stone); border:1px solid var(--line); text-decoration:none; color:inherit; transition:border-color .2s ease; }
+.similar-card:hover{ border-color:var(--bronze); }
+.similar-photo{ aspect-ratio:4/3; overflow:hidden; background:var(--stone-dim); }
+.similar-photo img{ width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+.similar-card:hover .similar-photo img{ transform:scale(1.04); }
+.similar-body{ padding:16px 18px 18px; }
+.similar-title{ font-family:'Cormorant',serif; font-size:19px; line-height:1.3; margin-bottom:8px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+.similar-price{ font-family:'Cormorant',serif; font-size:22px; color:var(--bronze); }
+.similar-meta{ display:flex; flex-wrap:wrap; gap:4px 14px; margin-top:6px; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; color:var(--taupe); }
+
+@media (max-width:900px){
+  .prop-enquire{ grid-template-columns:1fr; gap:24px; padding:28px 22px; }
+  .similar-grid{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:640px){
+  .prop-cta{ flex-direction:column; align-items:stretch; }
+  .prop-cta-btn{ width:100%; justify-content:center; }
+  .prop-cta .print-listing-btn{ display:none; }
+  .enquiry-row{ grid-template-columns:1fr; }
+  .enquiry-form button{ align-self:stretch; }
+  .similar-grid{ grid-template-columns:1fr; }
+}
+@media print{ .prop-cta, .prop-enquire, .similar-section{ display:none !important; } }

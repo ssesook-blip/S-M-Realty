@@ -4,6 +4,7 @@ from lib import (
     clean_title, format_price_full, format_area, format_bathrooms,
     gallery_urls, render_amenities, render_agents, whatsapp_link, get_sector,
     meta_description, SITE_URL, strip_description, render_agent_take,
+    get_community, format_price_card,
 )
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
@@ -115,7 +116,11 @@ fbq('track', 'PageView');
     <h1>{title}</h1>
     <div class="prop-loc">{location}</div>
     <div class="prop-price">{price}</div>
-    <button class="print-listing-btn" onclick="window.print()">Print This Listing</button>
+    <div class="prop-cta">
+      <a href="#enquire" class="prop-cta-btn prop-cta-primary">Request a Viewing</a>
+      <a href="{whatsapp}" class="prop-cta-btn prop-cta-secondary" target="_blank" rel="noopener">WhatsApp About This Home</a>
+      <button class="print-listing-btn" onclick="window.print()">Print This Listing</button>
+    </div>
   </div>
 </section>
 
@@ -144,8 +149,47 @@ fbq('track', 'PageView');
     </div>
     <div class="print-only-desc">{print_description}</div>
     {amenities}
+
+    <div class="prop-enquire" id="enquire">
+      <div class="prop-enquire-intro">
+        <span class="eyebrow">Arrange a Viewing</span>
+        <h2>Interested in this home?</h2>
+        <p>Send us a few details and Sheena or Michael will reply to you personally. Prefer to chat? <a href="{whatsapp}" target="_blank" rel="noopener">Message us on WhatsApp</a>.</p>
+      </div>
+      <form id="property-enquiry" class="enquiry-form" novalidate>
+        <input type="hidden" name="_subject" value="Viewing request: {title_attr}">
+        <input type="hidden" name="lead_source" value="Listing Enquiry">
+        <input type="hidden" name="property" value="{title_attr}">
+        <input type="hidden" name="property_code" value="{cid}">
+        <input type="hidden" name="property_price" value="{price_card}">
+        <input type="hidden" name="property_url" value="{canonical_url}">
+        <div class="enquiry-row">
+          <label><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <div class="enquiry-row">
+          <label><span>WhatsApp or phone <span class="opt">(optional)</span></span><input type="tel" name="phone" autocomplete="tel"></label>
+          <label><span>Preferred viewing dates <span class="opt">(optional)</span></span><input type="text" name="preferred_dates" placeholder="e.g. 12&ndash;15 March, or flexible"></label>
+        </div>
+        <label><span>Message</span><textarea name="message" rows="4">I'd like more information about this property and to arrange a viewing.</textarea></label>
+        <label class="form-optin"><input type="checkbox" name="email_updates" value="yes"> Also send me occasional new listings and market updates by email. I can unsubscribe at any time.</label>
+        <button type="submit" class="prop-cta-btn prop-cta-primary">Send Enquiry</button>
+        <p class="enquiry-status" role="status" aria-live="polite"></p>
+        <p class="form-privacy">We use your details only to reply to your enquiry. See our <a href="../privacy-policy.html">Privacy Policy</a>.</p>
+      </form>
+    </div>
+
     {agents}
     <p class="listing-disclaimer">Listing information is deemed reliable but is not guaranteed. Prices, availability, measurements and other details can change without notice and should be independently verified before purchase.</p>
+  </div>
+</section>
+
+<section class="section similar-section" id="similar-listings" data-slug="{slug}" data-city="{city_attr}" data-sector="{sector_attr}" data-community="{community_attr}" data-type="{category_attr}" data-price="{price_number}" hidden>
+  <div class="wrap">
+    <span class="eyebrow">Keep Browsing</span>
+    <h2>Similar homes nearby</h2>
+    <div class="similar-grid"></div>
+    <a href="../listings.html" class="back-link similar-all">View All Listings</a>
   </div>
 </section>
 
@@ -183,6 +227,8 @@ fbq('track', 'PageView');
   const photos = {photos_js};
 </script>
 <script src="../js/lightbox.js"></script>
+<script src="../js/property-enquiry.js"></script>
+<script src="../js/similar-listings.js"></script>
 <script src="../js/nav-toggle.js"></script>
 </body>
 </html>
@@ -237,6 +283,14 @@ def generate_property_page(listing: dict) -> str:
         amenities=render_amenities(listing),
         agents=render_agents(listing),
         whatsapp=whatsapp_link(listing),
-        photos_js=str(images).replace("'", '"'),
+        photos_js=json.dumps(images),
+        title_attr=html.escape(title, quote=True),
+        cid=html.escape(str(listing.get("cid", ""))),
+        price_card=html.escape(format_price_card(listing)),
+        slug=html.escape(slug),
+        city_attr=html.escape(listing.get("city") or "", quote=True),
+        sector_attr=html.escape(get_sector(listing), quote=True),
+        community_attr=html.escape(get_community(listing), quote=True),
+        category_attr=html.escape(category if category != "—" else "", quote=True),
     )
     return body

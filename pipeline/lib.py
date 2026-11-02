@@ -321,13 +321,19 @@ def render_agents(listing: dict) -> str:
 
 
 def whatsapp_link(listing: dict) -> str:
+    """Pre-filled WhatsApp message naming the exact property, its price,
+    code and page link, so every chat arrives with full context."""
     name = clean_title(listing.get("name", ""))
     cid = listing.get("cid", "")
+    price = format_price_card(listing)
+    slug = listing.get("slug", "")
+    url = f"https://sheenaandmichaelrealtydr.com/properties/{slug}.html" if slug else ""
     text = (
-        f"Hi! I'm interested in real estate on the North Coast of the Dominican Republic. "
-        f"I'm looking for more information about this property (Property code: {cid})."
-        f" Please get in touch when you have a moment."
+        f"Hi! I'm interested in {name} ({price}, property code {cid}). "
+        f"Could you send me more information and let me know when I could arrange a viewing?"
     )
+    if url:
+        text += f" {url}"
     from urllib.parse import quote
     return f"https://wa.me/{MAIN_WHATSAPP_NUMBER}?text={quote(text)}"
 

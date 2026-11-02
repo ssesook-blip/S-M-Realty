@@ -148,6 +148,43 @@ def generate_sitemap(slugs: set):
     print(f"  sitemap.xml written with {len(urls)} URLs ({changed} changed today).")
 
 
+INDEX_FILE = os.path.join(SITE_DIR, "listings-index.json")
+
+
+def generate_listings_index(details: list):
+    """Small JSON index of every live listing. Property pages read it in the
+    browser to show "Similar homes nearby", so suggestions stay current
+    (sold/removed listings drop out) without regenerating every page."""
+    from lib import (clean_title, get_sector, get_community, gallery_urls,
+                     format_price_card, format_bathrooms, has_bed_bath_data)
+    rows = []
+    for d in details:
+        if not d.get("slug"):
+            continue
+        imgs = gallery_urls(d)
+        sector = get_sector(d)
+        city = d.get("city") or ""
+        show_bb = has_bed_bath_data(d)
+        rows.append({
+            "slug": d["slug"],
+            "title": clean_title(d.get("name", "")),
+            "price": d.get("sale_price") or 0,
+            "price_label": format_price_card(d),
+            "city": city,
+            "sector": sector,
+            "community": get_community(d),
+            "location": ", ".join(x for x in (sector, city) if x),
+            "type": (d.get("category") or {}).get("name_en", "") or "",
+            "beds": d.get("room") if show_bb else 0,
+            "baths": format_bathrooms(d) if show_bb else "",
+            "image": imgs[0] if imgs else "",
+        })
+    rows.sort(key=lambda r: r["slug"])
+    with open(INDEX_FILE, "w", encoding="utf-8") as f:
+        json.dump(rows, f, ensure_ascii=False, separators=(",", ":"))
+    print(f"  listings-index.json written ({len(rows)} listings).")
+
+
 FEED_FILE = os.path.join(SITE_DIR, "properties-feed.xml")
 
 
@@ -483,6 +520,7 @@ def refresh_listings(slugs: list):
     if refreshed:
         save_details_cache(cache)
         generate_properties_feed([cache[s] for s in known if s in cache])
+        generate_listings_index([cache[s] for s in known if s in cache])
     print(f"Refreshed {refreshed} of {len(slugs)} requested listing(s).")
 
 
@@ -530,6 +568,7 @@ def main():
         save_known_slugs(set(ok_slugs))
         save_details_cache({slug: d for slug, d in zip(ok_slugs, all_details)})
         generate_properties_feed(all_details)
+        generate_listings_index(all_details)
         update_all_auto_sections(SITE_DIR, all_details)
         apply_agent_note_changes({}, set(ok_slugs), regenerate=False)
         sweep_orphan_property_pages(set(ok_slugs) | set(current_slugs))
@@ -546,6 +585,7 @@ def main():
     if not new_slugs and not removed_slugs:
         cache = load_details_cache()
         current = [cache[s] for s in known if s in cache]
+        generate_listings_index(current)
         update_all_auto_sections(SITE_DIR, current)
         apply_agent_note_changes(cache, known)
         sweep_orphan_property_pages(known)
@@ -597,6 +637,7 @@ def main():
     save_details_cache(cache)
     current_details = [cache[s] for s in updated_known if s in cache]
     generate_properties_feed(current_details)
+    generate_listings_index(current_details)
     update_all_auto_sections(SITE_DIR, current_details)
     apply_agent_note_changes(cache, updated_known)
     sweep_orphan_property_pages(updated_known)
