@@ -100,6 +100,7 @@ fbq('track', 'PageView');
     <div class="nav-links">
       <a href="../listings.html">All Listings</a>
       <a href="../index.html#areas">Areas</a>
+      <a href="../buying-guide.html">Buying Guide</a>
       <a href="../sell-your-property.html">Sell</a>
       <a href="../index.html#process">How We Work</a>
       <a href="../index.html#team">The Team</a>
