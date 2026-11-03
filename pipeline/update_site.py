@@ -69,6 +69,7 @@ STATIC_PAGES = [
     "listings.html",
     "buying-guide.html",
     "casa-linda.html",
+    "sell-your-property.html",
     # Buyer topic guides
     "buy-property-dominican-republic-foreigner.html",
     "dominican-republic-closing-costs-property-taxes.html",
