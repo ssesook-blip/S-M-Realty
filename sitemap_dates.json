@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-11-03",
-  "hash": "5797ca278bd6f2cf99005b884b6db03cfbcf92a9"
+  "date": "2026-11-04",
+  "hash": "1ed313a2e6c611709e832cc9b57aceb2bec02aba"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-11-03",
@@ -52,8 +52,8 @@
   "hash": "e16fbe0b547c45d2904e838cd5be8b74e576e083"
  },
  "listings.html": {
-  "date": "2026-11-03",
-  "hash": "b756b6906aca3cdd5753cc97b2a55030395db145"
+  "date": "2026-11-04",
+  "hash": "8299d33317213d50ddff2519de9b3ffe273ccf85"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-11-03",
@@ -78,6 +78,10 @@
  "properties/1br-furnished-apartment-sosua-ocean-village-195000-3801.html": {
   "date": "2026-11-03",
   "hash": "7943f0748c3741d7a7b8a22b7ff007c819c53c62"
+ },
+ "properties/2-bedroom-25-bath-villa-in-sosua-with-no-hoa-3818.html": {
+  "date": "2026-11-04",
+  "hash": "9d5b3012157e640ebe356e80e7841b3dd07c1a3f"
  },
  "properties/2-bedroom-25-bathroom-modern-townhomes-with-private-pool-in-resort-community-3513.html": {
   "date": "2026-11-03",
@@ -868,7 +872,7 @@
   "hash": "8a57071368d6eaaff271dc219549771fecb995ee"
  },
  "sosua-real-estate.html": {
-  "date": "2026-11-03",
-  "hash": "9ef6d4e28753ff3628c9014a3a8bb54f1db1f169"
+  "date": "2026-11-04",
+  "hash": "2308b1df1219d3fa5e6b012fb3d0771bdf5a0623"
  }
 }
