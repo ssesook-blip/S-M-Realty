@@ -1,0 +1,654 @@
+"""
+Incremental site updater for S&M Realty DR.
+
+Workflow:
+  1. Fetch current listings (summary) for the configured search terms.
+  2. Compare slugs against known_listings.json (the set already on the site).
+  3. For genuinely new slugs, fetch full detail records.
+  4. Generate a properties/<slug>.html page for each.
+  5. Insert a card for each into listings.html.
+  6. Update the running totals shown on the page (header count, filter count, JS).
+  7. Update known_listings.json so the next run only picks up newer listings.
+
+This script is written to run standalone (e.g. from GitHub Actions) given:
+  - AETOKEN env var (AlterEstate API token)
+  - repo checked out with site/ (index.html, listings.html, properties/, css/, js/)
+    and known_listings.json at the repo root
+"""
+import json
+import os
+import re
+import sys
+
+sys.path.insert(0, os.path.dirname(__file__))
+from generate_page import generate_property_page
+from generate_card import generate_listing_card
+from auto_sections import update_all_auto_sections
+from lib import load_agent_notes
+
+import requests
+
+TOKEN = os.environ.get("AETOKEN", "")
+FILTER_URL = "https://secure.alterestate.com/api/v1/properties/filter/"
+DETAIL_URL = "https://secure.alterestate.com/api/v1/properties/view/{slug}/"
+SEARCH_TERMS = ["Costambar", "Sosua", "Cabarete", "Puerto Plata"]
+
+# Listings excluded from this site even though they match the search terms
+# above (the shared AlterEstate account covers the whole brokerage, not just
+# Mike's own listings). Keyed by AlterEstate's numeric "cid" for each property.
+EXCLUDED_CIDS = {
+    3512,
+    3517,  # "Luxury Oceanfront 4BR/4.5BA Condos in Cabarete" - listed by a
+           # colleague, not Mike; its price field is set to the entire
+           # 70-unit project total ($25.4M) rather than this unit's actual
+           # price, and it isn't Mike's listing to correct in AlterEstate.
+}
+
+SITE_DIR = os.environ.get("SITE_DIR", ".")
+PROPERTIES_DIR = os.path.join(SITE_DIR, "properties")
+LISTINGS_HTML = os.path.join(SITE_DIR, "listings.html")
+INDEX_HTML = os.path.join(SITE_DIR, "index.html")
+KNOWN_LISTINGS_FILE = os.path.join(SITE_DIR, "known_listings.json")
+DETAILS_CACHE_FILE = os.path.join(SITE_DIR, "property_details_cache.json")
+
+
+def load_details_cache() -> dict:
+    if os.path.exists(DETAILS_CACHE_FILE):
+        with open(DETAILS_CACHE_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def save_details_cache(cache: dict):
+    with open(DETAILS_CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False)
+SITEMAP_FILE = os.path.join(SITE_DIR, "sitemap.xml")
+
+STATIC_PAGES = [
+    "",
+    "listings.html",
+    "buying-guide.html",
+    "casa-linda.html",
+    "sell-your-property.html",
+    # Buyer topic guides
+    "buy-property-dominican-republic-foreigner.html",
+    "dominican-republic-closing-costs-property-taxes.html",
+    "owner-financing-dominican-republic.html",
+    "confotur-dominican-republic.html",
+    # Town and community pages
+    "sosua-real-estate.html",
+    "cabarete-real-estate.html",
+    "puerto-plata-real-estate.html",
+    "sosua-ocean-village.html",
+    "hispaniola-sosua.html",
+    "hispaniola-beach-sosua.html",
+    "el-choco-sosua.html",
+    "el-batey-sosua.html",
+    "kite-beach-cabarete.html",
+    "encuentro-beach-cabarete.html",
+]
+
+
+SITEMAP_DATES_FILE = os.path.join(SITE_DIR, "sitemap_dates.json")
+
+
+def _page_fingerprint(path: str) -> str:
+    """Hash of a page's file contents, used to tell whether it really changed."""
+    import hashlib
+    if not os.path.exists(path):
+        return ""
+    with open(path, "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()
+
+
+def generate_sitemap(slugs: set):
+    """Writes sitemap.xml with an honest <lastmod> for every page: the date
+    the page's content last actually changed, not simply 'today'. Google
+    ignores lastmod on sites that mark every page as updated every day, so
+    accurate dates help it spot new and changed pages faster.
+    Change dates are remembered in sitemap_dates.json."""
+    from lib import SITE_URL
+    import datetime
+
+    today = datetime.date.today().isoformat()
+    dates = {}
+    if os.path.exists(SITEMAP_DATES_FILE):
+        try:
+            with open(SITEMAP_DATES_FILE, "r", encoding="utf-8") as f:
+                dates = json.load(f)
+        except ValueError:
+            dates = {}
+
+    pages = [(page, os.path.join(SITE_DIR, page or "index.html")) for page in STATIC_PAGES]
+    pages += [(f"properties/{slug}.html", os.path.join(PROPERTIES_DIR, f"{slug}.html")) for slug in sorted(slugs)]
+
+    new_dates = {}
+    urls = []
+    for rel, path in pages:
+        fp = _page_fingerprint(path)
+        prev = dates.get(rel) or {}
+        if prev.get("hash") == fp and prev.get("date"):
+            lastmod = prev["date"]
+        else:
+            lastmod = today
+        new_dates[rel] = {"hash": fp, "date": lastmod}
+        loc = f"{SITE_URL}/{rel}" if rel else f"{SITE_URL}/"
+        urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod}</lastmod>\n  </url>")
+
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(urls) +
+        "\n</urlset>\n"
+    )
+    with open(SITEMAP_FILE, "w", encoding="utf-8") as f:
+        f.write(xml)
+    with open(SITEMAP_DATES_FILE, "w", encoding="utf-8") as f:
+        json.dump(new_dates, f, indent=1, sort_keys=True)
+    changed = sum(1 for v in new_dates.values() if v["date"] == today)
+    print(f"  sitemap.xml written with {len(urls)} URLs ({changed} changed today).")
+
+
+INDEX_FILE = os.path.join(SITE_DIR, "listings-index.json")
+
+
+def generate_listings_index(details: list):
+    """Small JSON index of every live listing. Property pages read it in the
+    browser to show "Similar homes nearby", so suggestions stay current
+    (sold/removed listings drop out) without regenerating every page."""
+    from lib import (clean_title, get_sector, get_community, gallery_urls,
+                     format_price_card, format_bathrooms, has_bed_bath_data)
+    rows = []
+    for d in details:
+        if not d.get("slug"):
+            continue
+        imgs = gallery_urls(d)
+        sector = get_sector(d)
+        city = d.get("city") or ""
+        show_bb = has_bed_bath_data(d)
+        rows.append({
+            "slug": d["slug"],
+            "title": clean_title(d.get("name", "")),
+            "price": d.get("sale_price") or 0,
+            "price_label": format_price_card(d),
+            "city": city,
+            "sector": sector,
+            "community": get_community(d),
+            "location": ", ".join(x for x in (sector, city) if x),
+            "type": (d.get("category") or {}).get("name_en", "") or "",
+            "beds": d.get("room") if show_bb else 0,
+            "baths": format_bathrooms(d) if show_bb else "",
+            "image": imgs[0] if imgs else "",
+        })
+    rows.sort(key=lambda r: r["slug"])
+    with open(INDEX_FILE, "w", encoding="utf-8") as f:
+        json.dump(rows, f, ensure_ascii=False, separators=(",", ":"))
+    print(f"  listings-index.json written ({len(rows)} listings).")
+
+
+FEED_FILE = os.path.join(SITE_DIR, "properties-feed.xml")
+
+
+def generate_properties_feed(details: list):
+    """Standalone real estate listing feed built directly from this website's
+    own data (only the properties actually shown on sheenaandmichaelrealtydr.com),
+    independent of AlterEstate's own account-level portal syndication.
+    Uses common, widely-recognized real estate feed fields so most portal
+    intake systems (Properstar/ListGlobally included) can read or adapt to it."""
+    from lib import clean_title, get_sector, gallery_urls, SITE_URL, strip_description
+    import datetime
+    import xml.sax.saxutils as sx
+
+    def esc(s):
+        return sx.escape(str(s or ""))
+
+    today = datetime.date.today().isoformat()
+    items = []
+    for d in details:
+        slug = d.get("slug", "")
+        title = clean_title(d.get("name", ""))
+        price = d.get("sale_price") or 0
+        currency = d.get("currency_sale") or "USD"
+        city = d.get("city") or ""
+        sector = get_sector(d)
+        beds = d.get("room", 0)
+        baths = d.get("bathroom", 0)
+        area = d.get("property_area", 0)
+        area_unit = d.get("property_area_measurer") or "m2"
+        category = (d.get("category") or {}).get("name_en", "") or ""
+        description = strip_description(d.get("description") or "", max_chars=2000)
+        images = gallery_urls(d)
+        photos_xml = "\n    ".join(f"<Photo><URL>{esc(u)}</URL></Photo>" for u in images)
+        listing_url = f"{SITE_URL}/properties/{slug}.html"
+
+        items.append(f'''  <Listing>
+    <ListingID>{esc(slug)}</ListingID>
+    <ListingURL>{esc(listing_url)}</ListingURL>
+    <Title>{esc(title)}</Title>
+    <Description>{esc(description)}</Description>
+    <PropertyType>{esc(category)}</PropertyType>
+    <ListingStatus>Active</ListingStatus>
+    <Price currency="{esc(currency)}">{price}</Price>
+    <Bedrooms>{beds}</Bedrooms>
+    <Bathrooms>{baths}</Bathrooms>
+    <LivingArea unit="{esc(area_unit)}">{area}</LivingArea>
+    <Address>
+      <City>{esc(city)}</City>
+      <Neighborhood>{esc(sector)}</Neighborhood>
+      <Country>Dominican Republic</Country>
+    </Address>
+    <Photos>
+    {photos_xml}
+    </Photos>
+    <ProviderName>S&amp;M Realty DR</ProviderName>
+    <ProviderURL>{esc(SITE_URL)}</ProviderURL>
+    <LeadRoutingEmail>info@sheenaandmichaelrealtydr.com</LeadRoutingEmail>
+  </Listing>''')
+
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        f'<PropertyFeed generated="{today}" provider="S&amp;M Realty DR" source="{SITE_URL}">\n'
+        + "\n".join(items) +
+        "\n</PropertyFeed>\n"
+    )
+    with open(FEED_FILE, "w", encoding="utf-8") as f:
+        f.write(xml)
+    print(f"  properties-feed.xml written with {len(items)} listings.")
+
+
+AGENT_NOTES_APPLIED_FILE = os.path.join(SITE_DIR, "agent_notes_applied.json")
+
+
+def apply_agent_note_changes(cache: dict, live_slugs: set, regenerate: bool = True):
+    """Regenerates only the property pages whose 'Our Take' note in
+    agent_notes.json was added, edited or removed since the last run.
+    Uses the saved listing details, so no AlterEstate API calls are needed.
+    With regenerate=False (full rebuild, where every page was just
+    regenerated anyway) it only records the current notes as applied."""
+    notes = load_agent_notes(force=True)
+    applied = {}
+    if os.path.exists(AGENT_NOTES_APPLIED_FILE):
+        with open(AGENT_NOTES_APPLIED_FILE, "r", encoding="utf-8") as f:
+            applied = json.load(f)
+    if regenerate:
+        changed = {s for s in set(notes) | set(applied) if notes.get(s) != applied.get(s)}
+        changed &= live_slugs
+        for slug in sorted(changed):
+            if slug in cache:
+                with open(os.path.join(PROPERTIES_DIR, f"{slug}.html"), "w", encoding="utf-8") as f:
+                    f.write(generate_property_page(cache[slug]))
+        if changed:
+            print(f"  Updated 'Our Take' on {len(changed)} property page(s).")
+    current = {s: n for s, n in notes.items() if s in live_slugs}
+    with open(AGENT_NOTES_APPLIED_FILE, "w", encoding="utf-8") as f:
+        json.dump(current, f, ensure_ascii=False, indent=1, sort_keys=True)
+
+
+def fetch_all_listings():
+    headers = {"aetoken": TOKEN}
+    all_results = []
+    url = FILTER_URL
+    for term in SEARCH_TERMS:
+        params = {"search": term}
+        page_url = url
+        while page_url:
+            resp = requests.get(page_url, headers=headers, params=params)
+            resp.raise_for_status()
+            data = resp.json()
+            all_results.extend(data.get("results", []))
+            page_url = data.get("next")
+            params = None
+    dedup = {p["cid"]: p for p in all_results if p.get("cid") not in EXCLUDED_CIDS}
+    return list(dedup.values())
+
+
+def fetch_detail(slug):
+    headers = {"aetoken": TOKEN}
+    resp = requests.get(DETAIL_URL.format(slug=slug), headers=headers)
+    resp.raise_for_status()
+    return resp.json()
+
+
+def load_known_slugs():
+    if os.path.exists(KNOWN_LISTINGS_FILE):
+        with open(KNOWN_LISTINGS_FILE, "r", encoding="utf-8") as f:
+            return set(json.load(f))
+    # First run: seed from whatever's already in properties/
+    if os.path.isdir(PROPERTIES_DIR):
+        return {fn[:-5] for fn in os.listdir(PROPERTIES_DIR) if fn.endswith(".html")}
+    return set()
+
+
+def save_known_slugs(slugs):
+    with open(KNOWN_LISTINGS_FILE, "w", encoding="utf-8") as f:
+        json.dump(sorted(slugs), f, indent=2, ensure_ascii=False)
+
+
+def remove_cards_from_listings_html(removed_slugs: set):
+    if not removed_slugs:
+        return
+    with open(LISTINGS_HTML, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    for slug in removed_slugs:
+        # Match from this card's opening <a> up to its closing </a>.
+        # Cards don't nest anchor tags, so a non-greedy match to the next
+        # </a> always lands on this card's own closing tag.
+        pattern = re.compile(
+            r'\s*<a href="properties/' + re.escape(slug) + r'\.html".*?</a>\s*\n?',
+            re.DOTALL,
+        )
+        content, n = pattern.subn("", content, count=1)
+        if n == 0:
+            print(f"    (card for {slug} not found in listings.html — already removed?)")
+
+    with open(LISTINGS_HTML, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+def insert_cards_into_listings_html(new_cards_html: str):
+    if not new_cards_html:
+        return
+    with open(LISTINGS_HTML, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    marker = '<p class="no-results" id="no-results">'
+    idx = content.index(marker)
+    content = content[:idx] + new_cards_html + content[idx:]
+
+    with open(LISTINGS_HTML, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+def update_listing_counts(new_total: int):
+    with open(LISTINGS_HTML, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # Update "All N active listings" copy in the page header
+    content = re.sub(
+        r"All \d+ active listings", f"All {new_total} active listings", content
+    )
+
+    # Update "Showing N of N" in the filter-count span
+    content = re.sub(
+        r'(id="result-count">Showing )\d+( of )\d+',
+        rf"\g<1>{new_total}\g<2>{new_total}",
+        content,
+    )
+
+    with open(LISTINGS_HTML, "w", encoding="utf-8") as f:
+        f.write(content)
+
+    # Update the hardcoded total in listings-filter.js
+    js_path = os.path.join(SITE_DIR, "js", "listings-filter.js")
+    if os.path.exists(js_path):
+        with open(js_path, "r", encoding="utf-8") as f:
+            js = f.read()
+        js = re.sub(r"of \d+`", f"of {new_total}`", js)
+        with open(js_path, "w", encoding="utf-8") as f:
+            f.write(js)
+
+
+def update_index_html(new_total: int):
+    if not os.path.exists(INDEX_HTML):
+        return
+    with open(INDEX_HTML, "r", encoding="utf-8") as f:
+        content = f.read()
+    content = re.sub(
+        r"View All \d+ Listings", f"View All {new_total} Listings", content
+    )
+    with open(INDEX_HTML, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+def count_existing_cards() -> int:
+    with open(LISTINGS_HTML, "r", encoding="utf-8") as f:
+        content = f.read()
+    return len(re.findall(r'class="listing reveal"', content))
+
+
+def delete_property_files(removed_slugs: set):
+    for slug in removed_slugs:
+        path = os.path.join(PROPERTIES_DIR, f"{slug}.html")
+        if os.path.exists(path):
+            os.remove(path)
+
+
+def sweep_orphan_property_pages(keep_slugs: set):
+    """Deletes any properties/*.html page whose listing is no longer live.
+    Catches pages left behind by full rebuilds or manual uploads, so sold or
+    removed listings don't linger on the site or in Google.
+    Safety: does nothing if the live list looks empty or if the sweep would
+    remove more than a quarter of the pages (likely an API hiccup)."""
+    if not keep_slugs or not os.path.isdir(PROPERTIES_DIR):
+        return set()
+    pages = {f[:-5] for f in os.listdir(PROPERTIES_DIR) if f.endswith(".html")}
+    orphans = pages - set(keep_slugs)
+    if not orphans:
+        return set()
+    if len(orphans) > max(5, len(pages) // 4):
+        print(f"  WARNING: {len(orphans)} pages look delisted - too many to be safe, skipping cleanup.")
+        return set()
+    print(f"  Cleaning up {len(orphans)} page(s) for listings that are no longer live:")
+    for slug in sorted(orphans):
+        print(f"    - {slug}")
+    delete_property_files(orphans)
+    cache = load_details_cache()
+    if any(s in cache for s in orphans):
+        for s in orphans:
+            cache.pop(s, None)
+        save_details_cache(cache)
+    return orphans
+
+
+def replace_all_cards_in_listings_html(all_cards_html: str):
+    """Used only in --full mode: swaps the entire card grid at once instead
+    of inserting/removing individual cards."""
+    with open(LISTINGS_HTML, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    grid_marker = 'id="listings-grid">'
+    end_marker = '<p class="no-results" id="no-results">'
+    start = content.index(grid_marker) + len(grid_marker)
+    end = content.index(end_marker)
+    content = content[:start] + all_cards_html + content[end:]
+
+    with open(LISTINGS_HTML, "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+def parse_refresh_list(raw: str) -> list:
+    """Turns what was typed in the 'refresh listing' box into slugs. Accepts
+    full property page URLs, 'properties/<slug>.html', or bare slugs,
+    separated by commas, spaces or new lines."""
+    slugs = []
+    for item in re.split(r"[,\s]+", raw or ""):
+        item = item.strip().strip("/")
+        if not item:
+            continue
+        item = item.split("?")[0].split("#")[0]
+        item = item.rsplit("/", 1)[-1]
+        if item.endswith(".html"):
+            item = item[:-5]
+        if item and item not in slugs:
+            slugs.append(item)
+    return slugs
+
+
+def replace_card_in_listings_html(slug: str, card_html: str) -> bool:
+    """Swaps one listing's card in listings.html for a freshly generated one,
+    keeping its place in the grid."""
+    with open(LISTINGS_HTML, "r", encoding="utf-8") as f:
+        content = f.read()
+    pattern = re.compile(
+        r'[ \t]*<a href="properties/' + re.escape(slug) + r'\.html".*?</a>[ \t]*\n?',
+        re.DOTALL,
+    )
+    content, n = pattern.subn(lambda m: card_html, content, count=1)
+    if n:
+        with open(LISTINGS_HTML, "w", encoding="utf-8") as f:
+            f.write(content)
+    return bool(n)
+
+
+def refresh_listings(slugs: list):
+    """Re-pulls specific listings that are already on the site (e.g. after
+    photos, price or description were edited in AlterEstate) and rebuilds
+    only their property page and card. Nothing else on the site changes."""
+    known = load_known_slugs()
+    cache = load_details_cache()
+    refreshed = 0
+    for slug in slugs:
+        if slug not in known:
+            print(f"  REFRESH SKIPPED: '{slug}' is not a listing currently on the site. "
+                  f"Check the spelling or paste the property page link.")
+            continue
+        print(f"  Refreshing {slug} from AlterEstate ...")
+        try:
+            detail = fetch_detail(slug)
+        except requests.exceptions.HTTPError as e:
+            print(f"    FAILED: {e}")
+            continue
+        with open(os.path.join(PROPERTIES_DIR, f"{slug}.html"), "w", encoding="utf-8") as f:
+            f.write(generate_property_page(detail))
+        card = generate_listing_card(detail)
+        if not card.endswith("\n"):
+            card += "\n"
+        if not replace_card_in_listings_html(slug, card):
+            print(f"    (card for {slug} not found in listings.html - page was still refreshed)")
+        cache[slug] = detail
+        refreshed += 1
+    if refreshed:
+        save_details_cache(cache)
+        generate_properties_feed([cache[s] for s in known if s in cache])
+        generate_listings_index([cache[s] for s in known if s in cache])
+    print(f"Refreshed {refreshed} of {len(slugs)} requested listing(s).")
+
+
+def main():
+    if not TOKEN:
+        print("ERROR: AETOKEN environment variable not set.")
+        sys.exit(1)
+
+    full_rebuild = os.environ.get("FULL_REBUILD", "").lower() in ("1", "true", "yes")
+
+    refresh = parse_refresh_list(os.environ.get("REFRESH_LISTINGS", ""))
+    if refresh and not full_rebuild:
+        print(f"Refreshing {len(refresh)} specific listing(s) requested by hand...")
+        refresh_listings(refresh)
+
+    print("Fetching current listing summaries...")
+    summaries = fetch_all_listings()
+    current_slugs = {s["slug"]: s for s in summaries}
+    print(f"  {len(current_slugs)} listings currently match the search terms.")
+
+    if full_rebuild:
+        print("FULL REBUILD requested: regenerating every listing page and card...")
+        os.makedirs(PROPERTIES_DIR, exist_ok=True)
+        all_cards = []
+        all_details = []
+        ok_slugs = []
+        for slug in sorted(current_slugs):
+            print(f"  Refreshing {slug} ...")
+            try:
+                detail = fetch_detail(slug)
+            except requests.exceptions.HTTPError as e:
+                print(f"    FAILED: {e}")
+                continue
+            page_html = generate_property_page(detail)
+            with open(os.path.join(PROPERTIES_DIR, f"{slug}.html"), "w", encoding="utf-8") as f:
+                f.write(page_html)
+            all_cards.append(generate_listing_card(detail))
+            all_details.append(detail)
+            ok_slugs.append(slug)
+
+        replace_all_cards_in_listings_html("".join(all_cards))
+        new_total = len(ok_slugs)
+        update_listing_counts(new_total)
+        update_index_html(new_total)
+        save_known_slugs(set(ok_slugs))
+        save_details_cache({slug: d for slug, d in zip(ok_slugs, all_details)})
+        generate_properties_feed(all_details)
+        generate_listings_index(all_details)
+        update_all_auto_sections(SITE_DIR, all_details)
+        apply_agent_note_changes({}, set(ok_slugs), regenerate=False)
+        sweep_orphan_property_pages(set(ok_slugs) | set(current_slugs))
+        generate_sitemap(set(ok_slugs))
+        print(f"Full rebuild complete. Site now shows {new_total} listings.")
+        return
+
+    known = load_known_slugs()
+    new_slugs = set(current_slugs) - known
+    removed_slugs = known - set(current_slugs)
+    print(f"  {len(new_slugs)} new listing(s) to add.")
+    print(f"  {len(removed_slugs)} listing(s) no longer returned by the API (will be removed).")
+
+    if not new_slugs and not removed_slugs:
+        cache = load_details_cache()
+        current = [cache[s] for s in known if s in cache]
+        generate_listings_index(current)
+        update_all_auto_sections(SITE_DIR, current)
+        apply_agent_note_changes(cache, known)
+        sweep_orphan_property_pages(known)
+        generate_sitemap(known)
+        print("No listings added or removed. Site is up to date.")
+        return
+
+    os.makedirs(PROPERTIES_DIR, exist_ok=True)
+    new_cards = []
+    added_slugs = []
+    added_details = {}
+
+    for slug in sorted(new_slugs):
+        print(f"  Fetching detail for {slug} ...")
+        try:
+            detail = fetch_detail(slug)
+        except requests.exceptions.HTTPError as e:
+            print(f"    FAILED: {e}")
+            continue
+
+        page_html = generate_property_page(detail)
+        page_path = os.path.join(PROPERTIES_DIR, f"{slug}.html")
+        with open(page_path, "w", encoding="utf-8") as f:
+            f.write(page_html)
+
+        new_cards.append(generate_listing_card(detail))
+        added_slugs.append(slug)
+        added_details[slug] = detail
+
+    if removed_slugs:
+        print(f"  Removing {len(removed_slugs)} delisted page(s) and card(s)...")
+        remove_cards_from_listings_html(removed_slugs)
+        delete_property_files(removed_slugs)
+
+    if new_cards:
+        insert_cards_into_listings_html("".join(new_cards))
+
+    new_total = count_existing_cards()
+    update_listing_counts(new_total)
+    update_index_html(new_total)
+
+    updated_known = (known | set(added_slugs)) - removed_slugs
+    save_known_slugs(updated_known)
+
+    cache = load_details_cache()
+    cache.update(added_details)
+    for slug in removed_slugs:
+        cache.pop(slug, None)
+    save_details_cache(cache)
+    current_details = [cache[s] for s in updated_known if s in cache]
+    generate_properties_feed(current_details)
+    generate_listings_index(current_details)
+    update_all_auto_sections(SITE_DIR, current_details)
+    apply_agent_note_changes(cache, updated_known)
+    sweep_orphan_property_pages(updated_known)
+    generate_sitemap(updated_known)
+
+    print(
+        f"Added {len(added_slugs)} listing(s), removed {len(removed_slugs)} listing(s). "
+        f"Site now shows {new_total} listings."
+    )
+
+
+if __name__ == "__main__":
+    main()

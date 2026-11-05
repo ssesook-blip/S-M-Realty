@@ -1,0 +1,541 @@
+"""
+Shared formatting helpers used by both the property-page generator
+and the listings.html card generator.
+"""
+import html
+import re
+
+MAIN_WHATSAPP_NUMBER = "18093503736"  # shared company line used on all pages
+
+
+def clean_title(name: str) -> str:
+    """Some listing names have marketing suffixes like ' | US$198,000 | Income-Producing...'
+    Strip anything after the first pipe, matching the clean style of existing pages.
+    Also unescapes any HTML entities already present in AlterEstate's raw data
+    (e.g. a title already containing '&amp;') so the html.escape() call later
+    in generate_card.py/generate_page.py doesn't double-encode it into
+    '&amp;amp;' showing up literally on the page."""
+    name = html.unescape(name.split("|")[0].strip())
+    return fix_shouting(name)
+
+
+_SMALL_WORDS = {"a", "an", "and", "at", "by", "for", "from", "in", "of", "on", "or", "the", "to", "with"}
+
+
+def fix_shouting(name: str) -> str:
+    """Turns ALL-CAPS listing names into normal title case, which reads better
+    in Google results ('LUXURY OCEANFRONT 4BR/4.5BA CONDOS IN CABARETE' ->
+    'Luxury Oceanfront 4BR/4.5BA Condos in Cabarete'). Words containing digits
+    (4BR/4.5BA, M2) stay as they are. Names that aren't mostly capitals are
+    left untouched."""
+    letters = [c for c in name if c.isalpha()]
+    if len(letters) < 8 or sum(c.isupper() for c in letters) / len(letters) < 0.7:
+        return name
+    out = []
+    for i, word in enumerate(name.split(" ")):
+        if any(ch.isdigit() for ch in word) or not word:
+            out.append(word)
+        elif i > 0 and word.lower() in _SMALL_WORDS:
+            out.append(word.lower())
+        else:
+            out.append("-".join(w[:1].upper() + w[1:].lower() for w in word.split("-")))
+    return " ".join(out)
+
+
+def format_price_full(listing: dict) -> str:
+    """Property-page style price, e.g. 'USD 209,000' or 'Price on request'."""
+    price = listing.get("sale_price")
+    currency = listing.get("currency_sale") or "USD"
+    if price:
+        return f"{currency} {int(round(price)):,}"
+    return "Price on request"
+
+
+def format_price_card(listing: dict) -> str:
+    """Listing-card style price, e.g. '$265,000' or 'Price on request'."""
+    price = listing.get("sale_price")
+    if price:
+        return f"${int(round(price)):,}"
+    return "Price on request"
+
+
+def price_bucket(listing: dict) -> str:
+    """Matches the data-price buckets already used by listings-filter.js."""
+    price = listing.get("sale_price")
+    if not price:
+        return ""
+    if price < 250_000:
+        return "under250"
+    if price < 500_000:
+        return "250-500"
+    if price < 750_000:
+        return "500-750"
+    return "750plus"
+
+
+def format_area(listing: dict) -> str:
+    area = listing.get("property_area")
+    measurer = listing.get("property_area_measurer") or "Mt2"
+    if area is None:
+        return "—"
+    if float(area).is_integer():
+        return f"{int(area)} {measurer}"
+    return f"{area:g} {measurer}"
+
+
+def format_bathrooms(listing: dict) -> str:
+    baths = listing.get("bathroom") or 0
+    return f"{float(baths):.1f}"
+
+
+def gallery_urls(listing: dict) -> list:
+    gallery = listing.get("gallery_image") or []
+    urls = [g.get("image") for g in gallery if g.get("image")]
+    if not urls and listing.get("featured_image"):
+        urls = [listing["featured_image"]]
+    return urls
+
+
+def has_bed_bath_data(listing: dict) -> bool:
+    """Land/lot listings typically have no bedroom or bathroom count at all
+    (raw None from AlterEstate, not 0). Rather than showing 'None Bed' on
+    those cards, callers use this to skip the bed/bath row entirely."""
+    return listing.get("room") is not None
+
+
+# AlterEstate's amenity data comes back in Spanish (it's a Dominican Republic
+# platform). This maps the common terms to English for display on the site.
+# Unmatched terms fall back to a cleaned-up (title-cased) version of the
+# original rather than disappearing, so nothing silently vanishes if a new
+# amenity term shows up that isn't in this list yet.
+AMENITY_TRANSLATIONS = {
+    "AMUEBLADO": "Furnished",
+    "SEMI AMUEBLADO": "Semi-Furnished",
+    "SIN AMUEBLAR": "Unfurnished",
+    "AREA DE JUEGOS INFANTILES": "Children's Play Area",
+    "AREA INFANTIL": "Children's Play Area",
+    "BALCÓN": "Balcony",
+    "BALCON": "Balcony",
+    "BALCÓN TIPO TERRAZA": "Terrace Balcony",
+    "BALCON TIPO TERRAZA": "Terrace Balcony",
+    "TERRAZA": "Terrace",
+    "CANCHA DE BASKET BALL": "Basketball Court",
+    "CANCHA DE BALONCESTO": "Basketball Court",
+    "CANCHA DE TENIS": "Tennis Court",
+    "CANCHA DE PADEL": "Padel Court",
+    "CANCHA DE PÁDEL": "Padel Court",
+    "CANCHA MULTIUSO": "Multi-Purpose Court",
+    "CENTROS COMERCIALES CERCANOS": "Nearby Shopping Centers",
+    "SUPERMERCADO CERCANO": "Nearby Supermarket",
+    "GAS COMÚN": "Gas Utility Included",
+    "GAS COMUN": "Gas Utility Included",
+    "LOBBY": "Lobby",
+    "PARQUEOS": "Parking",
+    "PARQUEO": "Parking",
+    "PARQUEO TECHADO": "Covered Parking",
+    "PARQUEO VISITANTE": "Visitor Parking",
+    "PLANTA ELÉCTRICA": "Backup Generator",
+    "PLANTA ELECTRICA": "Backup Generator",
+    "INVERSOR": "Power Inverter",
+    "RESIDENCIAL CERRADO": "Gated Community",
+    "URBANIZACIÓN CERRADA": "Gated Community",
+    "URBANIZACION CERRADA": "Gated Community",
+    "VIGILANCIA 24 HORAS": "24-Hour Security",
+    "SEGURIDAD 24 HORAS": "24-Hour Security",
+    "SEGURIDAD": "Security",
+    "PISCINA": "Pool",
+    "PISCINA COMÚN": "Shared Pool",
+    "PISCINA COMUN": "Shared Pool",
+    "PISCINA PRIVADA": "Private Pool",
+    "JACUZZI": "Jacuzzi",
+    "GIMNASIO": "Gym",
+    "AREA SOCIAL": "Social Area",
+    "ÁREA SOCIAL": "Social Area",
+    "SALON DE FIESTAS": "Event Room",
+    "SALÓN DE FIESTAS": "Event Room",
+    "SALA DE JUEGOS": "Game Room",
+    "ÁREA BBQ": "BBQ Area",
+    "AREA BBQ": "BBQ Area",
+    "ASCENSOR": "Elevator",
+    "ELEVADOR": "Elevator",
+    "LAVANDERÍA": "Laundry Room",
+    "LAVANDERIA": "Laundry Room",
+    "AREA DE LAVADO": "Laundry Area",
+    "ÁREA DE LAVADO": "Laundry Area",
+    "AIRE ACONDICIONADO": "Air Conditioning",
+    "CALENTADOR": "Water Heater",
+    "CISTERNA": "Water Cistern",
+    "TANQUE DE AGUA": "Water Tank",
+    "BOMBA DE AGUA": "Water Pump",
+    "WALK IN CLOSET": "Walk-In Closet",
+    "CLOSET": "Closets",
+    "COCINA EQUIPADA": "Equipped Kitchen",
+    "LINEA BLANCA": "Appliances Included",
+    "LÍNEA BLANCA": "Appliances Included",
+    "AMOBLADO": "Furnished",
+    "VISTA AL MAR": "Ocean View",
+    "VISTA PANORAMICA": "Panoramic View",
+    "VISTA PANORÁMICA": "Panoramic View",
+    "ACCESO A LA PLAYA": "Beach Access",
+    "FRENTE A LA PLAYA": "Beachfront",
+    "JARDIN": "Garden",
+    "JARDÍN": "Garden",
+    "ÁREA VERDE": "Green Area",
+    "AREA VERDE": "Green Area",
+    "PET FRIENDLY": "Pet Friendly",
+    "SE ACEPTAN MASCOTAS": "Pets Allowed",
+    "AMENIDADES DE LUJO": "Luxury Amenities",
+    "MUELLE": "Dock",
+    "CANCHA DE VOLEIBOL": "Volleyball Court",
+    "AREA COMERCIAL": "Commercial Area",
+    "ÁREA COMERCIAL": "Commercial Area",
+}
+
+
+def translate_amenity(term: str) -> str:
+    key = term.strip().upper()
+    if key in AMENITY_TRANSLATIONS:
+        return AMENITY_TRANSLATIONS[key]
+    return _word_level_translate(term)
+
+
+# Fallback for any amenity phrase not covered by the exact-match dictionary
+# above. Translates word-by-word using common Spanish real-estate vocabulary,
+# so a brand-new term the site has never seen still comes out in English
+# instead of silently staying in Spanish. Not as polished as a proper phrase
+# match, but it means nothing slips through untranslated going forward.
+WORD_TRANSLATIONS = {
+    "de": "", "del": "", "con": "with", "y": "and", "en": "in", "a": "to",
+    "la": "", "el": "", "los": "", "las": "", "un": "", "una": "",
+    "area": "Area", "área": "Area", "cancha": "Court", "campo": "Field",
+    "piscina": "Pool", "alberca": "Pool", "jardin": "Garden", "jardín": "Garden",
+    "terraza": "Terrace", "balcon": "Balcony", "balcón": "Balcony",
+    "parqueo": "Parking", "parqueos": "Parking", "estacionamiento": "Parking",
+    "garaje": "Garage", "seguridad": "Security", "vigilancia": "Security",
+    "residencial": "Residential", "cerrado": "Gated", "cerrada": "Gated",
+    "amueblado": "Furnished", "amoblado": "Furnished", "sin": "Without",
+    "gimnasio": "Gym", "elevador": "Elevator", "ascensor": "Elevator",
+    "lavanderia": "Laundry", "lavandería": "Laundry", "lavado": "Laundry",
+    "planta": "Generator", "electrica": "Electric", "eléctrica": "Electric",
+    "inversor": "Inverter", "generador": "Generator", "gas": "Gas",
+    "comun": "Shared", "común": "Shared", "privada": "Private", "privado": "Private",
+    "vista": "View", "mar": "Ocean", "playa": "Beach", "frente": "Front",
+    "panoramica": "Panoramic", "panorámica": "Panoramic",
+    "infantil": "Children's", "infantiles": "Children's", "juegos": "Play",
+    "ninos": "Kids", "niños": "Kids", "tenis": "Tennis", "basket": "Basketball",
+    "baloncesto": "Basketball", "voleibol": "Volleyball", "padel": "Padel",
+    "multiuso": "Multi-Purpose", "salon": "Room", "salón": "Room",
+    "fiestas": "Event", "social": "Social", "comercial": "Commercial",
+    "comerciales": "Commercial", "centros": "Centers", "cercanos": "Nearby",
+    "cercano": "Nearby", "supermercado": "Supermarket", "closet": "Closet",
+    "cocina": "Kitchen", "equipada": "Equipped", "equipado": "Equipped",
+    "calentador": "Water Heater", "cisterna": "Water Cistern",
+    "tanque": "Tank", "agua": "Water", "bomba": "Pump", "aire": "Air",
+    "acondicionado": "Conditioning", "mascotas": "Pets", "aceptan": "Allowed",
+    "muelle": "Dock", "lujo": "Luxury", "amenidades": "Amenities",
+    "urbanizacion": "Community", "urbanización": "Community",
+    "24": "24-Hour", "horas": "Hour", "techado": "Covered", "visitante": "Visitor",
+    "visitantes": "Visitors", "para": "for", "montana": "Mountain", "montaña": "Mountain",
+    "sala": "Room", "cine": "Cinema", "zona": "Zone", "barbacoa": "BBQ", "asador": "Grill",
+    "techo": "Roof", "patio": "Patio", "huerto": "Garden", "solar": "Lot",
+    "deposito": "Storage", "depósito": "Storage", "trastero": "Storage Room",
+    "oficina": "Office", "recepcion": "Reception", "recepción": "Reception",
+    "portero": "Doorman", "conserje": "Concierge", "camara": "Camera", "cámara": "Camera",
+    "camaras": "Cameras", "cámaras": "Cameras", "vigilante": "Guard", "alarma": "Alarm",
+    "cerca": "Fence", "cable": "Cable", "internet": "Internet", "wifi": "WiFi",
+    "fibra": "Fiber", "optica": "Optic", "óptica": "Optic", "walk": "Walk-In",
+    "in": "In", "spa": "Spa", "sauna": "Sauna", "bar": "Bar", "grill": "Grill",
+    "coworking": "Coworking", "yoga": "Yoga", "pilates": "Pilates", "estudio": "Studio",
+    "biblioteca": "Library", "juegos": "Play Area", "recreativa": "Recreational",
+    "recreativo": "Recreational", "deportiva": "Sports", "deportivo": "Sports",
+    "nivel": "Level", "niveles": "Levels", "1er": "1st", "1ro": "1st", "1ra": "1st",
+    "2do": "2nd", "2da": "2nd", "3er": "3rd", "3ro": "3rd", "3ra": "3rd",
+    "4to": "4th", "4ta": "4th", "primer": "First", "segundo": "Second",
+    "tercer": "Third", "cuarto": "Fourth", "piso": "Floor",
+}
+
+
+def _word_level_translate(term: str) -> str:
+    words = term.strip().split()
+    out = []
+    for w in words:
+        bare = w.strip(".,()").lower()
+        translated = WORD_TRANSLATIONS.get(bare)
+        if translated is None:
+            out.append(w.capitalize())
+        elif translated:
+            out.append(translated)
+        # empty string (articles/prepositions we drop) contributes nothing
+    result = " ".join(out).strip()
+    return result if result else term.strip().title()
+
+
+def render_amenities(listing: dict) -> str:
+    amenities = listing.get("amenities") or []
+    if not amenities:
+        return ""
+    translated = [translate_amenity(a) for a in amenities]
+    tags = "\n".join(f'<span class="amenity-tag">{html.escape(a)}</span>' for a in translated)
+    return f'<h2 style="margin-top:50px; font-size:24px;">Amenities</h2><div class="amenities">{tags}</div>'
+
+
+def amenity_filter_values(listing: dict) -> str:
+    """Pipe-separated list of this listing's translated amenity names, for
+    the data-amenities attribute the listings-page filter reads from.
+    Kept separate from render_amenities() since that one produces HTML."""
+    amenities = listing.get("amenities") or []
+    translated = [translate_amenity(a) for a in amenities]
+    return "|".join(translated)
+
+
+FIXED_TEAM = [
+    {
+        "name": "Sheena Sesook",
+        "role": "Principal Broker",
+        "photo": "../team-sheena.jpg",
+        "phone": "+1 809-350-3736",
+    },
+    {
+        "name": "Michael Galea",
+        "role": "Principal Broker",
+        "photo": "../team-michael.jpg",
+        "phone": "+1 829-637-5611",
+    },
+]
+
+
+def render_agents(listing: dict) -> str:
+    """Always shows the S&M Realty DR team, regardless of which agent
+    AlterEstate's API lists for this specific listing."""
+    boxes = []
+    for a in FIXED_TEAM:
+        boxes.append(f'''<div class="agent-box" style="margin-top:0;">
+          <img src="{html.escape(a["photo"])}" alt="{html.escape(a["name"])}">
+          <div>
+            <div class="agent-name">{html.escape(a["name"])}</div>
+            <div class="agent-role">{html.escape(a["role"])}</div>
+            <div style="font-size:13px; margin-top:6px;">{html.escape(a["phone"])}</div>
+          </div>
+        </div>''')
+    return f'<div style="display:flex; gap:20px; flex-wrap:wrap; margin-top:40px;">\n        {"".join(boxes)}</div>'
+
+
+def whatsapp_link(listing: dict) -> str:
+    """Pre-filled WhatsApp message naming the exact property, its price,
+    code and page link, so every chat arrives with full context."""
+    name = clean_title(listing.get("name", ""))
+    cid = listing.get("cid", "")
+    price = format_price_card(listing)
+    slug = listing.get("slug", "")
+    url = f"https://sheenaandmichaelrealtydr.com/properties/{slug}.html" if slug else ""
+    text = (
+        f"Hi! I'm interested in {name} ({price}, property code {cid}). "
+        f"Could you send me more information and let me know when I could arrange a viewing?"
+    )
+    if url:
+        text += f" {url}"
+    from urllib.parse import quote
+    return f"https://wa.me/{MAIN_WHATSAPP_NUMBER}?text={quote(text)}"
+
+
+SITE_URL = "https://sheenaandmichaelrealtydr.com"
+
+
+def meta_description(listing: dict) -> str:
+    """Short, unique meta description per property for search results.
+    Deliberately contains no '&' character: Google has been showing the
+    brand name as 'S &amp; M' in search snippets, so the brand (already in
+    the page title) is left out of the description entirely."""
+    beds = listing.get("room")
+    baths_num = float(listing.get("bathroom") or 0)
+    location = get_sector(listing)
+    city = listing.get("city") or ""
+    price = format_price_full(listing)
+    loc = f"{location}, {city}".strip(", ")
+    parts = []
+    if beds:
+        parts.append(f"{beds}-bedroom")
+    if baths_num:
+        baths = int(baths_num) if baths_num.is_integer() else baths_num
+        parts.append(f"{baths}-bathroom")
+    if parts:
+        header = " ".join(parts) + " property"
+    else:
+        # Land, farms, commercial etc. have no bed/bath counts.
+        category = ((listing.get("category") or {}).get("name_en") or "").strip()
+        header = {
+            "Terreno": "Land", "Farms": "Farm", "Commercial Premises": "Commercial property",
+            "Buildings": "Building", "Villas": "Villa", "Apartments": "Apartment",
+            "House": "House", "Penthouses": "Penthouse",
+        }.get(category, "Property")
+    lead = f"{header} for sale in {loc} — {price}."
+    # Keep it under ~158 characters so Google doesn't cut it off mid-sentence.
+    for tail in (" View photos, full details and pricing from local agents on the North Coast.",
+                 " View photos and full details from local agents on the North Coast.",
+                 " View photos and full details from local agents.",
+                 " View photos and full details.", ""):
+        if len(lead) + len(tail) <= 158:
+            return lead + tail
+    return lead
+
+
+def strip_description(desc: str, max_chars: int = 140) -> str:
+    """Turn the API's HTML description into a short plain-text card blurb."""
+    if not desc:
+        return ""
+    text = re.sub(r"<[^>]+>", " ", desc)
+    # Some AlterEstate descriptions are double-encoded ("&amp;amp;"), which
+    # showed up on the site as a literal "&amp;". Unescape until stable.
+    for _ in range(3):
+        unescaped = html.unescape(text)
+        if unescaped == text:
+            break
+        text = unescaped
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= max_chars:
+        return text
+    return text[:max_chars].rsplit(" ", 1)[0] + "…"
+
+
+# Named gated communities / developments that AlterEstate doesn't reliably
+# assign as their own "sector" — sometimes a listing inside one of these
+# gets tagged with a broad raw sector instead (e.g. "Sosúa Abajo" or
+# "Bella Vista"). Rather than only checking when the raw sector happens to
+# be one specific value, every listing's title + description gets checked
+# against this list, so a community gets recognized no matter what raw
+# sector AlterEstate put it under. More specific phrases are listed first
+# so they win over shorter, looser matches (e.g. "panorama village" before
+# the bare "panorama").
+SECTOR_OVERRIDES = [
+    ("sosua ocean village", "Sosúa Ocean Village"),
+    ("sosúa ocean village", "Sosúa Ocean Village"),
+    ("panorama village", "Panorama Village"),
+    ("hispaniola beach", "Hispaniola Beach"),
+    ("hispaniola", "Hispaniola"),
+    ("panorama", "Panorama Village"),
+    ("casa linda", "Casa Linda"),
+    ("agua dulce", "Agua Dulce"),
+    ("el choco", "El Choco"),
+]
+
+
+def _match_community(listing: dict) -> str:
+    """Returns the matched named community from SECTOR_OVERRIDES, or ''
+    if none of the listing's title/description mentions one."""
+    haystack = f'{listing.get("name", "")} {listing.get("description", "")} {listing.get("sector", "")}'.lower()
+    for keyword, replacement in SECTOR_OVERRIDES:
+        if keyword in haystack:
+            return replacement
+    return ""
+
+
+def get_sector(listing: dict) -> str:
+    """Sector/neighborhood name. Checks the listing's own title and
+    description for known named communities first (see SECTOR_OVERRIDES
+    above) and uses that if found, regardless of what raw sector value
+    AlterEstate assigned; otherwise falls back to that raw sector."""
+    community = _match_community(listing)
+    if community:
+        return community
+    return listing.get("sector") or ""
+
+
+# Ordered list of known communities shown in the "Communities" filter
+# dropdown on listings.html — kept separate from SECTOR_OVERRIDES' keyword
+# list since a couple of those have duplicate accented/unaccented entries
+# pointing at the same display name.
+KNOWN_COMMUNITIES = [
+    "Sosúa Ocean Village",
+    "Hispaniola",
+    "Hispaniola Beach",
+    "Panorama Village",
+    "Casa Linda",
+    "Agua Dulce",
+    "El Choco",
+]
+
+
+def get_community(listing: dict) -> str:
+    """Like get_sector(), but returns '' instead of falling back to the raw
+    AlterEstate sector — used for the site's community filter dropdown,
+    which should only match listings that genuinely mention one of the
+    named communities, not just whatever broad sector AlterEstate assigned."""
+    return _match_community(listing)
+
+
+# Keywords checked against a listing's title/description to flag it as
+# oceanfront/beachfront for the "Oceanfront" filter on listings.html.
+OCEANFRONT_KEYWORDS = [
+    "oceanfront", "ocean front", "beachfront", "beach front",
+    "on the beach", "steps from the beach", "steps to the beach",
+    "frente a la playa", "front beach", "directly on the sand",
+    "on the sand",
+]
+
+
+def is_oceanfront(listing: dict) -> bool:
+    """True if the listing's title or description mentions being
+    oceanfront/beachfront. Text-based like the community detection above —
+    only catches it if the listing text actually says so."""
+    haystack = f'{listing.get("name", "")} {listing.get("description", "")}'.lower()
+    return any(keyword in haystack for keyword in OCEANFRONT_KEYWORDS)
+
+
+def search_blob(listing: dict) -> str:
+    """Matches the data-search format already used in listings.html cards."""
+    title = clean_title(listing.get("name", ""))
+    price = format_price_card(listing)
+    sector = get_sector(listing)
+    city = listing.get("city") or ""
+    parts = [
+        title.lower(),
+        f"{price.lower()}, {sector.lower()}, {city.lower()}" if price != "price on request" else f"{sector.lower()}, {city.lower()}",
+        f"{sector.lower()}, {city.lower()}",
+        city.lower(),
+    ]
+    return " ".join(p for p in parts if p)
+
+
+# --------------------------------------------------------------------------
+# "Our Take" paragraphs written by Sheena & Michael (agent_notes.json)
+# --------------------------------------------------------------------------
+# A hand-edited JSON file at the repo root maps a listing slug to a short
+# original paragraph. It's shown near the top of that property's page so
+# the page carries unique content of its own, rather than only the
+# AlterEstate description that's shared word-for-word with other sites.
+
+import json as _json
+import os as _os
+
+AGENT_NOTES_FILE = _os.path.join(_os.environ.get("SITE_DIR", "."), "agent_notes.json")
+_agent_notes_cache = None
+
+
+def load_agent_notes(force: bool = False) -> dict:
+    global _agent_notes_cache
+    if _agent_notes_cache is not None and not force:
+        return _agent_notes_cache
+    notes = {}
+    if _os.path.exists(AGENT_NOTES_FILE):
+        try:
+            with open(AGENT_NOTES_FILE, "r", encoding="utf-8") as f:
+                raw = _json.load(f)
+            notes = {k: str(v).strip() for k, v in raw.items()
+                     if not k.startswith("_") and str(v).strip()}
+        except ValueError as e:
+            # A typo in the JSON file shouldn't break the whole site update.
+            print(f"  WARNING: agent_notes.json could not be read ({e}); skipping 'Our Take' sections.")
+    _agent_notes_cache = notes
+    return notes
+
+
+def render_agent_take(listing: dict) -> str:
+    note = load_agent_notes().get(listing.get("slug", ""))
+    if not note:
+        return ""
+    paras = "".join(f"<p>{html.escape(p.strip(), quote=False)}</p>" for p in note.split("\n\n") if p.strip())
+    return f'''<div class="agent-take">
+      <span class="agent-take-label">Our Take</span>
+      {paras}
+      <span class="agent-take-sig">Sheena Sesook &amp; Michael Galea, S&amp;M Realty DR</span>
+    </div>'''
