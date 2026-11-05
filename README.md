@@ -1,4 +1,4 @@
-# S&M Realty — Site + Auto-Update Pipeline
+# S&M Realty DR — Site + Auto-Update Pipeline
 
 ## What's in here
 - `index.html`, `listings.html`, `properties/`, `css/`, `js/` — the site itself
