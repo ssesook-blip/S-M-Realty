@@ -1,7 +1,7 @@
 {
  "": {
   "date": "2026-11-05",
-  "hash": "0ebae051599109b3513e84ac9d6c19dd20948076"
+  "hash": "d5b9818f698910c988dfb1c90abb01586e47a28c"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-11-05",
@@ -33,7 +33,7 @@
  },
  "el-choco-sosua.html": {
   "date": "2026-11-05",
-  "hash": "758e5ca9913aa509fb6339e7b9ee4b5c47e8a727"
+  "hash": "7f60a3f50fcb0c370c4e85174dcc1a3de0e044ed"
  },
  "encuentro-beach-cabarete.html": {
   "date": "2026-11-05",
@@ -53,7 +53,7 @@
  },
  "listings.html": {
   "date": "2026-11-05",
-  "hash": "70701b1b0bb2bd9251835852ea7159ff518d8aa7"
+  "hash": "6e4210c819399e84c6ad8f462202faa08ce010cc"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-11-05",
@@ -103,6 +103,10 @@
   "date": "2026-11-05",
   "hash": "8297298d52a4078767005dd8deaf108c3f7c36d1"
  },
+ "properties/2-bedroom-villa-with-private-pool-in-sosua-tpg-3820.html": {
+  "date": "2026-11-05",
+  "hash": "715c7bff285a58a927b3ad0c7fbad6e845cda735"
+ },
  "properties/2br-oceanfront-condo-kite-beach-rare-price-for-a-rare-building-3787.html": {
   "date": "2026-11-05",
   "hash": "87511d31accebb1807d9a9ad753f2f6a159aa2cb"
@@ -134,6 +138,10 @@
  "properties/3-bedroom-villa-largest-second-line-lot-in-sosua-ocean-village-176-m2-3468.html": {
   "date": "2026-11-05",
   "hash": "3afab4a9b0414a138a05f452b92b68a0dfae8524"
+ },
+ "properties/3-bedroom-villa-with-private-pool-in-sosua-tpg-3819.html": {
+  "date": "2026-11-05",
+  "hash": "7e027fd744dca028e5b51bbf94df6f13c7e347a7"
  },
  "properties/3-unit-apartment-building-with-stunning-ocean-views-sosua-los-cerros-3542.html": {
   "date": "2026-11-05",
@@ -865,6 +873,6 @@
  },
  "sosua-real-estate.html": {
   "date": "2026-11-05",
-  "hash": "6c12fcde75e47437135e28a17c3fbf945e9cd38e"
+  "hash": "d88dabda6e54503c95a9f48c9d57866847693ae0"
  }
 }
