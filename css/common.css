@@ -136,7 +136,18 @@ nav.wrap{ display:flex; align-items:center; justify-content: space-between; heig
 }
 @media (max-width: 640px){
   .nav-links{ padding: 6px 22px 18px; }
-  .nav-toggle{ margin-right:16px; }
+  .nav-toggle{ margin-right:16px; margin-left:auto; padding-left:14px; box-sizing:content-box; flex-shrink:0; }
+  .logo{ gap:10px; min-width:0; }
+  .logo .mark{ width:36px; height:36px; }
+  .logo-word{ font-size:12px; letter-spacing:0.12em; }
+}
+@media (max-width: 400px){
+  .wrap{ padding: 0 16px; }
+  .logo{ gap:8px; }
+  .logo .mark{ width:32px; height:32px; }
+  .logo-word{ font-size:11px; letter-spacing:0.1em; }
+  .nav-toggle{ margin-right:12px; padding-left:10px; width:26px; }
+  nav.wrap .btn.line{ padding-left:14px; padding-right:14px; }
 }
 /* ---------- FOOTER PARTNER LOGO ---------- */
 .footer-partner{
