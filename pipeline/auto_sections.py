@@ -302,7 +302,7 @@ def casa_linda_teaser_block(details: list) -> dict:
 # ---------------------------------------------------------------------------
 # Property page titles: unique, tidy and not too long for Google
 # ---------------------------------------------------------------------------
-TITLE_BRAND = " \u2014 S & M Realty"
+TITLE_BRAND = " \u2014 S&M Realty DR"
 TITLE_MAX = 65
 
 

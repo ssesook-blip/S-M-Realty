@@ -1,5 +1,5 @@
 """
-Incremental site updater for S&M Realty.
+Incremental site updater for S&M Realty DR.
 
 Workflow:
   1. Fetch current listings (summary) for the configured search terms.
@@ -240,14 +240,14 @@ def generate_properties_feed(details: list):
     <Photos>
     {photos_xml}
     </Photos>
-    <ProviderName>S &amp; M Realty</ProviderName>
+    <ProviderName>S&amp;M Realty DR</ProviderName>
     <ProviderURL>{esc(SITE_URL)}</ProviderURL>
     <LeadRoutingEmail>info@sheenaandmichaelrealtydr.com</LeadRoutingEmail>
   </Listing>''')
 
     xml = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
-        f'<PropertyFeed generated="{today}" provider="S &amp; M Realty" source="{SITE_URL}">\n'
+        f'<PropertyFeed generated="{today}" provider="S&amp;M Realty DR" source="{SITE_URL}">\n'
         + "\n".join(items) +
         "\n</PropertyFeed>\n"
     )

@@ -34,11 +34,11 @@ document.addEventListener('submit', function (e) {{
 <!-- End Google Analytics -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} &mdash; S &amp; M Realty</title>
+<title>{title} &mdash; S&amp;M Realty DR</title>
 <meta name="description" content="{meta_desc}">
 <link rel="canonical" href="{canonical_url}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{title} — S & M Realty">
+<meta property="og:title" content="{title} — S&M Realty DR">
 <meta property="og:description" content="{meta_desc}">
 <meta property="og:image" content="{hero_image}">
 <meta property="og:url" content="{canonical_url}">
@@ -95,7 +95,7 @@ fbq('track', 'PageView');
         <circle cx="21" cy="21" r="20" stroke="#9C8158" stroke-width="1"/>
         <text x="21" y="27" text-anchor="middle" font-family="Cormorant, serif" font-style="italic" font-size="17" fill="#1C1A17">S&amp;M</text>
       </svg>
-      <span class="logo-word">S &amp; M Realty</span>
+      <span class="logo-word">S&amp;M Realty DR</span>
     </a>
     <div class="nav-links">
       <a href="../listings.html">All Listings</a>
@@ -199,15 +199,15 @@ fbq('track', 'PageView');
   <div class="wrap" style="text-align:center;">
     <div class="footer-partner" style="align-items:center; margin-top:0;">
       <img src="../crest-group-logo.png" alt="The Crest Group Dominicana" class="footer-partner-logo" style="margin:0 auto;">
-      <span class="footer-partner-text">S &amp; M Realty with The Crest Group Dominicana</span>
+      <span class="footer-partner-text">S&amp;M Realty DR with The Crest Group Dominicana</span>
     </div>
-    <p style="margin-top:18px;">&copy; 2026 S &amp; M Realty. Licensed Real Estate Brokerage.</p>
+    <p style="margin-top:18px;">&copy; 2026 S&amp;M Realty DR. Licensed Real Estate Brokerage.</p>
   </div>
 </footer>
 
 <div class="print-only-footer">
   <p>{canonical_url_plain}</p>
-  <p>Sheena Sesook &amp; Michael Galea &mdash; S &amp; M Realty &mdash; +1 809-350-3736</p>
+  <p>Sheena Sesook &amp; Michael Galea &mdash; S&amp;M Realty DR &mdash; +1 809-350-3736</p>
 </div>
 
 <div class="lightbox" id="lightbox">

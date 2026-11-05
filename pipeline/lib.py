@@ -305,7 +305,7 @@ FIXED_TEAM = [
 
 
 def render_agents(listing: dict) -> str:
-    """Always shows the S&M Realty team, regardless of which agent
+    """Always shows the S&M Realty DR team, regardless of which agent
     AlterEstate's API lists for this specific listing."""
     boxes = []
     for a in FIXED_TEAM:
@@ -537,5 +537,5 @@ def render_agent_take(listing: dict) -> str:
     return f'''<div class="agent-take">
       <span class="agent-take-label">Our Take</span>
       {paras}
-      <span class="agent-take-sig">Sheena Sesook &amp; Michael Galea, S &amp; M Realty</span>
+      <span class="agent-take-sig">Sheena Sesook &amp; Michael Galea, S&amp;M Realty DR</span>
     </div>'''
