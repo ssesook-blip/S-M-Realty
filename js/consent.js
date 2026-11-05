@@ -1,4 +1,4 @@
-/* S & M Realty - cookie consent (GDPR / UK GDPR / CCPA / PIPEDA)
+/* S&M Realty DR - cookie consent (GDPR / UK GDPR / CCPA / PIPEDA)
  *
  * Loaded at the very top of <head> on every page, BEFORE Google Analytics
  * and the Meta Pixel, so their default consent state is set first.
