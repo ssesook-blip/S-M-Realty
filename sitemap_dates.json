@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-11-05",
-  "hash": "d5b9818f698910c988dfb1c90abb01586e47a28c"
+  "date": "2026-11-07",
+  "hash": "4a3f14f5e5cdac4c213c79bc07b556ca330c173b"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-11-05",
@@ -44,20 +44,20 @@
   "hash": "e8f34e2cb6dce56e6ae888b6dcb7285744453638"
  },
  "hispaniola-sosua.html": {
-  "date": "2026-11-05",
-  "hash": "9c27a82b3c57c400afaf63709f319d0d52cb7b28"
+  "date": "2026-11-07",
+  "hash": "b348f0f7d9898528e3190810bd80a8a5d8098aed"
  },
  "kite-beach-cabarete.html": {
   "date": "2026-11-05",
   "hash": "97158551b63cc0e360c8c86d19e5bd5789f52509"
  },
  "listings.html": {
-  "date": "2026-11-05",
-  "hash": "6e4210c819399e84c6ad8f462202faa08ce010cc"
+  "date": "2026-11-07",
+  "hash": "2628f0e5705061972261e99e39dedc5a6378bf7d"
  },
  "owner-financing-dominican-republic.html": {
-  "date": "2026-11-05",
-  "hash": "6834a003b48a5d2ccce352f2fa05d6053dcf8095"
+  "date": "2026-11-07",
+  "hash": "41bd4d1d02f46ba236c35867349d1947e0502d3f"
  },
  "properties/1-bedroom-apartment-for-sale-in-sosua-ocean-village-puerto-plata-3803.html": {
   "date": "2026-11-05",
@@ -467,6 +467,10 @@
   "date": "2026-11-05",
   "hash": "87e753725f531b8adff5e3f67b6d0e793b57f30d"
  },
+ "properties/modern-3-bedroom-villa-229-m2-private-pool-in-sosua-ocean-village-3823.html": {
+  "date": "2026-11-07",
+  "hash": "ae47d79d665975289a9742c0f133c397da0b5aa3"
+ },
  "properties/modern-3-bedroom-villa-with-pool-caribbean-luxury-living-3503.html": {
   "date": "2026-11-05",
   "hash": "9a43ace98db89e6640cb33b4ab9bbfc40a0d0b65"
@@ -550,6 +554,10 @@
  "properties/ocean-plaza-sosua-commercial-units-from-2700m2-in-the-heart-of-the-sosua-cabarete-corridor-3786.html": {
   "date": "2026-11-05",
   "hash": "b63318fb17eab18d9f11289ed31af3f2cc6afae6"
+ },
+ "properties/ocean-view-villa-for-sale-in-lomas-mironas-sosua-private-pool-guest-house-3821.html": {
+  "date": "2026-11-07",
+  "hash": "6381c8d83b4ef33189d9b2cf338d55a5927b98ed"
  },
  "properties/ocean-view-villa-in-gated-lomas-mironas-sosua-3br35ba-with-pool-guest-studio-349000-3804.html": {
   "date": "2026-11-05",
@@ -683,6 +691,10 @@
   "date": "2026-11-05",
   "hash": "f2e78a702962d2aaba73aaff89905ac9c68f9cf2"
  },
+ "properties/spanish-style-villa-for-sale-in-residencial-hispaniola-sosua-private-pool-guest-suite-3822.html": {
+  "date": "2026-11-07",
+  "hash": "d36f282280497b78a44aa6018e4fb850815a85e3"
+ },
  "properties/steps-from-the-sand-steps-from-a-tax-break-that-disappears-at-closing-3759.html": {
   "date": "2026-11-05",
   "hash": "f16f7df22ef49957b8a3aaf6e58e127c068aaa50"
@@ -702,10 +714,6 @@
  "properties/sunset-park-pre-construction-hispaniola-community-multiple-units-available-3738.html": {
   "date": "2026-11-05",
   "hash": "193f7f570065c63e372287bd89be6309f648d72c"
- },
- "properties/super-chic-3br-villa-in-sov-3797.html": {
-  "date": "2026-11-05",
-  "hash": "1cdf2ba1bce56d14224f574c7606139d5b2c8c73"
  },
  "properties/superior-6-bedroom-villa-in-gated-community-with-private-pool-sosua-3615.html": {
   "date": "2026-11-05",
@@ -868,11 +876,11 @@
   "hash": "f0988023ca7db58ab2c0aa83cab2dd6c520bb7a8"
  },
  "sosua-ocean-village.html": {
-  "date": "2026-11-05",
-  "hash": "bbc270c855fbdee405b7cae0565428d280ad8ce9"
+  "date": "2026-11-07",
+  "hash": "d2aab1a6bad8bf650664b588257447ec15e8f7e1"
  },
  "sosua-real-estate.html": {
-  "date": "2026-11-05",
-  "hash": "d88dabda6e54503c95a9f48c9d57866847693ae0"
+  "date": "2026-11-07",
+  "hash": "5e344a137c4222580fb32eabe549f130f60ab167"
  }
 }
