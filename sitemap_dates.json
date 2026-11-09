@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-11-07",
-  "hash": "4a3f14f5e5cdac4c213c79bc07b556ca330c173b"
+  "date": "2026-11-09",
+  "hash": "f6fd07dce461633bbb9e455b032832d023f40107"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-11-05",
@@ -52,8 +52,8 @@
   "hash": "97158551b63cc0e360c8c86d19e5bd5789f52509"
  },
  "listings.html": {
-  "date": "2026-11-07",
-  "hash": "2628f0e5705061972261e99e39dedc5a6378bf7d"
+  "date": "2026-11-09",
+  "hash": "790d7f4664b001dc1b8da6ff7a1c45c98bc7f1fd"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-11-07",
@@ -539,6 +539,10 @@
   "date": "2026-11-05",
   "hash": "1408ad499dd03e370c34e1c9f1654cfec6b183f4"
  },
+ "properties/newly-built-ocean-view-home-with-100-m2-rooftop-between-sosua-cabarete-3824.html": {
+  "date": "2026-11-09",
+  "hash": "4fd174458765fb89dea8260566c7c2923b49d564"
+ },
  "properties/ocean-breeze-villa-2-bedroom-1-bedroom-guest-house-upwind-estates-kite-beac-3524.html": {
   "date": "2026-11-05",
   "hash": "bcde2e35ffa735968011c2c5fac33ac956de3e61"
@@ -880,7 +884,7 @@
   "hash": "d2aab1a6bad8bf650664b588257447ec15e8f7e1"
  },
  "sosua-real-estate.html": {
-  "date": "2026-11-07",
-  "hash": "5e344a137c4222580fb32eabe549f130f60ab167"
+  "date": "2026-11-09",
+  "hash": "2c4dc6ab809d0db3f3b024d700ef80b430278a37"
  }
 }
