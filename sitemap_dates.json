@@ -1,7 +1,7 @@
 {
  "": {
-  "date": "2026-11-09",
-  "hash": "f6fd07dce461633bbb9e455b032832d023f40107"
+  "date": "2026-11-11",
+  "hash": "57bae07e0ce92ff7469a78593aa55d2969264aab"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-11-05",
@@ -28,8 +28,8 @@
   "hash": "599f175ee9b360890865a5042f923ebfb17b71e5"
  },
  "el-batey-sosua.html": {
-  "date": "2026-11-05",
-  "hash": "e6d3056886a449c5d666aad56100e2a8d2956b9f"
+  "date": "2026-11-11",
+  "hash": "9d1ff460a6ed6d6c1c6702cf2ca9484c1d95cc4b"
  },
  "el-choco-sosua.html": {
   "date": "2026-11-05",
@@ -52,8 +52,8 @@
   "hash": "97158551b63cc0e360c8c86d19e5bd5789f52509"
  },
  "listings.html": {
-  "date": "2026-11-09",
-  "hash": "790d7f4664b001dc1b8da6ff7a1c45c98bc7f1fd"
+  "date": "2026-11-11",
+  "hash": "70157b2ed03c7b701206ecf987dcacfb52227895"
  },
  "owner-financing-dominican-republic.html": {
   "date": "2026-11-07",
@@ -539,10 +539,6 @@
   "date": "2026-11-05",
   "hash": "1408ad499dd03e370c34e1c9f1654cfec6b183f4"
  },
- "properties/newly-built-ocean-view-home-with-100-m2-rooftop-between-sosua-cabarete-3824.html": {
-  "date": "2026-11-09",
-  "hash": "4fd174458765fb89dea8260566c7c2923b49d564"
- },
  "properties/ocean-breeze-villa-2-bedroom-1-bedroom-guest-house-upwind-estates-kite-beac-3524.html": {
   "date": "2026-11-05",
   "hash": "bcde2e35ffa735968011c2c5fac33ac956de3e61"
@@ -606,10 +602,6 @@
  "properties/penthouse-for-sale-in-puerto-plata-3699.html": {
   "date": "2026-11-05",
   "hash": "cbe272086c5503276bcae8ffb06d433775fc68d0"
- },
- "properties/plaza-del-sol-1bedroom-side-by-side-units-3763.html": {
-  "date": "2026-11-05",
-  "hash": "61580b59c71fdc58be8523501283949dae4552b3"
  },
  "properties/plaza-del-sol-1bedroom-walk-to-sosua-beaches-3762.html": {
   "date": "2026-11-05",
@@ -884,7 +876,7 @@
   "hash": "d2aab1a6bad8bf650664b588257447ec15e8f7e1"
  },
  "sosua-real-estate.html": {
-  "date": "2026-11-09",
-  "hash": "2c4dc6ab809d0db3f3b024d700ef80b430278a37"
+  "date": "2026-11-11",
+  "hash": "03875a42d070c305ac8f51b51e555bd2b563947e"
  }
 }
