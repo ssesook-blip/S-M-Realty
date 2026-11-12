@@ -1,23 +1,27 @@
 {
  "": {
-  "date": "2026-11-11",
-  "hash": "57bae07e0ce92ff7469a78593aa55d2969264aab"
+  "date": "2026-11-12",
+  "hash": "e8d5811de819110d8071d66d32feefffa330dee0"
  },
  "buy-property-dominican-republic-foreigner.html": {
   "date": "2026-11-05",
   "hash": "940b93bac2294a07e3d5e64001b4915229b5c186"
  },
+ "buying-dominican-republic-property-from-canada.html": {
+  "date": "2026-11-12",
+  "hash": "2c77bf6641675e497ba382130323f4ed6177bfe7"
+ },
  "buying-guide.html": {
-  "date": "2026-11-05",
-  "hash": "5d70a2f06bc3a17544753131b9b9a258e0268a11"
+  "date": "2026-11-12",
+  "hash": "c6702a0a4a64be08d7ab9bd70bb37e6069f3db61"
  },
  "cabarete-real-estate.html": {
   "date": "2026-11-05",
   "hash": "05ae26e861e49051a98cce3fd18dade7f028cbb8"
  },
  "casa-linda.html": {
-  "date": "2026-11-05",
-  "hash": "907c3b70918e48e19590801c3a00eb17c7054450"
+  "date": "2026-11-12",
+  "hash": "b9b0efbabb2871b31e54b693bb2297a85ea617e3"
  },
  "confotur-dominican-republic.html": {
   "date": "2026-11-05",
@@ -52,12 +56,12 @@
   "hash": "97158551b63cc0e360c8c86d19e5bd5789f52509"
  },
  "listings.html": {
-  "date": "2026-11-11",
-  "hash": "70157b2ed03c7b701206ecf987dcacfb52227895"
+  "date": "2026-11-12",
+  "hash": "29ee2075ec7bd82f9492a75af5e76bb23207c8b8"
  },
  "owner-financing-dominican-republic.html": {
-  "date": "2026-11-07",
-  "hash": "41bd4d1d02f46ba236c35867349d1947e0502d3f"
+  "date": "2026-11-12",
+  "hash": "98f3134880561674a8996caefa86c8687993ee57"
  },
  "properties/1-bedroom-apartment-for-sale-in-sosua-ocean-village-puerto-plata-3803.html": {
   "date": "2026-11-05",
@@ -318,6 +322,10 @@
  "properties/expansive-coastal-living-at-its-finest-1-2-and-3-bedrooms-apartments-cabarete-3609.html": {
   "date": "2026-11-05",
   "hash": "8483d678bf4fd757e860025d8f0b74762b017f05"
+ },
+ "properties/fixer-upper-villa-with-guest-suite-4-br-335-m2-playa-chiquita-sosua-puerto-plata-3825.html": {
+  "date": "2026-11-12",
+  "hash": "6d376d7101d79755acfc0a98f7d91190d950034e"
  },
  "properties/freshly-renovated-priced-to-move-your-front-row-seat-on-kite-beach-3769.html": {
   "date": "2026-11-05",
@@ -619,10 +627,6 @@
   "date": "2026-11-05",
   "hash": "4a404164b35f7cd1d722c47aa8b284e60e82adab"
  },
- "properties/renovated-amp-ready-2-bedroom-villa-with-pool-casa-linda-sosua-3618.html": {
-  "date": "2026-11-05",
-  "hash": "e6bb00cd8490c70f32c2579683cf1a5a54db09db"
- },
  "properties/residencial-marbella-front-beach-aparments-3766.html": {
   "date": "2026-11-05",
   "hash": "48fceb40423b3d4ecda186fa4c71d3c60fca2bb7"
@@ -859,10 +863,6 @@
   "date": "2026-11-05",
   "hash": "cd902d0de1159675786af8b2b5ccbc4d5ccfa9ae"
  },
- "properties/your-private-oasis-awaits-huge-lot-huge-potential-owner-financing-up-to-50-3682.html": {
-  "date": "2026-11-05",
-  "hash": "127cd7a46d0e9dc985b15b4f167718c00fce2f05"
- },
  "puerto-plata-real-estate.html": {
   "date": "2026-11-05",
   "hash": "3f551311a167f5a8b80098b26451d1323a7edbe0"
@@ -872,11 +872,11 @@
   "hash": "f0988023ca7db58ab2c0aa83cab2dd6c520bb7a8"
  },
  "sosua-ocean-village.html": {
-  "date": "2026-11-07",
-  "hash": "d2aab1a6bad8bf650664b588257447ec15e8f7e1"
+  "date": "2026-11-12",
+  "hash": "351c8c6a129cd1bc82066f36b37e4d666e5dbaa0"
  },
  "sosua-real-estate.html": {
-  "date": "2026-11-11",
-  "hash": "03875a42d070c305ac8f51b51e555bd2b563947e"
+  "date": "2026-11-12",
+  "hash": "7e1b60d63c0063e4a1480a62f3617e863d041a7c"
  }
 }
