@@ -75,6 +75,7 @@ STATIC_PAGES = [
     "dominican-republic-closing-costs-property-taxes.html",
     "owner-financing-dominican-republic.html",
     "confotur-dominican-republic.html",
+    "buying-dominican-republic-property-from-canada.html",
     # Town and community pages
     "sosua-real-estate.html",
     "cabarete-real-estate.html",
