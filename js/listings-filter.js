@@ -195,6 +195,9 @@ if (amenitiesToggle && amenitiesPanel) {
   }
   pick(communityFilter, params.get('community'));
   pick(cityFilter, params.get('city'));
+  pick(typeFilter, params.get('type'));
+  pick(priceFilter, params.get('price'));
+  pick(bedsFilter, params.get('beds'));
   const q = params.get('q');
   if (q && searchFilter) { searchFilter.value = q; changed = true; }
   if (changed) applyFilters();
