@@ -262,3 +262,21 @@ footer a:hover{ color: var(--bronze-bright); }
 .photo picture{ display:block; width:100%; height:100%; }
 .hero h1.eyebrow{ font-family:'Archivo', sans-serif; font-size: 12px; line-height: 1.6; font-weight: 600; letter-spacing: 0.22em; max-width: none; }
 .hero .hero-title{ font-size: clamp(46px, 7vw, 92px); font-weight: 400; line-height: 1.1; max-width: 900px; margin: 0; color: inherit; }
+
+/* ===== HERO QUICK SEARCH ===== */
+.hero-search{ margin-top: 36px; width: 100%; max-width: 920px; display: grid; grid-template-columns: repeat(4, 1fr) auto; background: rgba(20,50,48,0.55); border: 1px solid var(--line-on-dark); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); text-align: left; }
+.hero-search + .hero-actions{ margin-top: 32px; }
+.hs-field{ display: flex; flex-direction: column; gap: 6px; padding: 14px 18px; border-right: 1px solid var(--line-on-dark); cursor: pointer; }
+.hs-field span{ font-family: 'Archivo', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bronze-bright); }
+.hs-field select{ -webkit-appearance: none; appearance: none; width: 100%; border: 0; border-radius: 0; padding: 2px 18px 2px 0; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23B89A6C' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right center / 10px 6px; color: var(--stone); font-family: 'Archivo', sans-serif; font-size: 15px; cursor: pointer; }
+.hs-field select option{ color: var(--ink); background: var(--stone); }
+.hs-field select:focus-visible{ outline: 1px solid var(--bronze-bright); outline-offset: 4px; }
+.hs-submit{ border: 0; padding: 0 30px; background: var(--bronze-bright); color: var(--ink); font-family: 'Archivo', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.2s ease; }
+.hs-submit:hover, .hs-submit:focus-visible{ background: var(--stone); }
+@media (max-width: 980px){
+  .hero-search{ grid-template-columns: 1fr 1fr; }
+  .hs-field{ border-bottom: 1px solid var(--line-on-dark); }
+  .hs-field:nth-child(2n){ border-right: 0; }
+  .hs-submit{ grid-column: 1 / -1; padding: 17px; }
+}
+/* ===== END HERO QUICK SEARCH ===== */
