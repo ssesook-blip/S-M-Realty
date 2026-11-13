@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="../js/consent.js"></script>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VKL3BNJVDQ"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-VKL3BNJVDQ');
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  var h = a.getAttribute('href') || '', m = '';
+  if (/wa\.me|whatsapp\.com/i.test(h)) m = 'whatsapp';
+  else if (/^tel:/i.test(h)) m = 'phone';
+  else if (/^mailto:/i.test(h)) m = 'email';
+  if (m) gtag('event', 'generate_lead', { method: m, link_url: h, transport_type: 'beacon' });
+});
+</script>
+<!-- End Google Analytics -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Private page: shared by link only. Kept out of search engines, the menu and the sitemap. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Modular Homes in the Dominican Republic | S&amp;M Realty DR</title>
+<meta name="description" content="Steel-frame modular homes for the Dominican Republic: 20 ft and 40 ft models, materials, floor plans, pricing, shipping and what it takes to set one up on the North Coast.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Modular Homes in the Dominican Republic | S&amp;M Realty DR">
+<meta property="og:description" content="20 ft and 40 ft steel-frame modular homes: materials, floor plans, indicative pricing and how they get from the factory to your lot on the North Coast.">
+<meta property="og:url" content="https://sheenaandmichaelrealtydr.com/modular-homes/">
+<meta property="og:image" content="https://sheenaandmichaelrealtydr.com/modular-homes/img/two-storey-modular-home-deck.jpg">
+<meta property="og:image:alt" content="Two-storey modular home with glass walls, rooftop terrace and wooden deck">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sheenaandmichaelrealtydr.com/modular-homes/img/two-storey-modular-home-deck.jpg">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+.page-header{ background: var(--ink); color: var(--stone); padding: 160px 0 70px; }
+.page-header .eyebrow{ color: var(--bronze-bright); display:block; margin-bottom: 20px; }
+.page-header h1{ font-size: clamp(34px, 5vw, 56px); max-width: 860px; font-weight: 400; }
+.page-header .lede{ margin-top: 22px; max-width: 660px; font-size: 17px; line-height: 1.65; color: rgba(239,234,225,0.78); }
+.page-header .byline{ margin-top: 28px; font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(239,234,225,0.55); }
+
+.mh-hero{ display:grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 10px; margin-bottom: 64px; }
+.mh-hero img{ width:100%; height: 100%; object-fit: cover; display:block; cursor: zoom-in; }
+.mh-hero .tall{ grid-row: span 2; }
+.mh-hero > *{ aspect-ratio: 1 / 1; overflow:hidden; }
+.mh-hero .tall{ aspect-ratio: auto; }
+
+.guide-layout{ display:grid; grid-template-columns: minmax(0,1fr) 280px; gap: 72px; align-items:start; }
+.guide-body{ font-size: 16.5px; line-height: 1.78; color: var(--ink-soft); max-width: 760px; }
+.guide-body h2{ font-family:'Cormorant', serif; font-weight: 400; font-size: clamp(28px, 3vw, 36px); color: var(--ink); margin: 60px 0 18px; line-height:1.15; }
+.guide-body h2:first-child{ margin-top: 0; }
+.guide-body h3{ font-size: 15px; letter-spacing: 0.04em; font-weight: 600; color: var(--ink); margin: 30px 0 10px; }
+.guide-body p{ margin-bottom: 16px; }
+.guide-body ul, .guide-body ol{ margin: 0 0 18px 22px; }
+.guide-body li{ margin-bottom: 8px; }
+.guide-body a{ color: var(--ink); text-decoration: underline; text-decoration-color: var(--bronze); text-underline-offset: 3px; }
+.guide-body strong{ color: var(--ink); font-weight: 600; }
+
+.key-box{ background: var(--stone-dim); border-left: 3px solid var(--bronze); padding: 26px 30px; margin: 8px 0 34px; }
+.key-box h3{ margin-top:0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bronze); }
+.key-box ul{ margin-bottom:0; }
+
+.model-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 10px 0 30px; }
+.model-card{ border: 1px solid var(--line); background: var(--stone); }
+.model-card img{ width:100%; aspect-ratio: 4/3; object-fit: cover; display:block; cursor: zoom-in; }
+.model-card .mc-body{ padding: 24px 26px 26px; }
+.model-card .mc-name{ font-family:'Cormorant', serif; font-size: 28px; color: var(--ink); line-height:1.1; margin-bottom: 4px; }
+.model-card .mc-price{ font-size: 13px; letter-spacing: 0.06em; color: var(--bronze); margin-bottom: 16px; }
+.model-card dl{ display:grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 14.5px; margin: 0; }
+.model-card dt{ color: var(--taupe); }
+.model-card dd{ margin:0; color: var(--ink); }
+
+.plan{ margin: 14px 0 30px; border: 1px solid var(--line); background:#fff; padding: 14px; }
+.plan img{ width:100%; display:block; cursor: zoom-in; }
+.plan figcaption{ font-size: 13px; color: var(--taupe); margin-top: 10px; line-height: 1.55; }
+
+.spec-table{ width:100%; border-collapse: collapse; margin: 10px 0 26px; font-size: 15px; }
+.spec-table th, .spec-table td{ text-align:left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.spec-table thead th{ font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe); font-weight: 600; }
+.spec-table tbody th{ font-weight: 600; color: var(--ink); width: 30%; }
+.spec-table td small{ display:block; color: var(--taupe); font-size: 13px; margin-top: 4px; line-height:1.5; }
+
+.gallery{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0 12px; }
+.gallery button{ padding:0; border:0; background:none; cursor: zoom-in; aspect-ratio: 1/1; overflow:hidden; }
+.gallery img{ width:100%; height:100%; object-fit: cover; display:block; transition: transform .4s ease; }
+.gallery button:hover img{ transform: scale(1.04); }
+.gallery-note{ font-size: 13px; color: var(--taupe); margin-bottom: 26px; }
+
+.video-wide{ margin: 14px 0 18px; }
+.video-wide video{ width:100%; display:block; background:#000; }
+.video-row{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 0 0 30px; align-items: start; }
+.video-row figure{ margin:0; }
+.video-row video{ width:100%; aspect-ratio: 9/16; object-fit: cover; display:block; background:#000; }
+.video-row figcaption, .video-wide figcaption{ font-size: 13px; color: var(--taupe); margin-top: 8px; line-height:1.5; }
+
+.cost-table{ width:100%; border-collapse: collapse; margin: 10px 0 26px; font-size: 15px; }
+.cost-table th, .cost-table td{ text-align:left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cost-table th{ font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe); font-weight: 600; }
+.two-col{ display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 10px 0 26px; }
+.two-col > div{ border: 1px solid var(--line); padding: 22px 24px; background: var(--stone); }
+.two-col h3{ margin-top: 0 !important; font-size: 12px !important; letter-spacing: 0.14em !important; text-transform: uppercase; color: var(--bronze) !important; }
+.two-col ul{ margin: 0 0 0 18px; font-size: 15px; }
+
+.faq{ margin-top: 12px; }
+.faq details{ border-bottom: 1px solid var(--line); padding: 20px 0; }
+.faq summary{ cursor:pointer; list-style:none; font-family:'Cormorant', serif; font-size: 22px; color: var(--ink); display:flex; justify-content:space-between; gap: 20px; }
+.faq summary::-webkit-details-marker{ display:none; }
+.faq summary::after{ content:'+'; font-family:'Archivo', sans-serif; font-size: 20px; color: var(--bronze); }
+.faq details[open] summary::after{ content:'\2013'; }
+.faq details p{ margin: 14px 0 0; }
+
+.guide-aside{ position: sticky; top: 110px; }
+.aside-card{ border: 1px solid var(--line); padding: 28px; margin-bottom: 24px; background: var(--stone); }
+.aside-card .eyebrow{ display:block; margin-bottom: 14px; }
+.aside-card ul{ list-style:none; margin:0; padding:0; }
+.aside-card li{ padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.aside-card li:last-child{ border-bottom:none; }
+.aside-card li a{ color: var(--ink); text-decoration:none; }
+.aside-card li a:hover{ color: var(--bronze); }
+.aside-card p{ font-size: 14.5px; line-height: 1.6; color: var(--taupe); margin-bottom: 18px; }
+.aside-card .btn{ width:100%; text-align:center; }
+.disclaimer{ font-size: 13px; line-height: 1.6; color: var(--taupe); border-top: 1px solid var(--line); padding-top: 22px; margin-top: 48px; }
+
+/* Lightbox */
+.mh-lightbox{ position: fixed; inset: 0; background: rgba(20,20,20,0.94); display:none; align-items:center; justify-content:center; z-index: 9999; padding: 40px 60px; }
+.mh-lightbox.open{ display:flex; }
+.mh-lightbox img{ max-width: 100%; max-height: 100%; object-fit: contain; }
+.mh-lightbox button{ position:absolute; background:none; border:0; color:#EFEAE1; font-size: 34px; cursor:pointer; padding: 10px 16px; font-family: 'Archivo', sans-serif; }
+.mh-lightbox .lb-close{ top: 14px; right: 14px; }
+.mh-lightbox .lb-prev{ left: 8px; top: 50%; transform: translateY(-50%); }
+.mh-lightbox .lb-next{ right: 8px; top: 50%; transform: translateY(-50%); }
+.mh-lightbox .lb-count{ position:absolute; bottom: 16px; left: 0; right: 0; text-align:center; color: rgba(239,234,225,0.6); font-size: 13px; letter-spacing: 0.08em; }
+
+@media (max-width: 980px){
+  .guide-layout{ grid-template-columns: 1fr; gap: 48px; }
+  .guide-aside{ position: static; }
+}
+@media (max-width: 760px){
+  .mh-hero{ grid-template-columns: 1fr 1fr; }
+  .mh-hero .tall{ grid-column: span 2; grid-row: auto; aspect-ratio: 1/1; }
+  .model-grid, .two-col{ grid-template-columns: 1fr; }
+  .video-row{ grid-template-columns: 1fr 1fr; }
+  .gallery{ grid-template-columns: repeat(3, 1fr); }
+  .spec-table, .cost-table{ font-size: 14px; }
+  .spec-table th, .spec-table td, .cost-table th, .cost-table td{ padding: 10px 8px; }
+  .spec-table tbody th{ width: 36%; }
+}
+@media (max-width: 640px){
+  .page-header{ padding: 130px 0 56px; }
+  .mh-lightbox{ padding: 50px 8px; }
+}
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+if(window.SMConsent&&!SMConsent.allowed())fbq('consent','revoke');
+fbq('init', '1776036563597329');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../index.html" class="logo">
+      <svg class="mark" viewBox="0 0 42 42" fill="none">
+        <circle cx="21" cy="21" r="20" stroke="#9C8158" stroke-width="1"/>
+        <text x="21" y="27" text-anchor="middle" font-family="Cormorant, serif" font-style="italic" font-size="17" fill="#1C1A17">S&amp;M</text>
+      </svg>
+      <span class="logo-word">S&amp;M Realty DR</span>
+    </a>
+    <div class="nav-links">
+      <a href="../listings.html">All Listings</a>
+      <a href="../index.html#areas">Areas</a>
+      <a href="../buying-guide.html">Buying Guide</a>
+      <a href="../sell-your-property.html">Sell</a>
+      <a href="../index.html#process">How We Work</a>
+      <a href="../index.html#team">The Team</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="../index.html#contact" class="btn line">Enquire</a>
+  </nav>
+</header>
+
+<section class="page-header">
+  <div class="wrap">
+    <span class="eyebrow">Modular Homes &middot; Dominican Republic</span>
+    <h1>Modular homes for the North Coast, built in a factory and set on your lot</h1>
+    <p class="lede">A finished home that arrives by sea, sits on a simple foundation and can be lived in within weeks of landing. Here's exactly what these units are made of, what they cost, and what it really takes to put one on a lot in Sosúa, Cabarete or Puerto Plata.</p>
+    <p class="byline">By Sheena Sesook &amp; Michael Galea &middot; November 2026</p>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="wrap">
+
+    <div class="mh-hero">
+      <div class="tall"><img src="img/two-storey-modular-home-deck.jpg" alt="Two-storey modular home with floor-to-ceiling glass, rooftop terrace and composite wood deck" data-lb="0"></div>
+      <div><img src="img/20ft-modular-cabin-white-wpc.jpg" alt="White 20 ft modular cabin with glass front and wood-look slat panel" data-lb="1"></div>
+      <div><img src="img/two-storey-cantilever-modular.jpg" alt="Two modules stacked with a cantilevered upper floor and glass balcony rail" data-lb="2"></div>
+      <div><img src="img/20ft-modular-cabin-glass-front.jpg" alt="20 ft modular cabin with five-panel glass front" data-lb="3"></div>
+      <div><img src="img/modular-cabin-grey-finish.jpg" alt="Modular cabin in grey finish with sliding glass doors" data-lb="4"></div>
+    </div>
+
+    <div class="guide-layout">
+    <article class="guide-body">
+
+      <div class="key-box">
+        <h3>The short version</h3>
+        <ul>
+          <li>Two sizes: a <strong>20 ft studio</strong> (13 m², sleeps 1 to 2) and a <strong>40 ft two-bedroom</strong> (26 m², sleeps 2 to 3). Units can be stacked or joined for larger layouts.</li>
+          <li>A <strong>galvanized steel frame</strong>, metal exterior panels, rock-wool insulation and <strong>double-glazed tempered glass</strong>, fitted out with kitchen, bathroom, beds, lighting and wiring before it ships.</li>
+          <li>Indicative pricing from about <strong>US$16,900</strong> (20 ft) and <strong>US$29,500</strong> (40 ft), shipped to Caucedo port. Final price is confirmed per order.</li>
+          <li>Built in about <strong>35 working days</strong> after deposit, then shipped by sea to the Dominican Republic.</li>
+          <li>You still need land, permits, a foundation and utility hookups. We help with all of that, and with finding the right lot.</li>
+        </ul>
+      </div>
+
+      <h2>Is this "container living"?</h2>
+      <p>Not quite, and the difference matters. A shipping-container home is a used or new steel cargo box with windows cut into it. The walls are corrugated steel, so heat and condensation are a constant fight in the Caribbean, and every opening weakens the box.</p>
+      <p>These units are built the other way around. Each one starts as a purpose-made frame of galvanized steel tube, then gets insulated walls and roof, glass walls, interior finishes and full plumbing and electrical, all in the factory. They're sized to ship by standard container freight, which is why people call them container homes, but structurally and comfort-wise they're closer to a small finished house. The short video below shows the bare frames going together on the factory floor.</p>
+
+      <h2>The two models</h2>
+      <div class="model-grid">
+        <div class="model-card">
+          <img src="img/20ft-modular-cabin-glass-front.jpg" alt="20 ft modular studio cabin" data-lb="3">
+          <div class="mc-body">
+            <div class="mc-name">20 ft Studio</div>
+            <div class="mc-price">From approx. US$16,900, to Caucedo port</div>
+            <dl>
+              <dt>Size</dt><dd>5.80 × 2.25 × 2.45 m</dd>
+              <dt>Floor area</dt><dd>13 m² (about 140 sq ft)</dd>
+              <dt>Sleeps</dt><dd>1 to 2</dd>
+              <dt>Layout</dt><dd>Open studio: bed, kitchenette, separate bathroom</dd>
+              <dt>Bed</dt><dd>1.5 × 2.0 m wooden bed with storage</dd>
+              <dt>Kitchen</dt><dd>1.2 × 0.6 m counter, sink, base and wall cabinets</dd>
+              <dt>Weight</dt><dd>About 2,000 kg</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="model-card">
+          <img src="img/40ft-modular-cabin-factory.jpg" alt="40 ft modular two-bedroom cabin in the factory" data-lb="5">
+          <div class="mc-body">
+            <div class="mc-name">40 ft Two-Bedroom</div>
+            <div class="mc-price">From approx. US$29,500, to Caucedo port</div>
+            <dl>
+              <dt>Size</dt><dd>11.50 × 2.25 × 2.45 m</dd>
+              <dt>Floor area</dt><dd>26 m² (about 280 sq ft)</dd>
+              <dt>Sleeps</dt><dd>2 to 3</dd>
+              <dt>Layout</dt><dd>A bedroom at each end, central entry, living area, kitchen and bathroom</dd>
+              <dt>Beds</dt><dd>Two 1.5 × 1.8 m wooden beds, each with a closet</dd>
+              <dt>Kitchen</dt><dd>1.2 × 0.6 m counter, sink, base and wall cabinets</dd>
+              <dt>Weight</dt><dd>About 5,000 kg</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <h3>Floor plans</h3>
+      <figure class="plan">
+        <img src="img/20ft-floor-plan.jpg" alt="Floor plan of the 20 ft studio, 5,800 by 2,150 mm" data-lb="6">
+        <figcaption>20 ft Studio. Bed and air-conditioner position at one end, kitchenette along the back wall, bathroom (1,350 × 700 mm wet area plus toilet) at the other end, glass front with the door in the middle. Measurements in millimetres.</figcaption>
+      </figure>
+      <figure class="plan">
+        <img src="img/40ft-floor-plan.jpg" alt="Floor plan of the 40 ft two-bedroom, 11,600 mm long" data-lb="7">
+        <figcaption>40 ft Two-Bedroom. Identical bedrooms (bed plus wardrobe) at both ends, with the bathroom, kitchen and living area between them and the main door at the centre. Measurements in millimetres.</figcaption>
+      </figure>
+      <p>Layouts can be adjusted before production, and the factory confirms a final drawing with you before anything is built. Exterior colour is grey or white as standard.</p>
+
+      <h2>What they're made of</h2>
+      <p>This is the full specification from the manufacturer's quotation for both models. It's worth reading line by line, because the materials are what decide how a home like this copes with sun, salt and storms.</p>
+      <table class="spec-table">
+        <thead><tr><th>Part</th><th>Specification</th></tr></thead>
+        <tbody>
+          <tr><th>Main frame</th><td>Galvanized square steel tube, grade Q235: 100 × 100 × 2.5 mm and 50 × 100 × 2.5 mm sections<small>Q235 is a standard structural carbon steel. Galvanizing (a zinc coating) is what protects it from rust.</small></td></tr>
+          <tr><th>Floor</th><td>18 mm high-density cement board substrate<small>Cement board doesn't rot or swell in humidity the way plywood can.</small></td></tr>
+          <tr><th>Exterior walls</th><td>18 mm metal carved (embossed) board, sealed with exterior wall adhesive<small>Facade options include aluminium and HPL (high-pressure laminate) panels, and WPC wood-look slats as an accent, as on several of the units pictured.</small></td></tr>
+          <tr><th>Interior walls</th><td>8 mm bamboo-fibre wall board, with interior adhesive and corner trims</td></tr>
+          <tr><th>Roof</th><td>10 mm corrugated board, fully welded, with weather-resistant structural adhesive and waterproof tape; bamboo-fibre board ceiling inside</td></tr>
+          <tr><th>Insulation</th><td>50 mm rock-wool felt with foil facing, in both walls and roof, rated R-3.2 by the manufacturer<small>Rock wool is non-combustible and doesn't absorb water. The foil face reflects radiant heat, which matters under a tropical sun.</small></td></tr>
+          <tr><th>Glass walls</th><td>5 + 12 + 5 insulated glass: two 5 mm panes of tempered glass with a 12 mm sealed air gap</td></tr>
+          <tr><th>Doors and windows</th><td>Thermal-break aluminium door (standard lock) and thermal-break aluminium windows that open outward, with tight seals<small>"Thermal break" means an insulating strip inside the aluminium frame, so heat doesn't conduct straight through it.</small></td></tr>
+          <tr><th>Electrical</th><td>Earth-leakage protection breaker, 6 mm² main supply cable, 16 A outlets, switches, LED circular ceiling lights<small>Outlets are specified in the American flat-pin style used in the Dominican Republic.</small></td></tr>
+          <tr><th>Bathroom</th><td>Wet and dry areas separated: toilet, wash basin, mirror, glass shower screen and shower</td></tr>
+          <tr><th>Kitchen</th><td>1.2 × 0.6 m counter with sink, base cabinet and upper cabinet</td></tr>
+          <tr><th>Furniture</th><td>Wooden bed(s) and closet(s)</td></tr>
+          <tr><th>Electrical capacity</th><td>Designed for up to 10 kW</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Photos</h2>
+      <div class="gallery">
+        <button type="button" data-lb="0"><img src="img/two-storey-modular-home-deck.jpg" alt="Two-storey modular home on a garden lot" loading="lazy"></button>
+        <button type="button" data-lb="2"><img src="img/two-storey-cantilever-modular.jpg" alt="Stacked modules with cantilevered upper floor" loading="lazy"></button>
+        <button type="button" data-lb="1"><img src="img/20ft-modular-cabin-white-wpc.jpg" alt="White cabin with WPC slat accent" loading="lazy"></button>
+        <button type="button" data-lb="8"><img src="img/modular-cabin-wpc-slat-panel.jpg" alt="Cabin with large WPC wood-look panel and folding glass doors" loading="lazy"></button>
+        <button type="button" data-lb="4"><img src="img/modular-cabin-grey-finish.jpg" alt="Grey finish cabin" loading="lazy"></button>
+        <button type="button" data-lb="9"><img src="img/20ft-kitchen.jpg" alt="20 ft studio kitchenette" loading="lazy"></button>
+        <button type="button" data-lb="10"><img src="img/20ft-bedroom.jpg" alt="20 ft studio bed with storage drawers" loading="lazy"></button>
+        <button type="button" data-lb="11"><img src="img/20ft-bathroom.jpg" alt="20 ft studio bathroom" loading="lazy"></button>
+        <button type="button" data-lb="12"><img src="img/40ft-bedroom.jpg" alt="40 ft model bedroom with glass wall" loading="lazy"></button>
+        <button type="button" data-lb="13"><img src="img/40ft-kitchen.jpg" alt="40 ft model kitchen" loading="lazy"></button>
+        <button type="button" data-lb="14"><img src="img/40ft-entry-closet.jpg" alt="40 ft model entry and closet" loading="lazy"></button>
+        <button type="button" data-lb="15"><img src="img/modular-cabin-crane-loading.jpg" alt="Finished cabin being lifted onto a truck" loading="lazy"></button>
+      </div>
+      <p class="gallery-note">Factory and sample-installation photos. Finishes and furniture can vary by order.</p>
+
+      <h2>Walk through them</h2>
+      <figure class="video-wide">
+        <video controls preload="none" playsinline poster="video/walkthrough-poster.jpg">
+          <source src="video/modular-home-walkthrough.mp4" type="video/mp4">
+        </video>
+        <figcaption>A finished two-storey unit: exterior stairs to the rooftop terrace, interior finishes, kitchen and bathroom.</figcaption>
+      </figure>
+      <div class="video-row">
+        <figure>
+          <video controls preload="none" playsinline poster="video/20ft-poster.jpg">
+            <source src="video/20ft-studio-walkthrough.mp4" type="video/mp4">
+          </video>
+          <figcaption>20 ft Studio in a light wood finish: kitchenette, bed with storage, wardrobe, air-conditioner position and bathroom.</figcaption>
+        </figure>
+        <figure>
+          <video controls preload="none" playsinline poster="video/40ft-poster.jpg">
+            <source src="video/40ft-interior-walkthrough.mp4" type="video/mp4">
+          </video>
+          <figcaption>40 ft model in a grey finish with black window frames: kitchen, bedroom with glass wall, interior doors and bathroom.</figcaption>
+        </figure>
+        <figure>
+          <video controls preload="none" playsinline poster="video/factory-poster.jpg">
+            <source src="video/steel-frame-factory-build.mp4" type="video/mp4">
+          </video>
+          <figcaption>The galvanized steel frames on the factory floor, before the walls and glass go on.</figcaption>
+        </figure>
+      </div>
+
+      <h2>Building with one in the Caribbean: what to plan for</h2>
+      <p>A modular home is a good fit for the North Coast, but only if it's set up for the climate. These are the points we'd go through with you before ordering.</p>
+      <h3>Hurricanes and anchoring</h3>
+      <p>The steel frame is strong and light, which is exactly why anchoring matters. Each unit has to be bolted down to a proper foundation (concrete piers or a slab) designed by a local engineer for wind loads in your exact spot. The glass is tempered double glazing, which is much stronger than ordinary glass but is not laminated impact glass. On an exposed or beachfront lot, plan for hurricane shutters or ask for an impact-glass upgrade.</p>
+      <h3>Earthquakes</h3>
+      <p>The Dominican Republic is also a seismic zone. A welded steel frame flexes rather than cracks, which is a real advantage over unreinforced block. The foundation connection is still the critical part, so it should be engineered rather than improvised.</p>
+      <h3>Salt air</h3>
+      <p>Near the sea, everything metal corrodes faster. The galvanized frame and aluminium windows are the right starting point. Rinse the exterior and hardware with fresh water from time to time, and check fixings and sealant joints once a year.</p>
+      <h3>Heat</h3>
+      <p>Lots of glass means lots of light and also lots of sun. Face the glass wall away from the afternoon sun where you can, use the deck or a pergola for shade, and plan on a split air conditioner (the 20 ft plan already shows its position). The foil-faced rock wool and insulated glass do most of the work after that.</p>
+      <h3>Power and water</h3>
+      <p>Dominican power is 110 to 120 V at 60 Hz, the same as North America, and the outlets are specified for that. Confirm the voltage and frequency on the order so the whole system matches. Plan for a water connection or cistern and pump, and a septic system if the lot isn't on a sewer line, as with any home here.</p>
+      <h3>Permits and community rules</h3>
+      <p>A modular home is still a home in the eyes of the municipality. The land title needs to be clean and the build needs the usual approvals before it goes in. Many gated communities on the North Coast also have their own architectural rules, and some don't allow modular or prefabricated homes at all. Check this before you buy a lot, not after. It's one of the first things we confirm for you.</p>
+
+      <h2>Pricing, payment and timeline</h2>
+      <table class="cost-table">
+        <thead><tr><th>Model</th><th>Indicative price</th><th>Basis</th></tr></thead>
+        <tbody>
+          <tr><td>20 ft Studio</td><td>From approx. US$16,900</td><td>Built in Qingdao, China, shipped by sea to Caucedo port</td></tr>
+          <tr><td>40 ft Two-Bedroom</td><td>From approx. US$29,500</td><td>Built in Qingdao, China, shipped by sea to Caucedo port</td></tr>
+        </tbody>
+      </table>
+      <p>These figures come from the manufacturer's quotation and are subject to confirmation. Steel and freight costs move, so every order gets its own current written quote before you commit.</p>
+
+      <div class="two-col">
+        <div>
+          <h3>Included in the unit price</h3>
+          <ul>
+            <li>Steel frame, walls, roof and insulation</li>
+            <li>Glass walls, door and windows</li>
+            <li>Wiring, breaker, outlets and LED lighting</li>
+            <li>Bathroom fittings and shower</li>
+            <li>Kitchen counter, sink and cabinets</li>
+            <li>Wooden bed(s) and closet(s)</li>
+            <li>Ocean freight to Caucedo port</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Budget separately for</h3>
+          <ul>
+            <li>The land</li>
+            <li>Dominican import duties, taxes and customs clearance</li>
+            <li>Trucking from Caucedo (near Santo Domingo) to the North Coast, plus crane on arrival</li>
+            <li>Foundation and anchoring</li>
+            <li>Water, septic and electrical connections</li>
+            <li>Permits, engineering and installation</li>
+            <li>Air conditioning, deck and landscaping</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Payment schedule</h3>
+      <ul>
+        <li><strong>70%</strong> when the order is signed</li>
+        <li><strong>15%</strong> when the unit arrives at the destination port</li>
+        <li><strong>10%</strong> on delivery to site</li>
+        <li><strong>5%</strong> on completion of installation</li>
+      </ul>
+      <h3>Timeline</h3>
+      <p>Production takes about 35 working days from the deposit. Add ocean transit from Qingdao, customs clearance, and trucking to the North Coast. Your foundation and utility work can happen on the lot while the unit is being built and shipped, so the home can be set in place soon after it arrives.</p>
+
+      <h2>Who these make sense for</h2>
+      <ul>
+        <li><strong>Guest house or casita</strong> on a lot where you already have, or plan to build, a main house</li>
+        <li><strong>Rental or glamping units</strong>: several studios on one property, each with its own bathroom and kitchenette</li>
+        <li><strong>A place to live while you build</strong> the main house, which later becomes the guest suite or office</li>
+        <li><strong>A simple, lower-cost way onto the North Coast</strong> for someone who wants a small, modern home on their own land</li>
+        <li><strong>Home office or studio</strong> separate from the house</li>
+      </ul>
+      <p>The land is the part most people underestimate. A lot that allows modular construction, has road access wide enough for a truck and crane, and already has power and water nearby will save you far more than any difference in unit price. That's where we come in.</p>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details>
+          <summary>Are these shipping containers converted into homes?</summary>
+          <p>No. They're purpose-built modules on a galvanized steel tube frame, with insulated walls and roof, glass walls and full interior finishes. They're sized to ship with standard container freight, which is why they're often called container homes.</p>
+        </details>
+        <details>
+          <summary>How big are they?</summary>
+          <p>The 20 ft studio is 5.80 × 2.25 m outside (13 m² of floor area) and sleeps 1 to 2. The 40 ft model is 11.50 × 2.25 m (26 m²) with two bedrooms and sleeps 2 to 3. Both are 2.45 m tall outside. Modules can be stacked or joined for larger homes, like the two-storey units pictured.</p>
+        </details>
+        <details>
+          <summary>Can they handle hurricanes?</summary>
+          <p>The steel frame is strong, but storm performance depends on how the unit is anchored to its foundation and on protecting the glass. Have a local engineer design the foundation and tie-downs for your site, and add hurricane shutters or impact glass on exposed lots.</p>
+        </details>
+        <details>
+          <summary>Will the electrical system work in the Dominican Republic?</summary>
+          <p>Yes. The outlets are specified in the American flat-pin style used in the DR. Confirm 110 to 120 V and 60 Hz on the order so everything matches the local grid.</p>
+        </details>
+        <details>
+          <summary>Can I put one in a gated community?</summary>
+          <p>It depends on the community. Some allow modular homes and some don't, and most have design rules. We check the rules for any lot before you commit.</p>
+        </details>
+        <details>
+          <summary>How long does it take?</summary>
+          <p>About 35 working days to build after the deposit, then ocean shipping, customs and trucking to the North Coast. Site preparation can run at the same time.</p>
+        </details>
+        <details>
+          <summary>Do you have land for one?</summary>
+          <p>Yes. We list lots across Sosúa, Cabarete and Puerto Plata, and we can shortlist ones where modular construction is allowed and practical. Message us with your budget and what you'd like to build.</p>
+        </details>
+      </div>
+
+      <p class="disclaimer">This page is general information, current to the best of our knowledge as of November 2026. Prices, specifications and timelines come from the manufacturer's quotation and are subject to change and confirmation on each order. Import duties, permits and construction requirements vary by property and municipality. Confirm the details of your own project with a Dominican attorney and a licensed local engineer.</p>
+    </article>
+
+    <aside class="guide-aside">
+      <div class="aside-card">
+        <span class="eyebrow">Interested?</span>
+        <p>Tell us which model you're thinking about and where you'd like to put it. We'll send a current quote and help you find a lot that suits it.</p>
+        <a href="https://wa.me/18093503736?text=Hi%2C%20I%20saw%20your%20modular%20homes%20page%20and%20I%27d%20like%20more%20information." class="btn fill" target="_blank" rel="noopener">WhatsApp Us</a>
+      </div>
+      <div class="aside-card">
+        <span class="eyebrow">Need Land?</span>
+        <ul>
+          <li><a href="../listings.html">Browse All Listings</a></li>
+          <li><a href="../sosua-real-estate.html">Sosúa</a></li>
+          <li><a href="../cabarete-real-estate.html">Cabarete</a></li>
+          <li><a href="../puerto-plata-real-estate.html">Puerto Plata</a></li>
+          <li><a href="../buy-property-dominican-republic-foreigner.html">Buying Property as a Foreigner</a></li>
+        </ul>
+      </div>
+    </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section tight" style="background:var(--stone-dim);">
+  <div class="wrap" style="text-align:center;">
+    <span class="eyebrow">Ready to Talk It Through?</span>
+    <h2>Let's find the right spot for it.</h2>
+    <p style="max-width:500px; margin: 16px auto 32px; color: var(--taupe);">Send us the model you like and your budget for land. We'll come back with a current quote and lots that work.</p>
+    <a href="https://wa.me/18093503736?text=Hi%2C%20I%20saw%20your%20modular%20homes%20page%20and%20I%27d%20like%20more%20information." class="btn line" target="_blank" rel="noopener">Message Us on WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+          <svg class="mark" viewBox="0 0 42 42" fill="none">
+            <circle cx="21" cy="21" r="20" stroke="#9C8158" stroke-width="1"/>
+            <text x="21" y="27" text-anchor="middle" font-family="Cormorant, serif" font-style="italic" font-size="17" fill="#EFEAE1">S&amp;M</text>
+          </svg>
+          <span class="logo-word">S&amp;M Realty DR</span>
+        </div>
+<p style="max-width:300px; font-size:14px; color: rgba(239,234,225,0.55);">An independent brokerage representing Sosúa, Cabarete, and Puerto Plata since 2021.</p>
+        <div class="footer-partner">
+          <img src="../crest-group-logo.png" alt="The Crest Group Dominicana" class="footer-partner-logo">
+          <span class="footer-partner-text">S&amp;M Realty DR with The Crest Group Dominicana</span>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61594032930427" target="_blank" rel="noopener" aria-label="Facebook" class="footer-social-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22 12.06C22 6.48 17.520 2 11.940 2S2 6.48 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.76 8.44-4.92 8.44-9.94z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/sheena.crestgroupdo/" target="_blank" rel="noopener" aria-label="Instagram" class="footer-social-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 011.77 1.15 4.9 4.9 0 011.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.650.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 01-1.15 1.770 4.9 4.9 0 01-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 01-1.77-1.15 4.9 4.9 0 01-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43a4.9 4.9 0 011.15-1.77A4.9 4.9 0 015.59 1.8c.46-.16 1.26-.35 2.43-.4C9.29 1.34 9.67 1.33 12 1.33m0 2.16c-3.15 0-3.5.01-4.73.07-.96.04-1.48.2-1.83.34-.46.18-.79.39-1.13.73-.34.34-.55.67-.73 1.13-.14.35-.3.87-.34 1.83-.06 1.23-.07 1.58-.07 4.73s.01 3.5.07 4.73c.04.96.2 1.48.34 1.83.18.46.39.79.73 1.13.34.34.67.55 1.13.73.35.14.87.3 1.83.34 1.23.06 1.58.07 4.73.07s3.5-.01 4.73-.07c.96-.04 1.48-.2 1.83-.34.46-.18.79-.39 1.13-.73.34-.34.55-.67.73-1.13.14-.35.3-.87.34-1.83.06-1.23.07-1.58.07-4.73s-.01-3.5-.07-4.73c-.04-.96-.2-1.48-.34-1.83a3 3 0 00-.73-1.13 3 3 0 00-1.13-.73c-.35-.14-.87-.3-1.83-.34C15.5 4.53 15.15 4.52 12 4.52zm0 3.7a4.78 4.78 0 110 9.56 4.78 4.78 0 010-9.56zm0 7.88a3.1 3.1 0 100-6.2 3.1 3.1 0 000 6.2zm6.08-8.07a1.12 1.12 0 11-2.24 0 1.12 1.12 0 012.24 0z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@RealestateRepublicaDominicana" target="_blank" rel="noopener" aria-label="YouTube" class="footer-social-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.2 31.2 0 000 12a31.2 31.2 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31.2 31.2 0 0024 12a31.2 31.2 0 00-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../listings.html">All Listings</a></li>
+          <li><a href="../casa-linda.html">Casa Linda</a></li>
+          <li><a href="../buying-guide.html">Buying Guide</a></li>
+          <li><a href="../sell-your-property.html">Sell Your Property</a></li>
+          <li><a href="../index.html#process">How We Work</a></li>
+          <li><a href="../index.html#team">The Team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../index.html#team">About Us</a></li>
+          <li><a href="../index.html#reviews">Reviews</a></li>
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:sheena@crestgroupdominicana.com">sheena@crestgroupdominicana.com</a></li>
+          <li><a href="tel:+18093503736">+1 (809) 350-3736</a></li>
+          <li><a href="mailto:michael@crestgroupdominicana.com">michael@crestgroupdominicana.com</a></li>
+          <li><a href="tel:+18296375611">+1 (829) 637-5611</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 S&amp;M Realty DR.</span>
+      <span>Licensed Real Estate Brokerage.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/18093503736?text=Hi%2C%20I%20saw%20your%20modular%20homes%20page%20and%20I%27d%20like%20more%20information." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <span class="wa-tip">Chat with us</span>
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.310 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.04 3.67C14.25 3.67 16.32 4.53 17.88 6.09C19.44 7.65 20.29 9.72 20.29 11.92C20.29 16.46 16.58 20.16 12.03 20.16C10.56 20.16 9.12 19.77 7.85 19.03L7.55 18.86L4.43 19.68L5.27 16.64L5.07 16.33C4.26 15.02 3.830 13.48 3.83 11.91C3.84 7.37 7.5 3.67 12.04 3.67ZM8.53 6.65C8.37 6.65 8.1 6.71 7.87 6.96C7.65 7.21 7 7.81 7 9.02C7 10.24 7.89 11.41 8.01 11.58C8.14 11.74 9.76 14.34 12.32 15.36C14.44 16.21 14.87 16.04 15.34 16C15.8 15.95 16.81 15.39 17.02 14.81C17.24 14.22 17.24 13.72 17.17 13.61C17.11 13.51 16.94 13.45 16.69 13.32C16.44 13.2 15.21 12.59 14.98 12.51C14.75 12.42 14.58 12.38 14.42 12.63C14.25 12.88 13.77 13.45 13.62 13.61C13.48 13.78 13.33 13.8 13.08 13.67C12.83 13.55 12.03 13.28 11.08 12.43C10.34 11.77 9.84 10.96 9.7 10.71C9.55 10.46 9.68 10.32 9.81 10.19C9.92 10.08 10.06 9.9 10.19 9.75C10.31 9.6 10.36 9.5 10.44 9.33C10.53 9.17 10.48 9.02 10.42 8.9C10.36 8.77 9.86 7.54 9.65 7.04C9.44 6.56 9.24 6.62 9.09 6.62C8.94 6.6 8.78 6.65 8.53 6.65Z" fill="#EFEAE1"/>
+  </svg>
+</a>
+
+<div class="mh-lightbox" id="mhLightbox" role="dialog" aria-label="Photo viewer">
+  <button class="lb-close" type="button" aria-label="Close">&times;</button>
+  <button class="lb-prev" type="button" aria-label="Previous">&lsaquo;</button>
+  <img id="mhLbImg" src="" alt="">
+  <button class="lb-next" type="button" aria-label="Next">&rsaquo;</button>
+  <div class="lb-count" id="mhLbCount"></div>
+</div>
+
+<script>
+(function(){
+  var photos = [
+    'img/two-storey-modular-home-deck.jpg',
+    'img/20ft-modular-cabin-white-wpc.jpg',
+    'img/two-storey-cantilever-modular.jpg',
+    'img/20ft-modular-cabin-glass-front.jpg',
+    'img/modular-cabin-grey-finish.jpg',
+    'img/40ft-modular-cabin-factory.jpg',
+    'img/20ft-floor-plan.jpg',
+    'img/40ft-floor-plan.jpg',
+    'img/modular-cabin-wpc-slat-panel.jpg',
+    'img/20ft-kitchen.jpg',
+    'img/20ft-bedroom.jpg',
+    'img/20ft-bathroom.jpg',
+    'img/40ft-bedroom.jpg',
+    'img/40ft-kitchen.jpg',
+    'img/40ft-entry-closet.jpg',
+    'img/modular-cabin-crane-loading.jpg',
+    'img/modular-cabin-shipping-flat-rack.jpg'
+  ];
+  var lb = document.getElementById('mhLightbox'), img = document.getElementById('mhLbImg'), cnt = document.getElementById('mhLbCount'), i = 0;
+  function show(n){ i = (n + photos.length) % photos.length; img.src = photos[i]; cnt.textContent = (i+1) + ' / ' + photos.length; }
+  function open(n){ show(n); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  document.querySelectorAll('[data-lb]').forEach(function(el){
+    el.addEventListener('click', function(){ open(parseInt(el.getAttribute('data-lb'), 10)); });
+  });
+  lb.querySelector('.lb-close').addEventListener('click', close);
+  lb.querySelector('.lb-prev').addEventListener('click', function(e){ e.stopPropagation(); show(i-1); });
+  lb.querySelector('.lb-next').addEventListener('click', function(e){ e.stopPropagation(); show(i+1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(i-1);
+    if (e.key === 'ArrowRight') show(i+1);
+  });
+})();
+</script>
+<script src="../js/nav-toggle.js"></script>
+
+</body>
+</html>
