@@ -167,6 +167,46 @@ fbq('track', 'PageView');
     <h1 class="eyebrow">Real Estate in Sosúa — Cabarete — Puerto Plata</h1>
     <p class="hero-title display">The North Coast,<br><em>considered.</em></p>
     <p class="lede">S&amp;M Realty DR represents a collection of homes across three towns — chosen for what they are, not just listed for what they cost. It comes down to a simple philosophy: doing good business with good people!</p>
+    <form class="hero-search" action="listings.html" method="get" role="search" aria-label="Search homes for sale">
+      <label class="hs-field"><span>Area</span>
+        <select name="city">
+          <option value="">All towns</option>
+          <option value="Sosúa">Sosúa</option>
+          <option value="Cabarete">Cabarete</option>
+          <option value="Puerto Plata">Puerto Plata</option>
+        </select>
+      </label>
+      <label class="hs-field"><span>Property type</span>
+        <select name="type">
+          <option value="">Any type</option>
+          <option value="Villas">Villa</option>
+          <option value="House">House</option>
+          <option value="Apartments">Apartment</option>
+          <option value="Penthouses">Penthouse</option>
+          <option value="Terreno">Land</option>
+          <option value="Commercial Premises">Commercial</option>
+        </select>
+      </label>
+      <label class="hs-field"><span>Budget (USD)</span>
+        <select name="price">
+          <option value="">Any budget</option>
+          <option value="under250">Under $250k</option>
+          <option value="250-500">$250k – $500k</option>
+          <option value="500-750">$500k – $750k</option>
+          <option value="750plus">$750k +</option>
+        </select>
+      </label>
+      <label class="hs-field"><span>Bedrooms</span>
+        <select name="beds">
+          <option value="">Any</option>
+          <option value="1">1+</option>
+          <option value="2">2+</option>
+          <option value="3">3+</option>
+          <option value="4">4+</option>
+        </select>
+      </label>
+      <button type="submit" class="hs-submit">Search Homes</button>
+    </form>
     <div class="hero-actions">
       <a href="#collection" class="btn line-light">View the Collection</a>
       <a href="#contact" class="text-link" style="color:var(--stone); border-color: var(--bronze-bright);">Enquire Privately</a>
