@@ -4,7 +4,7 @@ from lib import (
     clean_title, format_price_full, format_area, format_bathrooms,
     gallery_urls, render_amenities, render_agents, whatsapp_link, get_sector,
     meta_description, SITE_URL, strip_description, render_agent_take,
-    get_community, format_price_card,
+    get_community, format_price_card, render_specs,
 )
 
 PAGE_TEMPLATE = '''<!DOCTYPE html>
