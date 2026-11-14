@@ -140,10 +140,7 @@ fbq('track', 'PageView');
 <section class="section tight">
   <div class="wrap">
     <div class="prop-specs">
-      <div class="prop-spec"><div class="num">{bedrooms}</div><div class="label">Bedrooms</div></div>
-<div class="prop-spec"><div class="num">{bathrooms}</div><div class="label">Bathrooms</div></div>
-<div class="prop-spec"><div class="num">{area}</div><div class="label">Mt2</div></div>
-<div class="prop-spec"><div class="num">{category}</div><div class="label">Property Type</div></div>
+           {specs}
     </div>
     {agent_take}
     <div class="prop-desc">
@@ -279,6 +276,7 @@ def generate_property_page(listing: dict) -> str:
         bathrooms=format_bathrooms(listing),
         area=format_area(listing),
         category=html.escape(category),
+        specs=render_specs(listing),
         agent_take=render_agent_take(listing),
         description=listing.get("description") or "",
         print_description=html.escape(strip_description(listing.get("description") or "", max_chars=550)),
