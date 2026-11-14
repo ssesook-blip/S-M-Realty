@@ -38,10 +38,12 @@ if (typeFilter) {
     const t = card.dataset.type;
     if (t) types.add(t);
   });
-  Array.from(types).sort().forEach(t => {
+  const TYPE_LABELS = { 'Terreno': 'Land' };
+  const label = t => TYPE_LABELS[t] || t;
+  Array.from(types).sort((a, b) => label(a).localeCompare(label(b))).forEach(t => {
     const opt = document.createElement('option');
     opt.value = t;
-    opt.textContent = t;
+    opt.textContent = label(t);
     typeFilter.appendChild(opt);
   });
 }
