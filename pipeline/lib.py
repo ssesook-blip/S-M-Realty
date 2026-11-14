@@ -83,7 +83,47 @@ def format_area(listing: dict) -> str:
     return f"{area:g} {measurer}"
 
 
-def format_bathrooms(listing: dict) -> str:
+CATEGORY_LABELS = {
+    "Terreno": "Land",
+}
+
+
+def display_category(listing: dict) -> str:
+    raw = ((listing.get("category") or {}).get("name_en") or "").strip()
+    return CATEGORY_LABELS.get(raw, raw)
+
+
+def _num(value) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def render_specs(listing: dict) -> str:
+    specs = []
+    beds = _num(listing.get("room"))
+    if beds > 0:
+        specs.append((f"{beds:g}", "Bedrooms"))
+    baths = _num(listing.get("bathroom"))
+    if baths > 0:
+        specs.append((f"{baths:g}", "Bathrooms"))
+    area = _num(listing.get("property_area"))
+    measurer = listing.get("property_area_measurer") or "Mt2"
+    if area <= 0:
+        area = _num(listing.get("terrain_area"))
+        measurer = listing.get("terrain_area_measurer") or "Mt2"
+    if area > 0:
+        shown = f"{area:,.0f}" if area.is_integer() else f"{area:,g}"
+        specs.append((shown, measurer))
+    category = display_category(listing)
+    if category:
+        specs.append((category, "Property Type"))
+    return "\n".join(
+        f'<div class="prop-spec"><div class="num">{html.escape(value)}</div>'
+        f'<div class="label">{html.escape(label)}</div></div>'
+        for value, label in specs
+    )def format_bathrooms(listing: dict) -> str:
     baths = listing.get("bathroom") or 0
     return f"{float(baths):.1f}"
 
